@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCA Admin Console</title>
+<meta name="description" content="Static walkthrough mockup — not a live application.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-fallback-view="dashboard">
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <a class="brand-link" href="app.html" style="text-decoration:none;">
+      <div class="brand" style="border-bottom:none;padding-bottom:0;">
+        <div class="logo"><img src="assets/logo.png" alt="JCA"></div>
+        <div><div class="bt">JCA Admin</div><div class="bs">Console</div></div>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-group">Overview</div>
+      <a class="nav-item active" data-view="dashboard"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>Dashboard</a>
+
+      <div class="nav-group">Engagement</div>
+      <a class="nav-item" data-view="content"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Content</a>
+      <a class="nav-item" data-view="gallery"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Gallery &amp; Media</a>
+      <a class="nav-item" data-view="events"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Events</a>
+      <a class="nav-item" data-view="notifications"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>Notifications</a>
+
+      <div class="nav-group">Giving</div>
+      <a class="nav-item" data-view="donations"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>Donations &amp; Causes</a>
+      <a class="nav-item" data-view="sponsors"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.2 13 7 22l5-3 5 3-1.2-9"/></svg>Sponsors &amp; Recognition</a>
+      <a class="nav-item" data-view="bhojanshala"><svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h0a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/><path d="M17 2v20M21 8c0-3-1.5-6-4-6v20"/></svg>Bhojanshala</a>
+
+      <div class="nav-group">People</div>
+      <a class="nav-item" data-view="members"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Members &amp; Families</a>
+      <a class="nav-item" data-view="pathshala"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Pathshala</a>
+      <a class="nav-item" data-view="volunteers"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m19 8 2 2 4-4"/></svg>Volunteers &amp; Seva</a>
+
+      <div class="nav-group">Operations</div>
+      <a class="nav-item" data-view="facility"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg>Facility Booking<span class="phase-tag">1.5</span></a>
+      <a class="nav-item" data-view="calendar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Religious Calendar</a>
+      <a class="nav-item" data-view="darshan"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>Live Darshan</a>
+      <a class="nav-item" data-view="library"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Library &amp; Jinvani<span class="phase-tag">1.5</span></a>
+      <a class="nav-item" data-view="directory"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Directory &amp; Resources<span class="phase-tag">1.5</span></a>
+
+      <div class="nav-group">Institution</div>
+      <a class="nav-item" data-view="governance"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>Governance<span class="phase-tag">1.5</span></a>
+      <a class="nav-item" data-view="reports"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M16 13H8M16 17H8M10 9H8"/></svg>Reports &amp; Exports</a>
+      <a class="nav-item" data-view="audit"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Audit Log</a>
+      <a class="nav-item" data-view="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="back-switch" href="app.html"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to member app</a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="main">
+    <header class="topbar">
+      <div class="crumb">JCA Console · <b id="crumb">Dashboard</b></div>
+      <button class="search cmdk-trigger" data-cmdk-open style="cursor:pointer;">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span style="flex:1;text-align:left;color:var(--muted);">Search members, donations, events…</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <div class="bell-wrap">
+        <button class="bell" data-bell-toggle="bell-panel"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot"></span></button>
+        <div class="bell-dropdown hide" id="bell-panel">
+          <div class="bell-dropdown-h">Notifications</div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="tx"><div class="tt">Announcement scheduled</div><div class="ds">Pathshala registration publishes tomorrow at 8:00 AM.</div><div class="ts">10m ago</div></div></div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div><div class="tx"><div class="tt">Refund awaiting confirmation</div><div class="ds">Priya Shah needs to confirm a $251.00 refund.</div><div class="ts">1h ago</div></div></div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="tx"><div class="tt">Stream degraded</div><div class="ds">Upashray fallback stream is running high latency.</div><div class="ts">Yesterday</div></div></div>
+        </div>
+      </div>
+      <div class="me" data-jump="settings" style="cursor:pointer;"><div class="av">RJ</div><div><div class="mn">Rina Jain</div><div class="mr">Super Admin</div></div></div>
+    </header>
+
+    <!-- ========================================================= DASHBOARD -->
+    <section class="view" id="v-dashboard">
+      <div class="view-head">
+        <div>
+          <h1>Operational Overview</h1>
+          <div class="sub">Tuesday, 14 April 2026 · Mahavir Janma Kalyanak in 12 days</div>
+        </div>
+        <div class="view-actions">
+          <button class="btn btn-ghost"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
+          <button class="btn btn-primary" data-jump="content"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New announcement</button>
+        </div>
+      </div>
+
+      <div class="seg" data-seg-group="dash-role" style="margin-bottom:18px;">
+        <button data-seg="ops" class="on">Operations</button>
+        <button data-seg="treasurer">Treasurer</button>
+        <button data-seg="comms">Communications</button>
+        <button data-seg="pathshala">Pathshala</button>
+        <button data-seg="events">Events</button>
+      </div>
+
+      <div data-seg-panel="dash-role" data-seg-val="ops">
+        <div class="grid g4" style="margin-bottom:18px;">
+          <div class="stat"><div class="top"><div class="ic s"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div></div><div class="lbl">Announcement reactions · 7d</div><div class="val">3,412</div><div class="delta up">↑ 18% vs prior week</div></div>
+          <div class="stat"><div class="top"><div class="ic s"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div></div><div class="lbl">Donations · April</div><div class="val">$48,260</div><div class="delta up">↑ 12% vs March</div></div>
+          <div class="stat"><div class="top"><div class="ic g"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div></div><div class="lbl">Upcoming events</div><div class="val">6</div><div class="delta up">This week</div></div>
+          <div class="stat"><div class="top"><div class="ic b"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div></div><div class="lbl">Members</div><div class="val">2,847</div><div class="delta up">Growing</div></div>
+        </div>
+
+        <div class="grid g-2-1" style="margin-bottom:18px;">
+          <div class="panel">
+            <div class="panel-h"><h3>Giving — last 6 months</h3><span class="legend"><span class="k"><span class="sw" style="background:var(--indigo);"></span>Recurring</span><span class="k"><span class="sw" style="background:var(--saffron);"></span>One-time</span></span></div>
+            <div class="panel-b">
+              <div class="chart">
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:52%;"></div><div class="bar2 b" style="height:38%;"></div></div><div class="cl">Nov</div></div>
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:60%;"></div><div class="bar2 b" style="height:44%;"></div></div><div class="cl">Dec</div></div>
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:48%;"></div><div class="bar2 b" style="height:30%;"></div></div><div class="cl">Jan</div></div>
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:66%;"></div><div class="bar2 b" style="height:50%;"></div></div><div class="cl">Feb</div></div>
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:74%;"></div><div class="bar2 b" style="height:58%;"></div></div><div class="cl">Mar</div></div>
+                <div class="col"><div class="bars"><div class="bar2 a" style="height:88%;"></div><div class="bar2 b" style="height:70%;"></div></div><div class="cl">Apr</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>By cause · April</h3></div>
+            <div class="panel-b donut-wrap">
+              <div class="donut" style="background:conic-gradient(var(--indigo) 0 42%,var(--saffron) 42% 68%,var(--brass) 68% 84%,var(--good) 84% 100%);"></div>
+              <div class="donut-legend">
+                <div class="k"><span class="sw" style="background:var(--indigo);"></span>General Fund<span class="v">42%</span></div>
+                <div class="k"><span class="sw" style="background:var(--saffron);"></span>Bhojanshala<span class="v">26%</span></div>
+                <div class="k"><span class="sw" style="background:var(--brass);"></span>Pathshala<span class="v">16%</span></div>
+                <div class="k"><span class="sw" style="background:var(--good);"></span>Jeev Daya<span class="v">16%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid g-2-1">
+          <div class="panel">
+            <div class="panel-h"><h3>Recent audit-log entries</h3><a class="link" data-jump="audit">Open audit log →</a></div>
+            <div class="panel-b" style="padding:6px 0;">
+              <div class="audit-row"><div class="act">Refund issued</div><div class="ts">2:14 PM</div><div>Priya Shah · $251.00 · General Fund <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">DONATION</span></div><div class="hash">#a91f2c</div></div>
+              <div class="audit-row"><div class="act">Announcement published</div><div class="ts">1:47 PM</div><div>Live Darshan — Snatra Puja <span class="audit-cat" style="background:var(--info-bg);color:var(--indigo);margin-left:6px;">CONTENT</span></div><div class="hash">#7e0a41</div></div>
+              <div class="audit-row"><div class="act">Event published</div><div class="ts">11:32 AM</div><div>Mahavir Janma Kalyanak 2026 <span class="audit-cat" style="background:var(--good-bg);color:var(--good);margin-left:6px;">EVENT</span></div><div class="hash">#3c88b0</div></div>
+              <div class="audit-row"><div class="act">Dues comp issued</div><div class="ts">10:05 AM</div><div>Doshi family · $120.00 waived <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">MEMBER</span></div><div class="hash">#f102de</div></div>
+              <div class="audit-row"><div class="act">Setting changed</div><div class="ts">Yesterday</div><div>Live Darshan · Upashray fallback URL updated <span class="audit-cat" style="background:var(--warn-bg);color:var(--warn);margin-left:6px;">SETTINGS</span></div><div class="hash">#22b6f9</div></div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>System health</h3><span class="pill good"><span class="d"></span>All systems normal</span></div>
+            <div class="panel-b">
+              <div class="health-row"><span class="pill good" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">API &amp; backend</span><span class="mt">99.98% uptime</span></div>
+              <div class="health-row"><span class="pill good" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Payments (Stripe · PayPal)</span><span class="mt">Operational</span></div>
+              <div class="health-row"><span class="pill good" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Push (APNs · FCM · Web Push)</span><span class="mt">Operational</span></div>
+              <div class="health-row"><span class="pill warn" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Live Darshan — Upashray stream</span><span class="mt">Degraded</span></div>
+              <div class="health-row"><span class="pill good" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Celery queue depth</span><span class="mt">12 jobs</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid g4 hide" data-seg-panel="dash-role" data-seg-val="treasurer">
+        <div class="stat"><div class="lbl">YTD total raised</div><div class="val">$340,210</div><div class="delta up">68% of $500K goal</div></div>
+        <div class="stat"><div class="lbl">Active subscriptions</div><div class="val">412</div><div class="delta down">7 failed charges</div></div>
+        <div class="stat"><div class="lbl">Dues overdue</div><div class="val">23</div><div class="delta down">30/60/90 aging</div></div>
+        <div class="stat"><div class="lbl">Refund queue</div><div class="val">2</div><div class="delta">Awaiting 2nd admin</div></div>
+      </div>
+      <div class="grid g4 hide" data-seg-panel="dash-role" data-seg-val="comms">
+        <div class="stat"><div class="lbl">Push reach</div><div class="val">2,184</div><div class="delta up">Opted in</div></div>
+        <div class="stat"><div class="lbl">Email reach</div><div class="val">2,706</div><div class="delta up">Opted in</div></div>
+        <div class="stat"><div class="lbl">Open rate (30d)</div><div class="val">64%</div><div class="delta up">↑ 3pts</div></div>
+        <div class="stat"><div class="lbl">Contact-form queue</div><div class="val">4</div><div class="delta">New</div></div>
+      </div>
+      <div class="grid g4 hide" data-seg-panel="dash-role" data-seg-val="pathshala">
+        <div class="stat"><div class="lbl">Enrolled children</div><div class="val">186</div><div class="delta up">Spring Term</div></div>
+        <div class="stat"><div class="lbl">Term fee status</div><div class="val">92%</div><div class="delta up">Paid</div></div>
+        <div class="stat"><div class="lbl">Classes running</div><div class="val">9</div><div class="delta">3 levels</div></div>
+        <div class="stat"><div class="lbl">Avg. attendance</div><div class="val">88%</div><div class="delta up">↑ 4pts</div></div>
+      </div>
+      <div class="grid g4 hide" data-seg-panel="dash-role" data-seg-val="events">
+        <div class="stat"><div class="lbl">Published events</div><div class="val">6</div><div class="delta">2 drafts</div></div>
+        <div class="stat"><div class="lbl">Total RSVPs (Apr)</div><div class="val">1,340</div><div class="delta up">↑ 18%</div></div>
+        <div class="stat"><div class="lbl">Waitlisted</div><div class="val">37</div><div class="delta">MJK 2026</div></div>
+        <div class="stat"><div class="lbl">Conflicts flagged</div><div class="val">1</div><div class="delta down">Needs review</div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= CONTENT -->
+    <section class="view hide" id="v-content">
+      <div class="view-head">
+        <div><h1>Content</h1><div class="sub">Managed in Payload CMS — landing page, announcements, and app content.</div></div>
+      </div>
+
+      <div class="cms-shell">
+        <div class="cms-rail">
+          <div class="cms-rail-h"><div class="mk"></div><div class="tx"><div class="tt">Payload</div><div class="sb">JCA Platform</div></div></div>
+          <div class="cms-rail-group">Collections</div>
+          <button class="cms-rail-item on" data-cms-nav="ann">Announcements</button>
+          <button class="cms-rail-item" data-cms-nav="tod">Thought of the Day</button>
+          <button class="cms-rail-item" data-cms-nav="quiz">Quiz Questions</button>
+          <button class="cms-rail-item" data-cms-nav="pages">Pages</button>
+          <button class="cms-rail-item" data-cms-nav="news">Newsletters</button>
+          <button class="cms-rail-item" data-cms-nav="media">Media</button>
+          <div class="cms-rail-group">Globals</div>
+          <button class="cms-rail-item" data-cms-nav="sitesettings">Site Settings</button>
+          <button class="cms-rail-item" data-cms-nav="navigation">Navigation</button>
+          <div class="cms-rail-foot"><div class="av">RJ</div><div class="tx">rina@nyjaincenter.org</div></div>
+        </div>
+
+        <div class="cms-main">
+
+          <!-- Announcements — LIST -->
+          <div data-cms-panel="ann">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Announcements</b></div><div class="cms-actions"><button class="cms-btn primary" data-cms-nav="ann-doc" data-cms-parent="ann">+ Create New</button></div></div>
+            <div class="cms-body">
+              <div class="cms-toolbar">
+                <div class="cms-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input placeholder="Search by title…"></div>
+                <button class="cms-btn">Filters</button><button class="cms-btn">Columns</button><button class="cms-btn">Sort</button>
+              </div>
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Title</th><th>Status</th><th>Category</th><th>Publish Date</th><th>Updated At</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="ann-doc" data-cms-parent="ann">Mahavir Janma Kalyanak — full schedule released</td><td><span class="cms-badge published">Published</span></td><td>Announcement</td><td>Apr 12, 2026</td><td>Apr 12, 9:00 AM</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="ann-doc" data-cms-parent="ann">Pathshala Spring Term registration open</td><td><span class="cms-badge scheduled">Scheduled</span></td><td>Announcement</td><td>Apr 15, 2026</td><td>Apr 10, 2026</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="ann-doc" data-cms-parent="ann">General Body Meeting — annual report available</td><td><span class="cms-badge draft">Draft</span></td><td>Update</td><td>—</td><td>Apr 8, 2026</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="ann-doc" data-cms-parent="ann">Diwali Celebration — save the date</td><td><span class="cms-badge scheduled">Scheduled</span></td><td>Event</td><td>Oct 1, 2026</td><td>Apr 5, 2026</td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–4 of 4</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Announcements — DOCUMENT -->
+          <div class="hide" data-cms-panel="ann-doc">
+            <div class="cms-topbar">
+              <div class="cms-crumb">Announcements / <b>Mahavir Janma Kalyanak — full schedule released</b></div>
+              <div class="cms-actions"><button class="cms-btn">Live Preview</button><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+            </div>
+            <div class="cms-doc">
+              <div class="cms-doc-main">
+                <div class="cms-tabs">
+                  <button class="on" data-cms-tab="dc-content">Content</button>
+                  <button data-cms-tab="dc-media">Media</button>
+                  <button data-cms-tab="dc-seo">SEO</button>
+                  <button data-cms-tab="dc-delivery">Delivery</button>
+                </div>
+                <div style="padding:22px 0 0;">
+                  <div data-cms-tabpanel="dc-content">
+                    <div class="cms-field"><label>Title</label><input class="cms-input" value="Mahavir Janma Kalyanak — full schedule released"></div>
+                    <div class="cms-field"><label>Slug</label><input class="cms-input" value="mahavir-janma-kalyanak-schedule"><div class="cms-lock">🔒 Auto-generated from Title</div></div>
+                    <div class="cms-field"><label>Category</label><select class="cms-select"><option>Announcement</option><option>Event</option><option>Update</option></select></div>
+                    <div class="cms-field"><label>Excerpt</label><textarea class="cms-textarea" rows="2">Abhishek begins 8:00 AM across all shrines. See you there!</textarea></div>
+                    <div class="cms-field"><label>Body</label>
+                      <div class="cms-rich">
+                        <div class="cms-rich-tb"><button>B</button><button><i>I</i></button><button>U</button><button>🔗</button><button>H2</button><button>H3</button><button>•</button><button>1.</button><button>"</button></div>
+                        <div class="cms-rich-b">Celebrating the birth of Bhagwan Mahavir across all five shrines. Abhishek, snatra puja, and swamivatsalya continue throughout the day, welcoming all five traditions equally.</div>
+                      </div>
+                    </div>
+                    <div class="cms-field"><label>Featured Image</label>
+                      <div class="cms-upload"><img class="thumb" src="assets/img/gallery-mjk.jpg" alt=""><div class="tx"><div class="nm">gallery-mjk.jpg</div><div class="mt">1600×900 · 248 KB</div></div><button class="cms-btn icon">×</button></div>
+                    </div>
+                    <div class="cms-field cms-toggle-row"><label style="margin:0;">Pinned</label><div class="cms-toggle on"></div></div>
+                    <div class="cms-field cms-toggle-row"><label style="margin:0;">Reactions Enabled</label><div class="cms-toggle on"></div></div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="dc-media">
+                    <div class="cms-field"><label>Gallery</label>
+                      <div class="cms-relation"><span class="cms-chip">gallery-mjk.jpg <button>×</button></span><span class="cms-chip">gallery-paryushan.jpg <button>×</button></span></div>
+                    </div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="dc-seo">
+                    <div class="cms-field"><label>Meta Title</label><input class="cms-input" value="Mahavir Janma Kalyanak 2026 — JCA"></div>
+                    <div class="cms-field"><label>Meta Description</label><textarea class="cms-textarea" rows="2">Full schedule for Mahavir Janma Kalyanak at JCA Elmhurst — abhishek, snatra puja, and swamivatsalya.</textarea></div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="dc-delivery">
+                    <div class="cms-field cms-toggle-row"><label style="margin:0;">Push notification</label><div class="cms-toggle on"></div></div>
+                    <div class="cms-field cms-toggle-row"><label style="margin:0;">In-app announcement</label><div class="cms-toggle on"></div></div>
+                    <div class="cms-field cms-toggle-row"><label style="margin:0;">Email digest</label><div class="cms-toggle on"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cms-side">
+                <div class="cms-side-block"><div class="cms-side-k">Status</div><div class="cms-side-status"><span class="cms-side-v">Published</span><span class="cms-badge published">Live</span></div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Last saved</div><div class="cms-side-v">2 minutes ago</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Last published</div><div class="cms-side-v">Apr 12, 9:00 AM</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Versions</div><div class="cms-side-link">Versions (12) →</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Created by</div><div class="cms-side-v">Rina Jain</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">API URL</div><div class="cms-side-v" style="font-family:monospace;font-size:11px;">/api/announcements/6613</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Thought of the Day — LIST -->
+          <div class="hide" data-cms-panel="tod">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Thought of the Day</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Date</th><th>Quote</th><th>Attribution</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>Apr 14, 2026</td><td class="cms-cell-title">"Live and let live" — non-violence is not passive, it is the active practice of compassion.</td><td>Ācārāṅga Sūtra</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>Apr 15, 2026</td><td class="cms-cell-title">Right Faith, Right Knowledge, Right Conduct together form the path to liberation.</td><td>Tattvārtha Sūtra</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>Apr 16, 2026</td><td class="cms-cell-title">Anekantvad teaches that truth has many faces — hold your view, and hold space for another's.</td><td>Traditional teaching</td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–3 of 61</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Quiz Questions — LIST -->
+          <div class="hide" data-cms-panel="quiz">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Quiz Questions</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Day</th><th>Question</th><th>Correct Answer</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>47</td><td class="cms-cell-title">Which of the five great vows is "Ahimsa"?</td><td>Non-violence</td><td><span class="cms-badge published">Live</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>48</td><td class="cms-cell-title">How many Tirthankaras are recognized in Jainism?</td><td>24</td><td><span class="cms-badge scheduled">Queued</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>49</td><td class="cms-cell-title">What does "anumodana" express?</td><td>Rejoicing in others' virtue</td><td><span class="cms-badge draft">Draft</span></td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–3 of 49</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Pages — LIST (the 7 public marketing pages, plus FAQ categories) -->
+          <div class="hide" data-cms-panel="pages">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Pages</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Page</th><th>Blocks</th><th>Updated At</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-home" data-cms-parent="pages">Home <span class="mt" style="font-weight:400;color:var(--c-muted);">/</span></td><td>9</td><td>Apr 12, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-visit" data-cms-parent="pages">Visit &amp; Traditions <span class="mt" style="font-weight:400;color:var(--c-muted);">/visit</span></td><td>7</td><td>Apr 10, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-simple" data-cms-parent="pages">Calendar &amp; Events <span class="mt" style="font-weight:400;color:var(--c-muted);">/calendar</span></td><td>4</td><td>Apr 8, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-simple" data-cms-parent="pages">Giving <span class="mt" style="font-weight:400;color:var(--c-muted);">/giving</span></td><td>5</td><td>Apr 8, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-simple" data-cms-parent="pages">Community &amp; Education <span class="mt" style="font-weight:400;color:var(--c-muted);">/community</span></td><td>5</td><td>Apr 5, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-simple" data-cms-parent="pages">About &amp; Leadership <span class="mt" style="font-weight:400;color:var(--c-muted);">/about</span></td><td>7</td><td>Mar 2, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="page-doc-simple" data-cms-parent="pages">Contact &amp; FAQ <span class="mt" style="font-weight:400;color:var(--c-muted);">/contact</span></td><td>5</td><td>Feb 14, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Membership &amp; Dues (12 questions)</td><td colspan="1">FAQ Category</td><td>Apr 2, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Donations &amp; Receipts (9 questions)</td><td colspan="1">FAQ Category</td><td>Mar 22, 2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–9 of 9</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Home — PAGE DOCUMENT -->
+          <div class="hide" data-cms-panel="page-doc-home">
+            <div class="cms-topbar">
+              <div class="cms-crumb">Pages / <b>Home</b></div>
+              <div class="cms-actions"><button class="cms-btn" onclick="window.open('index.html','_blank')">Live Preview →</button><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+            </div>
+            <div class="cms-doc">
+              <div class="cms-doc-main">
+                <div class="cms-tabs">
+                  <button class="on" data-cms-tab="lp-hero">Hero</button>
+                  <button data-cms-tab="lp-sections">Sections</button>
+                  <button data-cms-tab="lp-contact">Contact</button>
+                  <button data-cms-tab="lp-seo">SEO</button>
+                </div>
+                <div style="padding:22px 0 0;">
+                  <div data-cms-tabpanel="lp-hero">
+                    <div class="cms-field"><label>Status Line</label><input class="cms-input" value="Open now, until 7 PM today"></div>
+                    <div class="cms-field"><label>Headline</label><textarea class="cms-textarea" rows="2">Five Jain traditions, one roof, fifty years in Elmhurst.</textarea></div>
+                    <div class="cms-field"><label>Navkar Text</label><textarea class="cms-textarea" rows="3">Namo Arihantanam. Namo Siddhanam. Namo Ayariyanam.
+Namo Uvajjhayanam. Namo Loe Savva Sahunam.</textarea></div>
+                    <div class="cms-row">
+                      <div class="cms-field"><label>Primary CTA Label</label><input class="cms-input" value="Plan your visit"></div>
+                      <div class="cms-field"><label>Primary CTA Link</label><input class="cms-input" value="visit.html"></div>
+                    </div>
+                    <div class="cms-row">
+                      <div class="cms-field"><label>Secondary CTA Label</label><input class="cms-input" value="Watch live darshan"></div>
+                      <div class="cms-field"><label>Secondary CTA Link</label><input class="cms-input" value="#live"></div>
+                    </div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="lp-sections">
+                    <div class="cms-blocks">
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">HERO</span><span class="lb">Hero + Building Index</span></div></div>
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">PANCHANG</span><span class="lb">Today at JCA</span></div></div>
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">LIVE BAND</span><span class="lb">Live Darshan</span></div></div>
+                      <div class="cms-block">
+                        <div class="cms-block-h"><span class="tag">EVENT LIST</span><span class="lb">Upcoming</span></div>
+                        <div class="cms-block-b">
+                          <div class="cms-array">
+                            <div class="cms-array-row" data-cms-array-toggle><span class="drag">⋮⋮</span><span class="lb">Bhagwan Mahavir Janma Kalyanak — Apr 26</span><span class="chev">▾</span></div>
+                            <div class="cms-array-open">
+                              <div class="cms-field"><label>Name</label><input class="cms-input" value="Bhagwan Mahavir Janma Kalyanak"></div>
+                              <div class="cms-field"><label>Date</label><input class="cms-input" value="2026-04-26"></div>
+                              <div class="cms-field"><label>Tag</label><select class="cms-select"><option>Religious</option><option>Cultural</option></select></div>
+                            </div>
+                            <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Paryushan &amp; Das Lakshan Maha Parv — Aug 21–29</span><span class="chev">▾</span></div>
+                            <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Diwali Celebration — Nov 8</span><span class="chev">▾</span></div>
+                            <button class="cms-array-add">+ Add Event</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">CAUSE TEASER</span><span class="lb">Giving</span></div></div>
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">STEPS</span><span class="lb">First-Time Visitor</span></div></div>
+                      <div class="cms-block"><div class="cms-block-h"><span class="tag">FORM</span><span class="lb">Newsletter Signup</span></div></div>
+                      <button class="cms-block-add">+ Add Block</button>
+                    </div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="lp-contact">
+                    <div class="cms-field"><label>Address</label><input class="cms-input" value="43-11 Ithaca Street, Elmhurst, NY 11373"></div>
+                    <div class="cms-row">
+                      <div class="cms-field"><label>Phone</label><input class="cms-input" value="(718) 478-9141"></div>
+                      <div class="cms-field"><label>Email</label><input class="cms-input" value="nyjaincenter@gmail.com"></div>
+                    </div>
+                    <div class="cms-field"><label>Hours</label><input class="cms-input" value="Monday – Sunday · 7:00 AM – 7:00 PM"></div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="lp-seo">
+                    <div class="cms-field"><label>Meta Title</label><input class="cms-input" value="Jain Center of America — Elmhurst, New York"></div>
+                    <div class="cms-field"><label>Meta Description</label><textarea class="cms-textarea" rows="2">Home to five Jain traditions under one roof in Elmhurst, New York — founded 1976.</textarea></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cms-side">
+                <div class="cms-side-block"><div class="cms-side-k">Last saved</div><div class="cms-side-v">Today, 8:41 AM</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Versions</div><div class="cms-side-link">Versions (34) →</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Live Preview</div><div class="cms-side-link" onclick="window.open('index.html','_blank')" style="cursor:pointer;">index.html →</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visit & Traditions — PAGE DOCUMENT -->
+          <div class="hide" data-cms-panel="page-doc-visit">
+            <div class="cms-topbar">
+              <div class="cms-crumb">Pages / <b>Visit &amp; Traditions</b></div>
+              <div class="cms-actions"><button class="cms-btn" onclick="window.open('visit.html','_blank')">Live Preview →</button><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+            </div>
+            <div class="cms-doc">
+              <div class="cms-doc-main">
+                <div class="cms-tabs">
+                  <button class="on" data-cms-tab="vp-hero">Hero</button>
+                  <button data-cms-tab="vp-shrines">Shrines</button>
+                  <button data-cms-tab="vp-seo">SEO</button>
+                </div>
+                <div style="padding:22px 0 0;">
+                  <div data-cms-tabpanel="vp-hero">
+                    <div class="cms-field"><label>Headline</label><textarea class="cms-textarea" rows="2">One building, five shrines, five living traditions.</textarea></div>
+                    <div class="cms-row">
+                      <div class="cms-field"><label>Total Floor Area</label><input class="cms-input" value="16,625 ft²"></div>
+                      <div class="cms-field"><label>Height to Kalash</label><input class="cms-input" value="66′5″"></div>
+                    </div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="vp-shrines">
+                    <div class="cms-desc" style="margin-bottom:10px;color:var(--c-muted);font-size:11.5px;">The Shrines array drives both this page's sections and the Building Index shown on Home.</div>
+                    <div class="cms-array">
+                      <div class="cms-array-row" data-cms-array-toggle><span class="drag">⋮⋮</span><span class="lb">4th floor — Dadawadi &amp; Asthapad Maha Tirth</span><span class="chev">▾</span></div>
+                      <div class="cms-array-open">
+                        <div class="cms-row">
+                          <div class="cms-field"><label>Floor</label><input class="cms-input" value="4th floor"></div>
+                          <div class="cms-field"><label>Area</label><input class="cms-input" value="3,800 ft²"></div>
+                        </div>
+                        <div class="cms-field"><label>Name</label><input class="cms-input" value="Dadawadi Temple"></div>
+                        <div class="cms-field"><label>Photo</label><div class="cms-upload"><img class="thumb" src="assets/img/tradition-dadawadi.jpg" alt=""><div class="tx"><div class="nm">tradition-dadawadi.jpg</div><div class="mt">416×276 · 112 KB</div></div><button class="cms-btn icon">×</button></div></div>
+                      </div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">3rd floor — Adinathji Temple</span><span class="chev">▾</span></div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">3rd floor — Shrimad Rajchandra Hall</span><span class="chev">▾</span></div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">2nd floor — Mahavir Swami Temple</span><span class="chev">▾</span></div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">2nd floor — Upashray Lecture Hall</span><span class="chev">▾</span></div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">1st floor — Welcome &amp; Reception</span><span class="chev">▾</span></div>
+                      <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Cellar — Youth Center &amp; Art Gallery</span><span class="chev">▾</span></div>
+                      <button class="cms-array-add">+ Add Floor</button>
+                    </div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="vp-seo">
+                    <div class="cms-field"><label>Meta Title</label><input class="cms-input" value="Visit &amp; the Five Shrines — Jain Center of America"></div>
+                    <div class="cms-field"><label>Meta Description</label><textarea class="cms-textarea" rows="2">A floor-by-floor guide to the JCA building — five shrines, five traditions, one roof.</textarea></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cms-side">
+                <div class="cms-side-block"><div class="cms-side-k">Last saved</div><div class="cms-side-v">Yesterday, 4:12 PM</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Versions</div><div class="cms-side-link">Versions (11) →</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Live Preview</div><div class="cms-side-link" onclick="window.open('visit.html','_blank')" style="cursor:pointer;">visit.html →</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The remaining 5 pages share one simplified document view — same
+               Payload document pattern (tabs, side rail, publish flow) without
+               a bespoke block editor for each. -->
+          <div class="hide" data-cms-panel="page-doc-simple">
+            <div class="cms-topbar">
+              <div class="cms-crumb">Pages / <b>Page</b></div>
+              <div class="cms-actions"><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+            </div>
+            <div class="cms-doc">
+              <div class="cms-doc-main">
+                <div class="cms-tabs">
+                  <button class="on" data-cms-tab="ps-content">Content</button>
+                  <button data-cms-tab="ps-seo">SEO</button>
+                </div>
+                <div style="padding:22px 0 0;">
+                  <div data-cms-tabpanel="ps-content">
+                    <div class="cms-field"><label>Page Title</label><input class="cms-input" value="Page title"></div>
+                    <div class="cms-field"><label>Standfirst</label><textarea class="cms-textarea" rows="2">The short standfirst shown under the page title.</textarea></div>
+                    <div class="cms-desc">Section blocks for this page are pre-built in code for this walkthrough — the block-repeater editor above (Home, Visit &amp; Traditions) demonstrates the pattern a full build would extend to every page.</div>
+                  </div>
+                  <div class="hide" data-cms-tabpanel="ps-seo">
+                    <div class="cms-field"><label>Meta Title</label><input class="cms-input" value="Page title — Jain Center of America"></div>
+                    <div class="cms-field"><label>Meta Description</label><textarea class="cms-textarea" rows="2">Meta description for this page.</textarea></div>
+                  </div>
+                </div>
+              </div>
+              <div class="cms-side">
+                <div class="cms-side-block"><div class="cms-side-k">Last saved</div><div class="cms-side-v">This week</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Versions</div><div class="cms-side-link">Versions →</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Newsletters — LIST -->
+          <div class="hide" data-cms-panel="news">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Newsletters</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Issue</th><th>Sent</th><th>Subscribers</th><th>Open Rate</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Spring Newsletter — Paryushan Preparations Begin</td><td>Apr 1, 2026</td><td>2,706</td><td>61%</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Winter Digest — Year in Review</td><td>Jan 5, 2026</td><td>2,644</td><td>58%</td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–2 of 2</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Media — redirect note -->
+          <div class="hide" data-cms-panel="media">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Media</b></div></div>
+            <div class="cms-body">
+              <div class="cms-drop"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo and video uploads are managed from <b>Gallery &amp; Media</b> in the sidebar — every asset uploaded there is available here as a relationship field.</div>
+            </div>
+          </div>
+
+          <!-- Site Settings — GLOBAL -->
+          <div class="hide" data-cms-panel="sitesettings">
+            <div class="cms-topbar"><div class="cms-crumb">Globals / <b>Site Settings</b></div><div class="cms-actions"><button class="cms-btn primary">Save changes</button></div></div>
+            <div class="cms-body" style="max-width:520px;">
+              <div class="cms-field"><label>Site Name</label><input class="cms-input" value="Jain Center of America"></div>
+              <div class="cms-field"><label>Tax ID (EIN)</label><input class="cms-input" value="13-3135532"></div>
+              <div class="cms-field"><label>Address</label><input class="cms-input" value="43-11 Ithaca Street, Elmhurst, NY 11373"></div>
+              <div class="cms-row">
+                <div class="cms-field"><label>Phone</label><input class="cms-input" value="(718) 478-9141"></div>
+                <div class="cms-field"><label>General Email</label><input class="cms-input" value="nyjaincenter@gmail.com"></div>
+              </div>
+              <div class="cms-field"><label>Hours</label><input class="cms-input" value="Monday – Sunday · 7:00 AM – 7:00 PM"></div>
+              <div class="cms-field"><label>Donations Email (Zelle)</label><input class="cms-input" value="donations@nyjaincenter.org"></div>
+              <div class="cms-field"><label>Default Timezone</label><select class="cms-select"><option>America/New_York</option></select></div>
+              <div class="cms-field cms-toggle-row"><label style="margin:0;">Maintenance banner enabled</label><div class="cms-toggle"></div></div>
+            </div>
+          </div>
+
+          <!-- Navigation — GLOBAL -->
+          <div class="hide" data-cms-panel="navigation">
+            <div class="cms-topbar"><div class="cms-crumb">Globals / <b>Navigation</b></div><div class="cms-actions"><button class="cms-btn primary">Save changes</button></div></div>
+            <div class="cms-body">
+              <div class="cms-desc" style="margin-bottom:8px;color:var(--c-muted);font-size:11.5px;">Primary nav — shown in the top bar on every marketing page, and in the mobile menu below 900px.</div>
+              <div class="cms-array" style="margin-bottom:24px;">
+                <div class="cms-array-row" data-cms-array-toggle><span class="drag">⋮⋮</span><span class="lb">Visit → /visit</span><span class="chev">▾</span></div>
+                <div class="cms-array-open">
+                  <div class="cms-row">
+                    <div class="cms-field"><label>Label</label><input class="cms-input" value="Visit"></div>
+                    <div class="cms-field"><label>Link</label><input class="cms-input" value="visit.html"></div>
+                  </div>
+                </div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Calendar → /calendar</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Giving → /giving</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Community → /community</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">About → /about</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Contact → /contact</span><span class="chev">▾</span></div>
+                <button class="cms-array-add">+ Add Nav Item</button>
+              </div>
+              <div class="cms-desc" style="margin-bottom:8px;color:var(--c-muted);font-size:11.5px;">Footer columns — each holds up to 3 links, shown on every marketing page.</div>
+              <div class="cms-array">
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Visit — 3 links</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Give — 3 links</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Community — 3 links</span><span class="chev">▾</span></div>
+                <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">Account — 3 links</span><span class="chev">▾</span></div>
+                <button class="cms-array-add">+ Add Column</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= GALLERY & MEDIA -->
+    <section class="view hide" id="v-gallery">
+      <div class="view-head">
+        <div><h1>Gallery &amp; Media</h1><div class="sub">Managed in Payload CMS — photo &amp; video uploads, albums, and metadata.</div></div>
+      </div>
+
+      <div class="cms-shell">
+        <div class="cms-rail">
+          <div class="cms-rail-h"><div class="mk"></div><div class="tx"><div class="tt">Payload</div><div class="sb">JCA Platform</div></div></div>
+          <div class="cms-rail-group">Collections</div>
+          <button class="cms-rail-item on" data-cms-nav="mgrid">Media</button>
+          <button class="cms-rail-item" data-cms-nav="albums">Albums</button>
+          <button class="cms-rail-item" data-cms-nav="potd">Photos of the Day</button>
+          <div class="cms-rail-group">Globals</div>
+          <button class="cms-rail-item" data-cms-nav="gallerysettings">Gallery Settings</button>
+          <div class="cms-rail-foot"><div class="av">RJ</div><div class="tx">rina@nyjaincenter.org</div></div>
+        </div>
+        <div class="cms-main">
+
+          <!-- Media — GRID -->
+          <div data-cms-panel="mgrid">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Media</b></div><div class="cms-actions"><button class="cms-btn primary">↑ Upload</button></div></div>
+            <div class="cms-body">
+              <div class="cms-toolbar">
+                <div class="cms-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input placeholder="Search media…"></div>
+                <button class="cms-btn">Filters</button><button class="cms-btn">Grid</button>
+              </div>
+              <div class="cms-drop"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Drag &amp; drop a file, or <b>browse</b></div>
+              <div class="cms-bulkbar"><span>3 selected</span><span><a style="font-weight:600;">Add to album</a> · <a style="font-weight:600;color:var(--danger);">Delete</a></span></div>
+              <div class="cms-media-grid">
+                <div class="cms-media-card sel" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-mjk.jpg" alt=""></div><div class="ft"><div class="nm">gallery-mjk.jpg</div><div class="mt">1600×1067 · 32 KB</div></div></div>
+                <div class="cms-media-card sel" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-paryushan.jpg" alt=""></div><div class="ft"><div class="nm">gallery-paryushan.jpg</div><div class="mt">1200×900 · 7 KB</div></div></div>
+                <div class="cms-media-card sel" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-diwali.jpg" alt=""></div><div class="ft"><div class="nm">gallery-diwali.jpg</div><div class="mt">1200×900 · 5 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-pathshala.jpg" alt=""></div><div class="ft"><div class="nm">gallery-pathshala.jpg</div><div class="mt">1200×900 · 9 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-snatra-puja.jpg" alt=""></div><div class="ft"><div class="nm">gallery-snatra-puja.jpg</div><div class="mt">1200×900 · 7 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/gallery-general-body.jpg" alt=""></div><div class="ft"><div class="nm">gallery-general-body.jpg</div><div class="mt">1200×900 · 6 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/shrine-mahavir.jpg" alt=""></div><div class="ft"><div class="nm">shrine-mahavir.jpg</div><div class="mt">1200×1200 · 9 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/shrine-adinath.jpg" alt=""></div><div class="ft"><div class="nm">shrine-adinath.jpg</div><div class="mt">1200×1200 · 8 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/shrine-upashray.jpg" alt=""></div><div class="ft"><div class="nm">shrine-upashray.jpg</div><div class="mt">1200×1200 · 8 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/shrine-shrimad.jpg" alt=""></div><div class="ft"><div class="nm">shrine-shrimad.jpg</div><div class="mt">1200×1200 · 5 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/shrine-dadawadi.jpg" alt=""></div><div class="ft"><div class="nm">shrine-dadawadi.jpg</div><div class="mt">1200×1200 · 9 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/tradition-mahavir.jpg" alt=""></div><div class="ft"><div class="nm">tradition-mahavir.jpg</div><div class="mt">416×276 · 33 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/tradition-adinath.jpg" alt=""></div><div class="ft"><div class="nm">tradition-adinath.jpg</div><div class="mt">416×276 · 126 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/tradition-upashray.jpg" alt=""></div><div class="ft"><div class="nm">tradition-upashray.jpg</div><div class="mt">416×276 · 111 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/tradition-shrimad.jpg" alt=""></div><div class="ft"><div class="nm">tradition-shrimad.jpg</div><div class="mt">416×276 · 123 KB</div></div></div>
+                <div class="cms-media-card" data-cms-nav="media-doc" data-cms-parent="mgrid"><div class="th"><img src="assets/img/tradition-dadawadi.jpg" alt=""></div><div class="ft"><div class="nm">tradition-dadawadi.jpg</div><div class="mt">416×276 · 112 KB</div></div></div>
+              </div>
+              <div class="cms-pagin" style="margin-top:14px;"><span>1–16 of 1,336</span><span>Per page: 24</span></div>
+            </div>
+          </div>
+
+          <!-- Media — DOCUMENT -->
+          <div class="hide" data-cms-panel="media-doc">
+            <div class="cms-topbar">
+              <div class="cms-crumb">Media / <b>gallery-mjk.jpg</b></div>
+              <div class="cms-actions"><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+            </div>
+            <div class="cms-doc">
+              <div class="cms-doc-main">
+                <div class="cms-focal"><img src="assets/img/gallery-mjk.jpg" alt=""><div class="cross"></div></div>
+                <div style="display:flex;gap:8px;margin-bottom:20px;"><button class="cms-btn">Crop</button><button class="cms-btn">Edit Focal Point</button></div>
+                <div class="cms-field"><label>Alt Text<span class="req">*</span></label><input class="cms-input" value="Cultural dance performance at Mahavir Janma Kalyanak 2025"></div>
+                <div class="cms-field"><label>Caption</label><input class="cms-input" value="MJK 2025 — youth cultural program"></div>
+                <div class="cms-field"><label>Album</label>
+                  <div class="cms-relation"><span class="cms-chip">Mahavir Janma Kalyanak 2025 <button>×</button></span></div>
+                </div>
+                <div class="cms-field"><label>Tags</label>
+                  <div class="cms-relation"><span class="cms-chip">Festival <button>×</button></span><span class="cms-chip">Youth <button>×</button></span></div>
+                </div>
+                <div class="cms-field"><label>Credit / Photographer</label><input class="cms-input" value="JCA Media Team"></div>
+                <div class="cms-field cms-toggle-row"><label style="margin:0;">Visible in Member App</label><div class="cms-toggle on"></div></div>
+              </div>
+              <div class="cms-side">
+                <div class="cms-side-block"><div class="cms-side-k">Filename</div><div class="cms-side-v">gallery-mjk.jpg</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">File Size</div><div class="cms-side-v">1.2 MB</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Dimensions</div><div class="cms-side-v">1600 × 1067</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">MIME Type</div><div class="cms-side-v">image/jpeg</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Generated Sizes</div><div class="cms-side-v">thumbnail 400×300<br>card 768×576<br>og 1200×630</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">Uploaded by</div><div class="cms-side-v">Rina Jain</div></div>
+                <div class="cms-side-block"><div class="cms-side-k">API URL</div><div class="cms-side-v" style="font-family:monospace;font-size:11px;">/api/media/2841</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Albums — LIST -->
+          <div class="hide" data-cms-panel="albums">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Albums</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Album</th><th>Photos</th><th>Event</th><th>Year</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">MJK 2025</td><td>48</td><td>Mahavir Janma Kalyanak</td><td>2025</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Paryushan 2025</td><td>112</td><td>Paryushan Maha Parv</td><td>2025</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Diwali 2025</td><td>64</td><td>Diwali Celebration</td><td>2025</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Pathshala Graduation</td><td>37</td><td>Pathshala</td><td>2025</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Snatra Puja</td><td>22</td><td>Weekly ritual</td><td>2026</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">General Body Meeting</td><td>18</td><td>Annual meeting</td><td>2026</td><td><span class="cms-badge draft">Draft</span></td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–6 of 34</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Photos of the Day -->
+          <div class="hide" data-cms-panel="potd">
+            <div class="cms-topbar"><div class="cms-crumb"><b>Photos of the Day</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+            <div class="cms-body">
+              <table class="cms-table">
+                <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Date</th><th>Photo</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>Apr 14, 2026</td><td class="cms-cell-title">gallery-mjk.jpg</td><td><span class="cms-badge published">Live</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td>Apr 15, 2026</td><td class="cms-cell-title">shrine-dadawadi.jpg</td><td><span class="cms-badge scheduled">Queued</span></td></tr>
+                </tbody>
+              </table>
+              <div class="cms-pagin"><span>1–2 of 90</span><span>Per page: 10</span></div>
+            </div>
+          </div>
+
+          <!-- Gallery Settings -->
+          <div class="hide" data-cms-panel="gallerysettings">
+            <div class="cms-topbar"><div class="cms-crumb">Globals / <b>Gallery Settings</b></div><div class="cms-actions"><button class="cms-btn primary">Save changes</button></div></div>
+            <div class="cms-body" style="max-width:520px;">
+              <div class="cms-field"><label>Max Upload Size</label><input class="cms-input" value="25 MB"></div>
+              <div class="cms-field"><label>Accepted File Types</label><input class="cms-input" value="image/jpeg, image/png, video/mp4"></div>
+              <div class="cms-field cms-toggle-row"><label style="margin:0;">Require alt text before publish</label><div class="cms-toggle on"></div></div>
+              <div class="cms-field cms-toggle-row"><label style="margin:0;">Auto-generate captions</label><div class="cms-toggle"></div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= EVENTS -->
+    <section class="view hide" id="v-events">
+      <div class="view-head">
+        <div><h1>Events</h1><div class="sub">6 published · 2 drafts · 1 awaiting media</div></div>
+        <div class="view-actions">
+          <div class="seg" data-seg-group="ev-cat"><button data-seg="all" class="on">All</button><button data-seg="rel">Religious</button><button data-seg="cul">Cultural</button><button data-seg="edu">Educational</button></div>
+          <button class="btn btn-primary" data-modal-open="modal-event"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Create event</button>
+        </div>
+      </div>
+      <div class="panel">
+        <table class="tbl">
+          <thead><tr><th>Event</th><th>Category</th><th>Schedule</th><th>Location</th><th>RSVP</th><th>Linked cause</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Mahavir Janma Kalyanak 2026</td><td><span class="tag rel">Religious</span></td><td class="mt">Apr 26, 8:00 AM</td><td class="mt">Main Hall</td><td style="min-width:110px;"><div class="bar"><div class="f" style="width:86%;"></div></div><div class="mt" style="margin-top:3px;">1,034 / 1,200</div></td><td class="mt">General Fund</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">Paryushan Maha Parv</td><td><span class="tag rel">Religious</span></td><td class="mt">Aug 21–29</td><td class="mt">All shrines</td><td style="min-width:110px;"><div class="bar"><div class="f" style="width:40%;"></div></div><div class="mt" style="margin-top:3px;">480 / 1,200</div></td><td class="mt">Paryushan Dāna</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">Diwali Celebration</td><td><span class="tag cul">Cultural</span></td><td class="mt">Nov 8, 6:00 PM</td><td class="mt">Main Hall</td><td style="min-width:110px;"><div class="bar"><div class="f" style="width:12%;"></div></div><div class="mt" style="margin-top:3px;">142 / 1,200</div></td><td class="mt">—</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">Snatra Puja</td><td><span class="tag rel">Religious</span></td><td class="mt">Weekly, Sun 9:00 AM</td><td class="mt">Mahavir Swami Temple</td><td class="mt">Open</td><td class="mt">—</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">General Body Meeting</td><td><span class="tag edu">Educational</span></td><td class="mt">May 17, 11:00 AM</td><td class="mt">Upashray Lecture Hall</td><td class="mt">RSVP open</td><td class="mt">—</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">Pathshala Spring Term Family Day</td><td><span class="tag edu">Educational</span></td><td class="mt">Apr 19, 10:00 AM</td><td class="mt">Upashray</td><td class="mt">RSVP open</td><td class="mt">Pathshala — Scholarship</td><td><span class="pill good"><span class="d"></span>Published</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+            <tr><td class="nm">Youth Diwali Mixer</td><td><span class="tag cul">Cultural</span></td><td class="mt">Nov 9, 7:00 PM</td><td class="mt">Marble Lobby</td><td class="mt">—</td><td class="mt">—</td><td><span class="pill muted"><span class="d"></span>Draft</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Publish</button></td></tr>
+            <tr><td class="nm">Winter Lecture Series — Pravachan by Acharya Vijay</td><td><span class="tag edu">Educational</span></td><td class="mt">Dec 3, 6:30 PM</td><td class="mt">Upashray</td><td class="mt">—</td><td class="mt">—</td><td><span class="pill danger"><span class="d"></span>Awaiting media</span></td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel" style="margin-top:18px;">
+        <div class="panel-h"><h3>Calendar conflict view</h3><span class="pill warn"><span class="d"></span>1 conflict flagged</span></div>
+        <div class="panel-b">
+          <div class="dual"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+            <div><strong>Marble Lobby double-booked:</strong> Youth Diwali Mixer (Nov 9, 7:00 PM) overlaps a pending Facility Booking request for a member reception on the same date and hall. Resolve before publishing the mixer.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= NOTIFICATIONS -->
+    <section class="view hide" id="v-notifications">
+      <div class="view-head"><div><h1>Notifications</h1><div class="sub">Push and email digests with audience segmentation and deliverability tracking.</div></div></div>
+      <div class="subnav" data-subnav-group="notif">
+        <button data-subnav="build" class="on">Campaign Builder</button>
+        <button data-subnav="delivery">Delivery Reports</button>
+        <button data-subnav="templates">Template Library</button>
+      </div>
+
+      <div data-subnav-panel="notif" data-subnav-val="build">
+        <div class="grid g-campaign">
+          <div class="panel"><div class="panel-h"><h3>Segment builder</h3></div><div class="panel-b">
+            <div class="field"><label>Tab activity</label><select><option>Any</option><option>Active in last 30 days</option><option>Inactive 90+ days</option></select></div>
+            <div class="field"><label>Tradition</label><select><option>All five traditions</option><option>Shvetambara Murtipujak</option><option>Digambar</option></select></div>
+            <div class="field"><label>Membership tier</label><select><option>Any tier</option><option>Patron</option><option>Lifetime</option></select></div>
+            <div class="field"><label>Family role</label><select><option>Any</option><option>Family Primary</option><option>Pathshala Parent</option></select></div>
+            <div class="pill info" style="margin-top:4px;"><span class="d"></span>Estimated reach: 1,940 members</div>
+          </div></div>
+          <div class="panel"><div class="panel-h"><h3>Compose</h3></div><div class="panel-b">
+            <div class="field-row">
+              <div class="field"><label>Title</label><input id="camp-title" value="Bhojanshala needs helpers this Sunday"></div>
+              <div class="field"><label>Send</label><select><option>Now</option><option>Scheduled</option></select></div>
+            </div>
+            <div class="field"><label>Body</label><textarea id="camp-body" rows="3">We're short-staffed for Sunday's community lunch. Sign up for a 2-hour seva shift — every pair of hands helps.</textarea></div>
+            <div class="field"><label>Channels</label>
+              <div class="check-row">
+                <label class="check"><input type="checkbox" id="ch-push" checked><span><span class="tt">Send as push notification</span><span class="ds">Delivers to 2,184 opted-in devices · respects 10 PM quiet hours</span></span></label>
+                <label class="check"><input type="checkbox" id="ch-mail" checked><span><span class="tt">Send as email</span><span class="ds">Delivers to 2,706 verified addresses</span></span></label>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:14px;"><button class="btn btn-ghost">Save as template</button><button class="btn btn-primary">Send campaign</button></div>
+          </div></div>
+          <div class="panel"><div class="panel-h"><h3>Preview</h3><span class="pill info"><span class="d"></span>Live</span></div>
+            <div class="panel-b">
+              <div id="prev-push-card">
+                <div class="nprev-lbl">Push notification · lock screen</div>
+                <div class="nprev-lock">
+                  <div class="nprev-time">9:41</div><div class="nprev-date">Tuesday, 14 April</div>
+                  <div class="nprev-push">
+                    <div class="ic">JCA</div>
+                    <div class="tx">
+                      <div class="head"><span>Jain Center of America</span><span>now</span></div>
+                      <div class="ttl" id="prev-push-title">Bhojanshala needs helpers this Sunday</div>
+                      <div class="msg" id="prev-push-body">We're short-staffed for Sunday's community lunch. Sign up for a 2-hour seva shift — every pair of hands helps.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="prev-mail-card" style="margin-top:16px;">
+                <div class="nprev-lbl">Email</div>
+                <div class="nprev-mail">
+                  <div class="nprev-mail-h">
+                    <div class="row"><span class="k">From</span><span class="v">Jain Center of America &lt;no-reply@nyjaincenter.org&gt;</span></div>
+                    <div class="row"><span class="k">Subject</span><span class="v b" id="prev-mail-subject">Bhojanshala needs helpers this Sunday</span></div>
+                  </div>
+                  <div class="nprev-mail-b">
+                    <div class="brandband"><img src="assets/logo.png" alt=""><span>Jain Center of America</span></div>
+                    <div class="h" id="prev-mail-title">Bhojanshala needs helpers this Sunday</div>
+                    <div class="p" id="prev-mail-body">We're short-staffed for Sunday's community lunch. Sign up for a 2-hour seva shift — every pair of hands helps.</div>
+                    <div class="cta">Sign up for a shift</div>
+                    <div class="foot">43-11 Ithaca Street, Elmhurst, NY 11373 · Unsubscribe</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hide panel" data-subnav-panel="notif" data-subnav-val="delivery">
+        <table class="tbl"><thead><tr><th>Campaign</th><th>Sent</th><th>Delivered</th><th>Opened</th><th>Action taken</th><th>Bounced</th><th>Opted out</th></tr></thead>
+        <tbody>
+          <tr><td class="nm">MJK full schedule released</td><td class="num">2,706</td><td class="num">2,681</td><td class="num">1,732</td><td class="num">612</td><td class="num">25</td><td class="num">3</td></tr>
+          <tr><td class="nm">Pathshala registration open</td><td class="num">1,940</td><td class="num">1,921</td><td class="num">1,204</td><td class="num">340</td><td class="num">19</td><td class="num">1</td></tr>
+          <tr><td class="nm">Dues reminder — 30 day</td><td class="num">312</td><td class="num">309</td><td class="num">201</td><td class="num">88</td><td class="num">3</td><td class="num">0</td></tr>
+        </tbody></table>
+      </div>
+      <div class="hide panel" data-subnav-panel="notif" data-subnav-val="templates">
+        <table class="tbl"><thead><tr><th>Template</th><th>Channel</th><th>Last edited</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Donation receipt</td><td class="mt">Email (PDF attach)</td><td class="mt">Mar 2</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+          <tr><td class="nm">Dues reminder — 30/60/90</td><td class="mt">Push + Email</td><td class="mt">Feb 14</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+          <tr><td class="nm">RSVP confirmation</td><td class="mt">Push + Email</td><td class="mt">Jan 30</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+          <tr><td class="nm">Sign-in alert (new device)</td><td class="mt">Email</td><td class="mt">Jan 12</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></button></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- ========================================================= DONATIONS & CAUSES -->
+    <section class="view hide" id="v-donations">
+      <div class="view-head">
+        <div><h1>Donations &amp; Causes</h1><div class="sub">7 active causes · $48,260 raised this month</div></div>
+        <div class="view-actions"><button class="btn btn-ghost">Year-end statements</button></div>
+      </div>
+      <div class="subnav" data-subnav-group="don-view">
+        <button data-subnav="overview" class="on">Overview</button>
+        <button data-subnav="cms">Causes · CMS</button>
+      </div>
+
+      <div data-subnav-panel="don-view" data-subnav-val="overview">
+        <div class="grid g3" style="margin-bottom:18px;">
+          <div class="cause-card"><div class="nm">General Fund</div><div class="ds">Unrestricted — sustains daily operations.</div><span class="tag rel">Religious</span><div class="bar" style="margin-top:12px;"><div class="f i" style="width:68%;"></div></div><div class="amt-row"><span>$340,210 raised</span><span>Goal $500,000</span></div></div>
+          <div class="cause-card"><div class="nm">Sponsor Bhojanshala</div><div class="ds">Fund the community kitchen — meals served daily.</div><span class="tag cul">Cultural</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:81%;"></div></div><div class="amt-row"><span>$40,500 raised</span><span>Goal $50,000</span></div></div>
+          <div class="cause-card"><div class="nm">Pathshala — Scholarship</div><div class="ds">Term-fee assistance for families in need.</div><span class="tag edu">Educational</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:54%;"></div></div><div class="amt-row"><span>$10,800 raised</span><span>Goal $20,000</span></div></div>
+        </div>
+        <div class="grid g-2-1">
+          <div class="panel">
+            <div class="panel-h"><h3>Recent donations</h3><div class="seg" data-seg-group="don-type"><button data-seg="all" class="on">All</button><button data-seg="one">One-time</button><button data-seg="rec">Recurring</button><button data-seg="mem">Memorial</button></div></div>
+            <table class="tbl">
+              <thead><tr><th>Donor</th><th>Cause</th><th>Amount</th><th>Type</th><th>Date</th><th></th></tr></thead>
+              <tbody>
+                <tr><td class="tbl who"><div class="av">MS</div><div><div class="nm">Manan Shah</div><div class="mt">ID 04812</div></div></td><td class="mt">Sponsor Bhojanshala</td><td class="num">$1,251.00</td><td><span class="pill info">One-time</span></td><td class="mt">Apr 14</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button><button class="icon-btn d"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></td></tr>
+                <tr><td class="tbl who"><div class="av s">SJ</div><div><div class="nm">Sunil Jain</div><div class="mt">ID 02231</div></div></td><td class="mt">General Fund</td><td class="num">$251.00</td><td><span class="pill good">Recurring</span></td><td class="mt">Apr 14</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button><button class="icon-btn d"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></td></tr>
+                <tr><td class="tbl who"><div class="av b">Anon</div><div><div class="nm">Anonymous</div><div class="mt">In memory of Kantilal Jhaveri</div></div></td><td class="mt">General Fund</td><td class="num">$2,508.00</td><td><span class="pill warn">Memorial</span></td><td class="mt">Apr 13</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button><button class="icon-btn d"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></td></tr>
+                <tr><td class="tbl who"><div class="av">DP</div><div><div class="nm">Dilip Patel</div><div class="mt">ID 01187</div></div></td><td class="mt">Pathshala — Scholarship</td><td class="num">$751.00</td><td><span class="pill good">Recurring</span></td><td class="mt">Apr 12</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button><button class="icon-btn d"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="panel">
+            <div class="panel-h"><h3>Issue refund</h3></div>
+            <div class="panel-b">
+              <div class="field"><label>Transaction</label><input value="JCA-2026-048291 · Manan Shah · $1,251.00" readonly></div>
+              <div class="field"><label>Reason</label><select><option>Duplicate charge</option><option>Donor request</option><option>Processing error</option></select></div>
+              <div class="dual"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+                <div>Refunds require confirmation from a <strong>second admin</strong>. This will be logged in the audit trail with both signatures.</div>
+              </div>
+              <button class="btn btn-danger btn-block" style="margin-top:14px;" data-modal-open="modal-2person">Request refund</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hide" data-subnav-panel="don-view" data-subnav-val="cms">
+        <div class="cms-shell">
+          <div class="cms-rail">
+            <div class="cms-rail-h"><div class="mk"></div><div class="tx"><div class="tt">Payload</div><div class="sb">JCA Platform</div></div></div>
+            <div class="cms-rail-group">Collections</div>
+            <button class="cms-rail-item on" data-cms-nav="causes">Causes</button>
+            <button class="cms-rail-item" data-cms-nav="tiers">Donation Tiers</button>
+            <button class="cms-rail-item" data-cms-nav="packages">Sponsorship Packages</button>
+            <button class="cms-rail-item" data-cms-nav="campaigns">Campaigns</button>
+            <button class="cms-rail-item" data-cms-nav="media2">Media</button>
+            <div class="cms-rail-group">Globals</div>
+            <button class="cms-rail-item" data-cms-nav="givingpage">Giving Page</button>
+            <div class="cms-rail-foot"><div class="av">RJ</div><div class="tx">rina@nyjaincenter.org</div></div>
+          </div>
+          <div class="cms-main">
+
+            <div data-cms-panel="causes">
+              <div class="cms-topbar"><div class="cms-crumb"><b>Causes</b></div><div class="cms-actions"><button class="cms-btn primary" data-cms-nav="cause-doc" data-cms-parent="causes">+ Create New</button></div></div>
+              <div class="cms-body">
+                <div class="cms-toolbar">
+                  <div class="cms-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input placeholder="Search causes…"></div>
+                  <button class="cms-btn">Filters</button><button class="cms-btn">Columns</button><button class="cms-btn">Sort</button>
+                </div>
+                <table class="cms-table">
+                  <thead><tr><th><input type="checkbox" class="cms-check"></th><th>Cause</th><th>Category</th><th>Goal</th><th>Raised</th><th>Status</th></tr></thead>
+                  <tbody>
+                    <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="cause-doc" data-cms-parent="causes">General Fund</td><td>Religious</td><td>$500,000</td><td>$340,210</td><td><span class="cms-badge published">Published</span></td></tr>
+                    <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="cause-doc" data-cms-parent="causes">Sponsor Bhojanshala</td><td>Cultural</td><td>$50,000</td><td>$40,500</td><td><span class="cms-badge published">Published</span></td></tr>
+                    <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="cause-doc" data-cms-parent="causes">Pathshala — Scholarship</td><td>Educational</td><td>$20,000</td><td>$10,800</td><td><span class="cms-badge published">Published</span></td></tr>
+                    <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title" data-cms-nav="cause-doc" data-cms-parent="causes">Jeev Daya</td><td>Educational</td><td>No cap</td><td>Ongoing</td><td><span class="cms-badge published">Published</span></td></tr>
+                  </tbody>
+                </table>
+                <div class="cms-pagin"><span>1–4 of 7</span><span>Per page: 10</span></div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="cause-doc">
+              <div class="cms-topbar">
+                <div class="cms-crumb">Causes / <b>General Fund</b></div>
+                <div class="cms-actions"><button class="cms-btn">Live Preview</button><button class="cms-btn">Save Draft</button><button class="cms-btn primary">Publish changes</button></div>
+              </div>
+              <div class="cms-doc">
+                <div class="cms-doc-main">
+                  <div class="cms-tabs">
+                    <button class="on" data-cms-tab="cd-details">Details</button>
+                    <button data-cms-tab="cd-amounts">Amounts</button>
+                    <button data-cms-tab="cd-media">Media</button>
+                    <button data-cms-tab="cd-visibility">Visibility</button>
+                  </div>
+                  <div style="padding:22px 0 0;">
+                    <div data-cms-tabpanel="cd-details">
+                      <div class="cms-field"><label>Name</label><input class="cms-input" value="General Fund"></div>
+                      <div class="cms-field"><label>Slug</label><input class="cms-input" value="general-fund"><div class="cms-lock">🔒 Auto-generated from Name</div></div>
+                      <div class="cms-field"><label>Category</label><select class="cms-select"><option>Religious</option><option>Cultural</option><option>Educational</option></select></div>
+                      <div class="cms-field"><label>Short Description</label><input class="cms-input" value="Unrestricted — sustains daily operations."></div>
+                      <div class="cms-field"><label>Full Description</label>
+                        <div class="cms-rich">
+                          <div class="cms-rich-tb"><button>B</button><button><i>I</i></button><button>U</button><button>🔗</button><button>H2</button><button>•</button></div>
+                          <div class="cms-rich-b">The General Fund sustains day-to-day operations at JCA — utilities, facility upkeep, staff, and the programs that don't have a dedicated cause of their own.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="hide" data-cms-tabpanel="cd-amounts">
+                      <div class="cms-row">
+                        <div class="cms-field"><label>Goal Amount</label><input class="cms-input" value="$500,000"></div>
+                        <div class="cms-field"><label>Raised to Date</label><input class="cms-input" value="$340,210" readonly></div>
+                      </div>
+                      <div class="cms-field cms-toggle-row"><label style="margin:0;">Always Active (no goal cap)</label><div class="cms-toggle"></div></div>
+                      <div class="cms-field"><label>Suggested Amounts</label>
+                        <div class="cms-array">
+                          <div class="cms-array-row" data-cms-array-toggle><span class="drag">⋮⋮</span><span class="lb">$108 — default</span><span class="chev">▾</span></div>
+                          <div class="cms-array-open">
+                            <div class="cms-row">
+                              <div class="cms-field"><label>Amount</label><input class="cms-input" value="108"></div>
+                              <div class="cms-field"><label>Label</label><input class="cms-input" value="$108"></div>
+                            </div>
+                            <div class="cms-field cms-toggle-row"><label style="margin:0;">Default selection</label><div class="cms-toggle on"></div></div>
+                          </div>
+                          <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">$51</span><span class="chev">▾</span></div>
+                          <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">$251</span><span class="chev">▾</span></div>
+                          <div class="cms-array-row"><span class="drag">⋮⋮</span><span class="lb">$501</span><span class="chev">▾</span></div>
+                          <button class="cms-array-add">+ Add Suggested Amount</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="hide" data-cms-tabpanel="cd-media">
+                      <div class="cms-field"><label>Cause Image</label>
+                        <div class="cms-upload"><img class="thumb" src="assets/img/gallery-general-body.jpg" alt=""><div class="tx"><div class="nm">gallery-general-body.jpg</div><div class="mt">150×150 · 6 KB</div></div><button class="cms-btn icon">×</button></div>
+                      </div>
+                    </div>
+                    <div class="hide" data-cms-tabpanel="cd-visibility">
+                      <div class="cms-field cms-toggle-row"><label style="margin:0;">Show on Landing Page</label><div class="cms-toggle on"></div></div>
+                      <div class="cms-field cms-toggle-row"><label style="margin:0;">Show in Member App</label><div class="cms-toggle on"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cms-side">
+                  <div class="cms-side-block"><div class="cms-side-k">Status</div><div class="cms-side-status"><span class="cms-side-v">Published</span><span class="cms-badge published">Live</span></div></div>
+                  <div class="cms-side-block"><div class="cms-side-k">Last published</div><div class="cms-side-v">Mar 2, 2026</div></div>
+                  <div class="cms-side-block"><div class="cms-side-k">Versions</div><div class="cms-side-link">Versions (7) →</div></div>
+                  <div class="cms-side-block"><div class="cms-side-k">API URL</div><div class="cms-side-v" style="font-family:monospace;font-size:11px;">/api/causes/general-fund</div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="tiers">
+              <div class="cms-topbar"><div class="cms-crumb"><b>Donation Tiers</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+              <div class="cms-body">
+                <table class="cms-table"><thead><tr><th><input type="checkbox" class="cms-check"></th><th>Tier</th><th>Amount</th><th>Applies To</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Full Lunch</td><td>$1,251</td><td>Bhojanshala</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Snack Seva</td><td>$501</td><td>Bhojanshala</td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Sweet Box</td><td>$351</td><td>Bhojanshala</td></tr>
+                </tbody></table>
+                <div class="cms-pagin"><span>1–3 of 4</span><span>Per page: 10</span></div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="packages">
+              <div class="cms-topbar"><div class="cms-crumb"><b>Sponsorship Packages</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+              <div class="cms-body">
+                <table class="cms-table"><thead><tr><th><input type="checkbox" class="cms-check"></th><th>Package</th><th>Amount</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Sponsor a Tithi</td><td>from $251</td><td><span class="cms-badge published">Published</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Sponsor Bhojanshala — Full Lunch</td><td>$1,251</td><td><span class="cms-badge published">Published</span></td></tr>
+                </tbody></table>
+                <div class="cms-pagin"><span>1–2 of 2</span><span>Per page: 10</span></div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="campaigns">
+              <div class="cms-topbar"><div class="cms-crumb"><b>Campaigns</b></div><div class="cms-actions"><button class="cms-btn primary">+ Create New</button></div></div>
+              <div class="cms-body">
+                <table class="cms-table"><thead><tr><th><input type="checkbox" class="cms-check"></th><th>Campaign</th><th>Goal</th><th>Raised</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Paryushan Dāna 2026</td><td>$60,000</td><td>$0</td><td><span class="cms-badge draft">Draft</span></td></tr>
+                  <tr><td><input type="checkbox" class="cms-check"></td><td class="cms-cell-title">Matching Gifts Program</td><td>$50,000</td><td>$11,000</td><td><span class="cms-badge published">Published</span></td></tr>
+                </tbody></table>
+                <div class="cms-pagin"><span>1–2 of 2</span><span>Per page: 10</span></div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="media2">
+              <div class="cms-topbar"><div class="cms-crumb"><b>Media</b></div></div>
+              <div class="cms-body">
+                <div class="cms-drop"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Photo and video uploads are managed from <b>Gallery &amp; Media</b> in the sidebar — every asset uploaded there is available here as a relationship field.</div>
+              </div>
+            </div>
+
+            <div class="hide" data-cms-panel="givingpage">
+              <div class="cms-topbar"><div class="cms-crumb">Globals / <b>Giving Page</b></div><div class="cms-actions"><button class="cms-btn primary">Save changes</button></div></div>
+              <div class="cms-body" style="max-width:520px;">
+                <div class="cms-field"><label>Page Heading</label><input class="cms-input" value="Giving &amp; Causes"></div>
+                <div class="cms-field"><label>Subheading</label><input class="cms-input" value="Donations are tax-deductible under our 501(c)(3) status."></div>
+                <div class="cms-field"><label>Default Quick Amounts</label><input class="cms-input" value="$51, $108, $251, $501, $1,008"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= SPONSORS -->
+    <section class="view hide" id="v-sponsors">
+      <div class="view-head"><div><h1>Sponsors &amp; Recognition</h1><div class="sub">Curate Sponsors of the Month, Lifetime Supporters, and Service Awards.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Tithi tier &amp; open-date config</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Memorial-text review queue</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Lifetime Supporter listing <span class="phase-tag" style="color:var(--muted);border-color:var(--line);">v1.5</span></span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Service Award nominations <span class="phase-tag" style="color:var(--muted);border-color:var(--line);">v1.5</span></span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Recognition Queue</h3><span class="pill warn"><span class="d"></span>2 pending memorial-text approval</span></div>
+          <table class="tbl"><thead><tr><th>Sponsor</th><th>Recognition</th><th>Amount</th><th>Approval</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Anonymous</td><td class="mt">In memory of Kantilal Jhaveri — General Fund</td><td class="num">$2,508.00</td><td><span class="pill warn"><span class="d"></span>Pending text review</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+            <tr><td class="nm">Kirti &amp; Smita Sanghvi</td><td class="mt">Sponsor a Tithi — Apr 21</td><td class="num">$501.00</td><td><span class="pill warn"><span class="d"></span>Pending text review</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+            <tr><td class="nm">Nimesh &amp; Roma Doshi</td><td class="mt">Bhojanshala — Full Lunch, Apr 19</td><td class="num">$1,251.00</td><td><span class="pill good"><span class="d"></span>Approved</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">View</button></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= BHOJANSHALA -->
+    <section class="view hide" id="v-bhojanshala">
+      <div class="view-head"><div><h1>Bhojanshala</h1><div class="sub">Kitchen calendar — open/booked dates, sponsorship tiers, and meal-count tracking.</div></div></div>
+      <div class="grid g4" style="margin-bottom:18px;">
+        <div class="stat"><div class="lbl">Meals served — April</div><div class="val">2,140</div><div class="delta up">↑ 6%</div></div>
+        <div class="stat"><div class="lbl">Open dates this month</div><div class="val">6</div></div>
+        <div class="stat"><div class="lbl">Sponsored this month</div><div class="val">24</div></div>
+        <div class="stat"><div class="lbl">Full Lunch tier</div><div class="val">$1,251</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-h"><h3>Kitchen Calendar</h3><button class="btn btn-sm btn-ghost">Configure tiers</button></div>
+        <table class="tbl"><thead><tr><th>Date</th><th>Meal</th><th>Sponsor</th><th>Count</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="mt">Sun, Apr 19</td><td class="nm">Full Lunch</td><td class="mt">Nimesh &amp; Roma Doshi</td><td class="num">340</td><td><span class="pill good"><span class="d"></span>Confirmed</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+          <tr><td class="mt">Sun, Apr 26</td><td class="nm">Full Lunch — MJK</td><td class="mt">Harshad Jhaveri</td><td class="num">620</td><td><span class="pill good"><span class="d"></span>Confirmed</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+          <tr><td class="mt">Sun, May 3</td><td class="nm">Sweet Box</td><td class="mt">—</td><td class="num">—</td><td><span class="pill muted"><span class="d"></span>Open</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Assign</button></td></tr>
+          <tr><td class="mt">Sun, May 10</td><td class="nm">Snack Seva</td><td class="mt">Kirti &amp; Smita Sanghvi</td><td class="num">180</td><td><span class="pill good"><span class="d"></span>Confirmed</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+          <tr><td class="mt">Sun, May 17</td><td class="nm">Full Lunch</td><td class="mt">—</td><td class="num">—</td><td><span class="pill muted"><span class="d"></span>Open</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Assign</button></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- ========================================================= MEMBERS & FAMILIES -->
+    <section class="view hide" id="v-members">
+      <div class="view-head">
+        <div><h1>Members &amp; Families</h1><div class="sub">2,847 members · 1,206 families · 23 dues overdue</div></div>
+        <div class="view-actions"><button class="btn btn-ghost" data-modal-open="modal-csv"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Import CSV</button><button class="btn btn-primary"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add member</button></div>
+      </div>
+      <div class="seg" data-seg-group="mem-tab" style="margin-bottom:14px;">
+        <button data-seg="all" class="on">All members</button>
+        <button data-seg="fam">Families</button>
+        <button data-seg="overdue">Dues overdue (23)</button>
+        <button data-seg="support">Support requests (4)</button>
+      </div>
+      <div class="bulk-bar" id="bulk-bar"><span id="bulk-count">3 selected</span><div class="sp"><button class="btn btn-sm btn-ghost">Message segment</button><button class="btn btn-sm btn-ghost">Issue dues reminder</button><button class="btn btn-sm btn-ghost">Export CSV</button></div></div>
+
+      <div data-seg-panel="mem-tab" data-seg-val="all" class="panel">
+        <table class="tbl">
+          <thead><tr><th class="chk"><input type="checkbox" class="ckbox" onclick="document.getElementById('bulk-bar').classList.toggle('show',this.checked)"></th><th>Member</th><th>Family · ID</th><th>Tradition</th><th>Tier</th><th>Dues status</th><th>Joined</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av">MS</div><div><div class="nm" data-modal-open="modal-360">Manan Shah</div><div class="mt">Family Primary</div></div></td><td class="mt">Shah · M-04812</td><td><span class="pill info">Śvetāmbar</span></td><td class="mt">Patron</td><td><span class="pill good"><span class="d"></span>Current</span></td><td class="mt">Oct 2018</td><td class="row-act"><button class="icon-btn" data-modal-open="modal-360"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av s">SJ</div><div><div class="nm">Sunil Jain</div><div class="mt">Family Primary</div></div></td><td class="mt">Jain · M-02231</td><td><span class="pill info">Digambar</span></td><td class="mt">Standard</td><td><span class="pill good"><span class="d"></span>Current</span></td><td class="mt">Mar 2012</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av b">DP</div><div><div class="nm">Dilip Patel</div><div class="mt">Family Primary</div></div></td><td class="mt">Patel · M-01187</td><td><span class="pill info">Sthānakvāsī</span></td><td class="mt">Standard</td><td><span class="pill danger"><span class="d"></span>23 days overdue</span></td><td class="mt">Jun 2015</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av">KS</div><div><div class="nm">Kirti Sanghvi</div><div class="mt">Family Primary</div></div></td><td class="mt">Sanghvi · M-03390</td><td><span class="pill info">Kānji Swāmī</span></td><td class="mt">Patron</td><td><span class="pill good"><span class="d"></span>Current</span></td><td class="mt">Sep 2009</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av s">ND</div><div><div class="nm">Nimesh Doshi</div><div class="mt">Family Primary</div></div></td><td class="mt">Doshi · M-02754</td><td><span class="pill info">Śvetāmbar</span></td><td class="mt">Lifetime</td><td><span class="pill good"><span class="d"></span>Non-renewing</span></td><td class="mt">Jan 2001</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+            <tr><td><input type="checkbox" class="ckbox"></td><td class="tbl who"><div class="av b">HJ</div><div><div class="nm">Harshad Jhaveri</div><div class="mt">Family Primary</div></div></td><td class="mt">Jhaveri · M-00892</td><td><span class="pill info">Digambar</span></td><td class="mt">Patron</td><td><span class="pill good"><span class="d"></span>Current</span></td><td class="mt">Nov 2005</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hide panel" data-seg-panel="mem-tab" data-seg-val="fam">
+        <table class="tbl"><thead><tr><th>Family</th><th>Members</th><th>Dues (family-level)</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Shah</td><td class="mt">5 members</td><td class="mt">Enabled</td><td class="row-act"><button class="btn btn-sm btn-ghost">Manage</button></td></tr>
+          <tr><td class="nm">Jain</td><td class="mt">4 members</td><td class="mt">Enabled</td><td class="row-act"><button class="btn btn-sm btn-ghost">Manage</button></td></tr>
+          <tr><td class="nm">Patel</td><td class="mt">3 members</td><td class="mt">Member-level</td><td class="row-act"><button class="btn btn-sm btn-ghost">Manage</button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="hide panel" data-seg-panel="mem-tab" data-seg-val="overdue">
+        <table class="tbl"><thead><tr><th>Family</th><th>Amount due</th><th>Aging</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Patel</td><td class="num">$479.00</td><td><span class="pill danger">30–60 days</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Send reminder</button></td></tr>
+          <tr><td class="nm">Vora</td><td class="num">$251.00</td><td><span class="pill warn">0–30 days</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Send reminder</button></td></tr>
+          <tr><td class="nm">Kothari</td><td class="num">$720.00</td><td><span class="pill danger">60–90 days</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Send reminder</button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="hide panel" data-seg-panel="mem-tab" data-seg-val="support">
+        <table class="tbl"><thead><tr><th>Request</th><th>Member</th><th>Type</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Can't sign in — password reset</td><td class="mt">Rekha Jain</td><td class="mt">Sign-in support</td><td class="row-act"><button class="btn btn-sm btn-ghost">Resolve</button></td></tr>
+          <tr><td class="nm">Account locked after failed MFA</td><td class="mt">Pratima Patel</td><td class="mt">Sign-in support</td><td class="row-act"><button class="btn btn-sm btn-ghost">Resolve</button></td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="panel" style="margin-top:18px;">
+        <div class="panel-h"><h3>Dues Ledger — aging report</h3><span class="pill danger"><span class="d"></span>23 overdue · $8,412 outstanding</span></div>
+        <div class="panel-b grid g3">
+          <div class="stat" style="padding:14px;"><div class="lbl">0–30 days</div><div class="val" style="font-size:22px;">$3,180</div><div class="mt">11 families</div></div>
+          <div class="stat" style="padding:14px;"><div class="lbl">30–60 days</div><div class="val" style="font-size:22px;">$2,940</div><div class="mt">8 families</div></div>
+          <div class="stat" style="padding:14px;"><div class="lbl">60–90 days</div><div class="val" style="font-size:22px;">$2,292</div><div class="mt">4 families</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= PATHSHALA -->
+    <section class="view hide" id="v-pathshala">
+      <div class="view-head"><div><h1>Pathshala</h1><div class="sub">Enrollment, class rosters, term-fee status, and lesson publishing.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Enrollment &amp; roster management</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Term-fee tracking</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Lesson &amp; material publishing</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Teacher account assignment</span></div>
+          <div class="health-row"><span class="pill warn" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">No refund access — coordinator scope</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Spring Term Roster</h3></div>
+          <table class="tbl"><thead><tr><th>Class</th><th>Teacher</th><th>Students</th><th>Fee status</th><th>Material</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Beginner — Navkar &amp; Basics</td><td class="mt">Sunita Shah</td><td class="num">28</td><td><span class="pill good">96% paid</span></td><td class="mt">Lesson 7 of 12 live</td></tr>
+            <tr><td class="nm">Intermediate — Five Mahavratas</td><td class="mt">Rekha Jain</td><td class="num">34</td><td><span class="pill good">91% paid</span></td><td class="mt">Lesson 7 of 12 live</td></tr>
+            <tr><td class="nm">Advanced — Tattvartha Sutra</td><td class="mt">Vipul Mehta</td><td class="num">19</td><td><span class="pill warn">84% paid</span></td><td class="mt">Lesson 6 of 12 live</td></tr>
+            <tr><td class="nm">Teen Discussion Circle</td><td class="mt">Harshad Jhaveri</td><td class="num">22</td><td><span class="pill good">100% paid</span></td><td class="mt">Weekly topics posted</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= VOLUNTEERS -->
+    <section class="view hide" id="v-volunteers">
+      <div class="view-head"><div><h1>Volunteers &amp; Seva</h1><div class="sub">Opportunities, sign-ups, hour logging, and recognition export.</div></div></div>
+      <div class="panel">
+        <div class="panel-h"><h3>Opportunity Board</h3><button class="btn btn-sm btn-primary">New opportunity</button></div>
+        <table class="tbl"><thead><tr><th>Opportunity</th><th>Date</th><th>Needed</th><th>Signed up</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Bhojanshala Helper</td><td class="mt">Sun, Apr 19</td><td class="num">12</td><td class="num">8</td><td><span class="pill warn"><span class="d"></span>Urgent</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Boost</button></td></tr>
+          <tr><td class="nm">Pathshala Teacher's Aide</td><td class="mt">Ongoing, Sundays</td><td class="num">6</td><td class="num">6</td><td><span class="pill good"><span class="d"></span>Full</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Message</button></td></tr>
+          <tr><td class="nm">MJK Setup Crew</td><td class="mt">Sat, Apr 25</td><td class="num">20</td><td class="num">14</td><td><span class="pill warn"><span class="d"></span>Open</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Boost</button></td></tr>
+          <tr><td class="nm">Senior Group Visit</td><td class="mt">Sat, May 2</td><td class="num">4</td><td class="num">2</td><td><span class="pill warn"><span class="d"></span>Open</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Boost</button></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- ========================================================= FACILITY BOOKING (v1.5) -->
+    <section class="view hide" id="v-facility">
+      <div class="view-head"><div><h1>Facility Booking <span class="phase-badge v15">v1.5</span></h1><div class="sub">Hall reservations, approvals, conflict view, and deposit tracking.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Three-hall reservation calendar</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Cross-section conflict detection</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Deposit tracking</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Pure-veg-only policy enforcement</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">60% member-rate pricing</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Reservation Requests</h3></div>
+          <table class="tbl"><thead><tr><th>Request</th><th>Hall</th><th>Date</th><th>Deposit</th><th>Check</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Shah family reception</td><td class="mt">Main Hall</td><td class="mt">Jun 13, 2026</td><td class="num">$500 paid</td><td><span class="pill good"><span class="d"></span>Clear</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+            <tr><td class="nm">Youth Diwali Mixer</td><td class="mt">Marble Lobby</td><td class="mt">Nov 9, 2026</td><td class="num">Pending</td><td><span class="pill danger"><span class="d"></span>Conflict — see Events</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">Resolve</button></td></tr>
+            <tr><td class="nm">Sanghvi anniversary</td><td class="mt">Upashray Lecture Hall</td><td class="mt">Jul 5, 2026</td><td class="num">$500 paid</td><td><span class="pill good"><span class="d"></span>Clear</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= RELIGIOUS CALENDAR -->
+    <section class="view hide" id="v-calendar">
+      <div class="view-head"><div><h1>Religious Calendar</h1><div class="sub">Daily Pooja &amp; Abhishek across all five traditions, Sponsor-a-Tithi, and Panchang source configuration.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Five-tradition daily slot grid</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Panchang data-source config</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Per-date manual override</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Pratikraman-time scheduling</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Panchang &amp; Aarti Schedule</h3></div>
+          <table class="tbl"><thead><tr><th>Date</th><th>Observance</th><th>Timing</th><th>Sponsor</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="mt">Apr 14</td><td class="nm">Mangal Aarti</td><td class="mt">6:30 AM</td><td class="mt">—</td><td><span class="pill good"><span class="d"></span>Scheduled</span></td></tr>
+            <tr><td class="mt">Apr 14</td><td class="nm">Snatra Puja</td><td class="mt">9:00 AM</td><td class="mt">Doshi family</td><td><span class="pill good"><span class="d"></span>Scheduled</span></td></tr>
+            <tr><td class="mt">Apr 14</td><td class="nm">Sandhya Aarti</td><td class="mt">7:00 PM</td><td class="mt">—</td><td><span class="pill good"><span class="d"></span>Scheduled</span></td></tr>
+            <tr><td class="mt">Apr 21</td><td class="nm">Sponsor a Tithi — open</td><td class="mt">All day</td><td class="mt">Open</td><td><span class="pill muted"><span class="d"></span>Open</span></td></tr>
+            <tr><td class="mt">Apr 26</td><td class="nm">Mahavir Janma Kalyanak abhishek</td><td class="mt">8:00 AM, all shrines</td><td class="mt">Multiple sponsors</td><td><span class="pill good"><span class="d"></span>Scheduled</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= LIVE DARSHAN -->
+    <section class="view hide" id="v-darshan">
+      <div class="view-head"><div><h1>Live Darshan</h1><div class="sub">Stream-source configuration per tradition with health monitoring.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Primary + fallback HLS URL per tradition</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">On/off scheduling windows</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Stream-health monitoring with uptime history</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Stream Health</h3></div>
+          <table class="tbl"><thead><tr><th>Stream</th><th>Source</th><th>State</th><th>Latency</th><th>Next window</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Mahavir Swami Temple</td><td class="mt">Primary HLS</td><td><span class="pill good"><span class="d"></span>Up</span></td><td class="num">2.1s</td><td class="mt">Mangal Aarti 6:30 AM</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></td></tr>
+            <tr><td class="nm">Adinathji</td><td class="mt">Primary HLS</td><td><span class="pill good"><span class="d"></span>Up</span></td><td class="num">1.8s</td><td class="mt">Sandhya Aarti 7:00 PM</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></td></tr>
+            <tr><td class="nm">Upashray</td><td class="mt">Fallback HLS</td><td><span class="pill warn"><span class="d"></span>Degraded</span></td><td class="num">6.4s</td><td class="mt">Lecture 7:00 PM</td><td class="row-act"><button class="btn btn-sm btn-ghost">Restart</button></td></tr>
+            <tr><td class="nm">Shrimad Rajchandra Hall</td><td class="mt">Primary HLS</td><td><span class="pill good"><span class="d"></span>Up</span></td><td class="num">2.4s</td><td class="mt">6:00 PM</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></td></tr>
+            <tr><td class="nm">Dadawadi</td><td class="mt">Primary HLS</td><td><span class="pill good"><span class="d"></span>Up</span></td><td class="num">2.0s</td><td class="mt">Bhavna 8:30 PM</td><td class="row-act"><button class="icon-btn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= LIBRARY & JINVANI (v1.5) -->
+    <section class="view hide" id="v-library">
+      <div class="view-head"><div><h1>Library &amp; Jinvani <span class="phase-badge v15">v1.5</span></h1><div class="sub">Catalogs, tagging, reservation queue, license tracking, and download analytics.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Physical + digital catalog</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Tag by tradition / language / topic</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Physical-book reservation queue</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">License tracking</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Download analytics</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Catalog</h3></div>
+          <table class="tbl"><thead><tr><th>Title</th><th>Type</th><th>Language</th><th>Downloads</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Tattvārtha Sūtra</td><td class="mt">Agam Sutra · Digital</td><td class="mt">English, Hindi</td><td class="num">1,204</td><td><span class="pill good"><span class="d"></span>Available</span></td></tr>
+            <tr><td class="nm">Ācārāṅga Sūtra</td><td class="mt">Agam Sutra · Digital</td><td class="mt">English</td><td class="num">612</td><td><span class="pill good"><span class="d"></span>Available</span></td></tr>
+            <tr><td class="nm">Daśavaikālika Sūtra</td><td class="mt">Agam Sutra · Physical + digital</td><td class="mt">English, Gujarati</td><td class="num">380</td><td><span class="pill warn"><span class="d"></span>2 in reservation queue</span></td></tr>
+            <tr><td class="nm">Navkar Mantra — Children's Edition</td><td class="mt">Children · Digital + audio</td><td class="mt">English, Hindi, Gujarati</td><td class="num">2,941</td><td><span class="pill good"><span class="d"></span>Available</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= DIRECTORY (v1.5) -->
+    <section class="view hide" id="v-directory">
+      <div class="view-head"><div><h1>Directory &amp; Resources <span class="phase-badge v15">v1.5</span></h1><div class="sub">Business Directory, Restaurants, and Jain Centers USA submission review.</div></div></div>
+      <div class="panel">
+        <div class="panel-h"><h3>Submission Review</h3><span class="pill warn"><span class="d"></span>3 pending</span></div>
+        <table class="tbl"><thead><tr><th>Listing</th><th>Directory</th><th>Location</th><th>Signal</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Shah &amp; Jain CPAs</td><td class="mt">Business — Finance</td><td class="mt">Flushing, NY</td><td class="mt">Member-submitted</td><td><span class="pill warn"><span class="d"></span>Pending</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+          <tr><td class="nm">Dharma Gems &amp; Jewelry</td><td class="mt">Business — Jewelry</td><td class="mt">Jackson Heights, NY</td><td class="mt">Member-submitted</td><td><span class="pill warn"><span class="d"></span>Pending</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+          <tr><td class="nm">Vegan Garden Café</td><td class="mt">Restaurant — Pure Veg</td><td class="mt">Elmhurst, NY</td><td class="mt">Member-submitted</td><td><span class="pill warn"><span class="d"></span>Pending</span></td><td class="row-act"><button class="btn btn-sm btn-saffron">Approve</button></td></tr>
+          <tr><td class="nm">Kothari Asset Management</td><td class="mt">Business — Finance</td><td class="mt">Manhattan, NY</td><td class="mt">Member-submitted</td><td><span class="pill good"><span class="d"></span>Live</span></td><td class="row-act"><button class="btn btn-sm btn-ghost">View</button></td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <!-- ========================================================= GOVERNANCE (v1.5) -->
+    <section class="view hide" id="v-governance">
+      <div class="view-head"><div><h1>Governance <span class="phase-badge v15">v1.5</span></h1><div class="sub">Board of Trustees, Executive Committee, Meeting Minutes, and JCA Policies.</div></div></div>
+      <div class="grid g-1-2">
+        <div class="panel"><div class="panel-h"><h3>Capabilities</h3></div><div class="panel-b">
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Board of Trustees roster</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Executive Committee roster</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Meeting minutes upload / version / redact / publish</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">JCA Policies</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Credits &amp; History content</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">Membership-gated visibility</span></div>
+        </div></div>
+        <div class="panel">
+          <div class="panel-h"><h3>Governance Library</h3></div>
+          <table class="tbl"><thead><tr><th>Record</th><th>Owner</th><th>Visibility</th><th>Updated</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Board Meeting Minutes — Mar 2026</td><td class="mt">Board of Trustees</td><td class="mt">Members only</td><td class="mt">Apr 2</td><td><span class="pill good"><span class="d"></span>Published</span></td></tr>
+            <tr><td class="nm">Executive Committee Minutes — Mar 2026</td><td class="mt">Exec. Committee</td><td class="mt">Members only</td><td class="mt">Mar 28</td><td><span class="pill good"><span class="d"></span>Published</span></td></tr>
+            <tr><td class="nm">General Body Annual Report 2025</td><td class="mt">Board of Trustees</td><td class="mt">Members only</td><td class="mt">Jan 15</td><td><span class="pill good"><span class="d"></span>Published</span></td></tr>
+            <tr><td class="nm">JCA Facility Use Policy v3</td><td class="mt">Executive Committee</td><td class="mt">Public</td><td class="mt">Feb 20</td><td><span class="pill good"><span class="d"></span>Published</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= REPORTS & EXPORTS -->
+    <section class="view hide" id="v-reports">
+      <div class="view-head"><div><h1>Reports &amp; Exports</h1><div class="sub">Donation, membership, dues-aging, attendance, and demographic reporting.</div></div></div>
+      <div class="grid g3">
+        <div class="panel"><div class="panel-h"><h3>Donation report</h3></div><div class="panel-b">
+          <div class="stat" style="border:none;box-shadow:none;padding:0;"><div class="lbl">YTD raised</div><div class="val" style="font-size:24px;">$340,210</div></div>
+          <div class="mt" style="margin:10px 0;">By cause, by month, by donor cohort — ready for the board.</div>
+          <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Donor cohort analysis <span class="phase-badge v15">v1.5</span></h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm">First-year donors</span><span class="mt">412</span></div>
+          <div class="health-row"><span class="nm">Returning donors</span><span class="mt">1,680</span></div>
+          <div class="health-row"><span class="nm">Lapsed (12mo+)</span><span class="mt">155</span></div>
+          <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Dues-aging trend</h3></div><div class="panel-b">
+          <div class="chart" style="height:90px;">
+            <div class="col"><div class="bars"><div class="bar2 a" style="height:40%;"></div></div><div class="cl">Jan</div></div>
+            <div class="col"><div class="bars"><div class="bar2 a" style="height:55%;"></div></div><div class="cl">Feb</div></div>
+            <div class="col"><div class="bars"><div class="bar2 a" style="height:35%;"></div></div><div class="cl">Mar</div></div>
+            <div class="col"><div class="bars"><div class="bar2 a" style="height:48%;"></div></div><div class="cl">Apr</div></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Event-attendance trend</h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm">Avg. RSVP fill rate</span><span class="mt">78%</span></div>
+          <div class="health-row"><span class="nm">Avg. walk-ins per event</span><span class="mt">34</span></div>
+          <div class="health-row"><span class="nm">Waitlist conversion</span><span class="mt">61%</span></div>
+          <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Membership growth</h3></div><div class="panel-b">
+          <div class="stat" style="border:none;box-shadow:none;padding:0;"><div class="lbl">Net new (YTD)</div><div class="val" style="font-size:24px;">+186</div></div>
+          <div class="mt" style="margin:10px 0;">2,847 total members across 1,206 families.</div>
+          <div style="display:flex;gap:8px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Demographics <span class="pill muted">aggregate only</span></h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm">Ages 5–17</span><span class="mt">18%</span></div>
+          <div class="health-row"><span class="nm">Ages 18–39</span><span class="mt">27%</span></div>
+          <div class="health-row"><span class="nm">Ages 40–64</span><span class="mt">38%</span></div>
+          <div class="health-row"><span class="nm">Ages 65+</span><span class="mt">17%</span></div>
+          <div style="display:flex;gap:8px;margin-top:10px;"><button class="btn btn-sm btn-ghost">CSV</button><button class="btn btn-sm btn-ghost">PDF</button></div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= AUDIT LOG -->
+    <section class="view hide" id="v-audit">
+      <div class="view-head">
+        <div><h1>Audit Log</h1><div class="sub">Immutable · every state-changing operation · 7-year retention</div></div>
+        <div class="view-actions"><button class="btn btn-ghost" data-modal-open="modal-trash"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Soft-delete trash</button><button class="btn btn-ghost">Verify integrity</button><button class="btn btn-primary">Export</button></div>
+      </div>
+      <div class="panel" style="margin-bottom:18px;">
+        <div class="panel-b grid g4">
+          <div class="field" style="margin:0;"><label>Actor</label><select><option>All admins</option><option>Rina Jain</option><option>Priya Shah</option></select></div>
+          <div class="field" style="margin:0;"><label>Action type</label><select><option>All</option><option>Donation</option><option>Content</option><option>Member</option><option>Settings</option></select></div>
+          <div class="field" style="margin:0;"><label>From</label><input type="date" value="2026-04-01"></div>
+          <div class="field" style="margin:0;"><label>To</label><input type="date" value="2026-04-14"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="audit-row" style="font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);"><div>Action</div><div>Time</div><div>Detail</div><div>Hash</div></div>
+        <div class="audit-row"><div class="act">Refund issued</div><div class="ts">2:14 PM</div><div>Priya Shah · $251.00 · General Fund <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">DONATION</span> · 2nd admin: Rina Jain</div><div class="hash">#a91f2c</div></div>
+        <div class="audit-row"><div class="act">Announcement published</div><div class="ts">1:47 PM</div><div>Live Darshan — Snatra Puja <span class="audit-cat" style="background:var(--info-bg);color:var(--indigo);margin-left:6px;">CONTENT</span></div><div class="hash">#7e0a41</div></div>
+        <div class="audit-row"><div class="act">Event published</div><div class="ts">11:32 AM</div><div>Mahavir Janma Kalyanak 2026 <span class="audit-cat" style="background:var(--good-bg);color:var(--good);margin-left:6px;">EVENT</span></div><div class="hash">#3c88b0</div></div>
+        <div class="audit-row"><div class="act">Dues comp issued</div><div class="ts">10:05 AM</div><div>Doshi family · $120.00 waived · reason: hardship <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">MEMBER</span> · 2nd admin: Priya Shah</div><div class="hash">#f102de</div></div>
+        <div class="audit-row"><div class="act">Setting changed</div><div class="ts">Yesterday, 4:20 PM</div><div>Live Darshan · Upashray fallback URL updated <span class="audit-cat" style="background:var(--warn-bg);color:var(--warn);margin-left:6px;">SETTINGS</span></div><div class="hash">#22b6f9</div></div>
+        <div class="audit-row"><div class="act">Member merged</div><div class="ts">Yesterday, 2:03 PM</div><div>Vora family — duplicate record merged, history preserved <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">MEMBER</span></div><div class="hash">#b47710</div></div>
+        <div class="audit-row"><div class="act">CSV import committed</div><div class="ts">Apr 12, 9:14 AM</div><div>34 members imported, 2 row errors skipped <span class="audit-cat" style="background:var(--danger-bg);color:var(--danger);margin-left:6px;">MEMBER</span></div><div class="hash">#0e99a2</div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= SETTINGS -->
+    <section class="view hide" id="v-settings">
+      <div class="view-head"><div><h1>Settings</h1><div class="sub">Roles &amp; permissions, feature flags, integrations, localization, and platform operations.</div></div></div>
+      <div class="subnav" data-subnav-group="settings">
+        <button data-subnav="roles" class="on">Roles &amp; Permissions</button>
+        <button data-subnav="flags">Capabilities</button>
+        <button data-subnav="integrations">Integrations</button>
+        <button data-subnav="localization">Localization</button>
+        <button data-subnav="sso">SSO</button>
+        <button data-subnav="maintenance">Maintenance</button>
+        <button data-subnav="backups">Backups</button>
+        <button data-subnav="hours">Center Hours</button>
+        <button data-subnav="panchang">Panchang Source</button>
+      </div>
+
+      <div data-subnav-panel="settings" data-subnav-val="roles">
+        <div class="panel"><div class="panel-h"><h3>Role &amp; permission editor</h3><span class="pill info"><span class="d"></span>7 roles</span></div>
+          <div class="panel-b" style="overflow-x:auto;">
+            <table class="perm-grid">
+              <thead><tr><th>Section</th><th>Guest</th><th>Member</th><th>Family Primary</th><th>Pathshala Parent</th><th>Committee Member</th><th>Admin</th><th>Super-Admin</th></tr></thead>
+              <tbody>
+                <tr><td>Events &amp; Calendar</td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td></tr>
+                <tr><td>Donations &amp; Refunds</td><td><span class="perm-dot none"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td></tr>
+                <tr><td>Pathshala Rosters</td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td></tr>
+                <tr><td>Announcements &amp; Pins</td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td><td><span class="perm-dot full"></span></td></tr>
+                <tr><td>Audit Log</td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot partial"></span></td><td><span class="perm-dot full"></span></td></tr>
+                <tr><td>Roles &amp; Settings</td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot none"></span></td><td><span class="perm-dot full"></span></td></tr>
+              </tbody>
+            </table>
+            <div class="dual" style="margin-top:14px;"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+              <div>Example granular override: the <strong>Pathshala coordinator</strong> role can edit class rosters and term-fee status, but has no write access to Donations &amp; Refunds — a scoped exception recorded per RFP §4.4.1.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="flags">
+        <div class="panel"><div class="panel-h"><h3>Feature-flag console</h3></div><div class="panel-b">
+          <div style="margin-bottom:18px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span class="nm">Facility Booking (v1.5)</span><span class="pill warn"><span class="d"></span>Committee stage</span></div>
+            <div class="stage-track">
+              <div class="stage-step on"><div class="dot">1</div><div class="lb">Staff</div></div>
+              <div class="stage-step on"><div class="dot">2</div><div class="lb">Committee</div></div>
+              <div class="stage-step"><div class="dot">3</div><div class="lb">Percentage</div></div>
+              <div class="stage-step"><div class="dot">4</div><div class="lb">Full</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;"><span class="nm">Jain Philosophy Module (v2.0)</span><span class="pill muted"><span class="d"></span>Staff only</span></div>
+            <div class="stage-track">
+              <div class="stage-step on"><div class="dot">1</div><div class="lb">Staff</div></div>
+              <div class="stage-step"><div class="dot">2</div><div class="lb">Committee</div></div>
+              <div class="stage-step"><div class="dot">3</div><div class="lb">Percentage</div></div>
+              <div class="stage-step"><div class="dot">4</div><div class="lb">Full</div></div>
+            </div>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="integrations">
+        <div class="panel"><div class="panel-h"><h3>Integration credentials vault</h3><span class="pill muted"><span class="d"></span>Secret Manager references only</span></div>
+          <table class="tbl"><thead><tr><th>Provider</th><th>Purpose</th><th>Rotated</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="nm">Stripe</td><td class="mt">Card, Apple Pay, Google Pay, ACH</td><td class="mt">Mar 1, 2026</td><td class="row-act"><button class="btn btn-sm btn-ghost">Rotate</button></td></tr>
+            <tr><td class="nm">PayPal Commerce Platform</td><td class="mt">Secondary payment rail</td><td class="mt">Mar 1, 2026</td><td class="row-act"><button class="btn btn-sm btn-ghost">Rotate</button></td></tr>
+            <tr><td class="nm">APNs / FCM</td><td class="mt">Push notifications</td><td class="mt">Feb 10, 2026</td><td class="row-act"><button class="btn btn-sm btn-ghost">Rotate</button></td></tr>
+            <tr><td class="nm">HLS streaming origin</td><td class="mt">Live Darshan sources</td><td class="mt">Jan 22, 2026</td><td class="row-act"><button class="btn btn-sm btn-ghost">Rotate</button></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="localization">
+        <div class="panel"><div class="panel-h"><h3>Localization catalog</h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm">English</span><span class="mt">100% populated · live</span></div>
+          <div class="health-row"><span class="nm">Hindi</span><span class="mt">Scaffolded · unpopulated <span class="phase-tag" style="border-color:var(--line);color:var(--muted);">v1.5</span></span></div>
+          <div class="health-row"><span class="nm">Gujarati</span><span class="mt">Scaffolded · unpopulated <span class="phase-tag" style="border-color:var(--line);color:var(--muted);">v1.5</span></span></div>
+          <div class="mt" style="margin-top:10px;">Sanskrit &amp; Prakrit terms (anumodana, dāna, pratikraman, tithi, gotra…) are locked non-translatable in every locale.</div>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="sso">
+        <div class="panel"><div class="panel-h"><h3>Admin SSO configuration</h3></div><div class="panel-b">
+          <div class="field"><label>Provider</label><select><option>SAML 2.0</option><option>OIDC</option></select></div>
+          <div class="field"><label>Identity provider metadata URL</label><input value="https://idp.nyjaincenter.org/metadata" readonly></div>
+          <div class="pill good"><span class="d"></span>MFA mandatory for every admin — no bypass, including Super-Admin</div>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="maintenance">
+        <div class="panel"><div class="panel-h"><h3>Maintenance mode</h3><span class="pill good"><span class="d"></span>Off</span></div><div class="panel-b">
+          <div class="field"><label>Banner message</label><input value="JCA is undergoing scheduled maintenance — back shortly."></div>
+          <div class="field"><label>ETA</label><input value="30 minutes"></div>
+          <div style="display:flex;align-items:center;gap:10px;"><label class="toggle"><input type="checkbox"><span class="track"></span></label><span class="mt">Enable maintenance mode across all member surfaces</span></div>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="backups">
+        <div class="panel"><div class="panel-h"><h3>Backup &amp; restore</h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm">Last successful backup</span><span class="mt">Today, 3:00 AM</span></div>
+          <div class="health-row"><span class="nm">Retention</span><span class="mt">30 days, daily snapshots</span></div>
+          <div class="health-row"><span class="nm">Last restore drill</span><span class="mt">Mar 15, 2026 — passed</span></div>
+          <button class="btn btn-danger btn-sm" style="margin-top:12px;" data-modal-open="modal-2person">Restore from backup…</button>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="hours">
+        <div class="panel"><div class="panel-h"><h3>Center Hours</h3></div><div class="panel-b">
+          <div class="hours-row"><span>Monday – Sunday</span><span>7:00 AM – 7:00 PM</span></div>
+          <div class="hours-row"><span>Festival days</span><span>Extended — set per event</span></div>
+        </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="settings" data-subnav-val="panchang">
+        <div class="panel"><div class="panel-h"><h3>Panchang data source</h3></div><div class="panel-b">
+          <div class="field"><label>Source</label><select><option>Drik Panchang API</option><option>Manual entry</option></select></div>
+          <div class="field"><label>Manual override for</label><input type="date"></div>
+          <div class="field"><label>Pratikraman time (today)</label><input value="6:45 PM"></div>
+        </div></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===== MODALS ===== -->
+<div class="overlay hide" id="modal-2person">
+  <div class="modal">
+    <div class="modal-h"><h3>Second-admin confirmation</h3><button class="modal-close" data-modal-close>✕</button></div>
+    <div class="modal-b">
+      <p class="mt" style="margin-bottom:14px;">Rina Jain has requested this action. A second admin must confirm before it takes effect.</p>
+      <div class="sig-row"><div class="av">RJ</div><div><div class="nm">Rina Jain</div><div class="rl">Super Admin · Initiator</div></div><span class="pill good sig-st"><span class="d"></span>Signed</span></div>
+      <div class="sig-row"><div class="av s">PS</div><div><div class="nm">Priya Shah</div><div class="rl">Admin · Confirming</div></div><span class="pill warn sig-st"><span class="d"></span>Waiting…</span></div>
+    </div>
+    <div class="modal-f"><button class="btn btn-ghost" data-modal-close>Cancel</button><button class="btn btn-danger" data-modal-close>Confirm as Priya Shah</button></div>
+  </div>
+</div>
+
+<div class="overlay hide" id="modal-event">
+  <div class="modal modal-wide">
+    <div class="modal-h"><h3>Create event</h3><button class="modal-close" data-modal-close>✕</button></div>
+    <div class="modal-b">
+      <div class="field-row">
+        <div class="field"><label>Title</label><input placeholder="e.g. Akshay Tritiya"></div>
+        <div class="field"><label>Category</label><select><option>Religious</option><option>Cultural</option><option>Educational</option></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Date</label><input type="date"></div>
+        <div class="field"><label>Location</label><select><option>Main Hall</option><option>Upashray Lecture Hall</option><option>Marble Lobby</option><option>Mahavir Swami Temple</option></select></div>
+      </div>
+      <div class="field"><label>RSVP cap</label><input placeholder="e.g. 450"></div>
+      <div class="field"><label>Link to cause</label><select><option>None</option><option>General Fund</option><option>Sponsor Bhojanshala</option></select></div>
+    </div>
+    <div class="modal-f"><button class="btn btn-ghost" data-modal-close>Save draft</button><button class="btn btn-primary" data-modal-close>Publish</button></div>
+  </div>
+</div>
+
+<div class="overlay hide" id="modal-csv">
+  <div class="modal">
+    <div class="modal-h"><h3>Import members — CSV</h3><button class="modal-close" data-modal-close>✕</button></div>
+    <div class="modal-b">
+      <div class="field"><label>File</label><input type="file"></div>
+      <div class="panel" style="margin-top:6px;"><div class="panel-h" style="padding:10px 14px;"><h3 style="font-size:13px;">Preview diff</h3></div>
+        <div class="panel-b" style="padding:12px 14px;">
+          <div class="health-row"><span class="pill good" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">32 rows — new member</span></div>
+          <div class="health-row"><span class="pill info" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">2 rows — update existing</span></div>
+          <div class="health-row"><span class="pill danger" style="padding:3px 7px;"><span class="d"></span></span><span class="nm">1 row — error: missing tradition</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-f"><button class="btn btn-ghost" data-modal-close>Cancel</button><button class="btn btn-primary" data-modal-close>Commit 34 rows</button></div>
+  </div>
+</div>
+
+<div class="overlay hide" id="modal-trash">
+  <div class="modal modal-wide">
+    <div class="modal-h"><h3>Soft-delete trash</h3><button class="modal-close" data-modal-close>✕</button></div>
+    <div class="modal-b">
+      <table class="tbl"><thead><tr><th>Record</th><th>Section</th><th>Deleted by</th><th>Purges in</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="nm">"Diwali prep photos" post</td><td class="mt">Community</td><td class="mt">Priya Shah</td><td class="mt">18 days</td><td class="row-act"><button class="btn btn-sm btn-ghost">Restore</button></td></tr>
+        <tr><td class="nm">Vora family (duplicate)</td><td class="mt">Members</td><td class="mt">Rina Jain</td><td class="mt">27 days</td><td class="row-act"><button class="btn btn-sm btn-ghost">Restore</button></td></tr>
+      </tbody></table>
+    </div>
+    <div class="modal-f"><button class="btn btn-ghost" data-modal-close>Close</button></div>
+  </div>
+</div>
+
+<div class="overlay hide" id="modal-360">
+  <div class="modal modal-wide">
+    <div class="modal-h"><h3>Member 360 · Manan Shah</h3><button class="modal-close" data-modal-close>✕</button></div>
+    <div class="modal-b">
+      <div class="subnav" data-subnav-group="m360">
+        <button data-subnav="contact" class="on">Contact</button>
+        <button data-subnav="family">Family</button>
+        <button data-subnav="donations">Donations</button>
+        <button data-subnav="dues">Dues</button>
+        <button data-subnav="volunteer">Volunteer</button>
+        <button data-subnav="pathshala">Pathshala</button>
+        <button data-subnav="rsvps">RSVPs</button>
+        <button data-subnav="posts">Posts</button>
+        <button data-subnav="signin">Sign-in</button>
+      </div>
+      <div data-subnav-panel="m360" data-subnav-val="contact">
+        <div class="field-row"><div class="field"><label>Email</label><input value="manan.shah@example.com" readonly></div><div class="field"><label>Phone</label><input value="(718) 555-0142" readonly></div></div>
+        <div class="field-row"><div class="field"><label>Member ID</label><input value="04812" readonly></div><div class="field"><label>Tradition</label><input value="Śvetāmbar Murtipujak" readonly></div></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="family">
+        <div class="health-row"><span class="nm">Priya Shah</span><span class="mt">Spouse</span></div>
+        <div class="health-row"><span class="nm">Arya Shah</span><span class="mt">Daughter · Pathshala</span></div>
+        <div class="health-row"><span class="nm">Kabir Shah</span><span class="mt">Son · Pathshala</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="donations">
+        <div class="health-row"><span class="nm">YTD total</span><span class="mt">$8,754.00</span></div>
+        <div class="health-row"><span class="nm">Lifetime total</span><span class="mt">$41,206.00</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="dues">
+        <div class="health-row"><span class="nm">2026 Annual Dues</span><span class="mt">$251.00 — due May 1</span></div>
+        <div class="health-row"><span class="nm">MJK Family Pass</span><span class="mt">$108.00 — due May 1</span></div>
+        <div class="health-row"><span class="nm">Pathshala Term Fee</span><span class="mt">$120.00 — due May 1</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="volunteer">
+        <div class="health-row"><span class="nm">Lifetime seva hours</span><span class="mt">142 hours across 18 events</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="pathshala">
+        <div class="health-row"><span class="nm">Arya Shah — Beginner</span><span class="mt">96% attendance</span></div>
+        <div class="health-row"><span class="nm">Kabir Shah — Beginner</span><span class="mt">91% attendance</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="rsvps">
+        <div class="health-row"><span class="nm">Mahavir Janma Kalyanak 2026</span><span class="mt">Confirmed</span></div>
+        <div class="health-row"><span class="nm">General Body Meeting</span><span class="mt">Confirmed</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="posts">
+        <div class="health-row"><span class="nm">3 approved posts</span><span class="mt">Last: Apr 8</span></div>
+      </div>
+      <div class="hide" data-subnav-panel="m360" data-subnav-val="signin">
+        <div class="health-row"><span class="nm">Last sign-in</span><span class="mt">Today, 7:12 AM · iOS</span></div>
+        <div class="health-row"><span class="nm">MFA</span><span class="mt">Not enrolled (optional for members)</span></div>
+      </div>
+    </div>
+    <div class="modal-f"><button class="btn btn-ghost" data-modal-close>Close</button><button class="btn btn-primary" data-modal-close>Edit member</button></div>
+  </div>
+</div>
+
+<!-- ⌘K command palette -->
+<div class="cmdk-overlay hide" id="cmdk-overlay">
+  <div class="cmdk">
+    <div class="cmdk-input-row">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="cmdk-input" placeholder="Search sections, members, or run a command…" autocomplete="off">
+      <span class="kbd">Esc</span>
+    </div>
+    <div class="cmdk-list">
+      <div class="cmdk-group">Quick actions</div>
+      <div class="cmdk-item" data-jump="dashboard"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New announcement</div>
+      <div class="cmdk-item" data-jump="events"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Create event</div>
+      <div class="cmdk-group">Members</div>
+      <div class="cmdk-item" data-jump="members"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>Manan Shah <span class="mt">ID 04812</span></div>
+      <div class="cmdk-item" data-jump="members"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>Priya Shah <span class="mt">ID 04813</span></div>
+      <div class="cmdk-group">Navigate</div>
+      <div class="cmdk-item" data-jump="donations"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>Donations &amp; Causes</div>
+      <div class="cmdk-item" data-jump="gallery"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>Gallery &amp; Media</div>
+      <div class="cmdk-item" data-jump="audit"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/></svg>Audit Log</div>
+      <div class="cmdk-item" data-jump="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Settings</div>
+      <div class="cmdk-item" data-href="app.html"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Back to member app</div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.VIEW_TITLES = {
+  dashboard:'Dashboard', content:'Content', gallery:'Gallery & Media', events:'Events',
+  notifications:'Notifications', donations:'Donations & Causes', sponsors:'Sponsors & Recognition',
+  bhojanshala:'Bhojanshala', members:'Members & Families', pathshala:'Pathshala',
+  volunteers:'Volunteers & Seva', facility:'Facility Booking', calendar:'Religious Calendar',
+  darshan:'Live Darshan', library:'Library & Jinvani', directory:'Directory & Resources',
+  governance:'Governance', reports:'Reports & Exports', audit:'Audit Log', settings:'Settings'
+};
+</script>
+<script src="assets/app.js"></script>
+</body>
+</html>

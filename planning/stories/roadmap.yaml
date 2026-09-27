@@ -1,0 +1,292 @@
+# Phase & sprint roadmap — relative labelling (no calendar dates).
+# Cadence: 2-week sprints. Team shape: 6-8 people (1 PM/BA, 1 designer,
+# 2 backend, 2 web/admin, 2 React Native, 1 QA) with parallel surface tracks.
+#
+# `kickoff_note` documents how this scales for other team sizes, per the
+# Summary sheet requirement.
+
+kickoff_note: >
+  Sprint numbers and week ranges below assume a 6-8 person team running fully
+  parallel surface tracks from Sprint 1. A 3-4 person team cannot run design,
+  backend, web, and mobile in parallel with the same depth: expect Phase 1 to
+  extend from ~19 sprints to ~30-32 sprints (modules become mostly sequential,
+  one or two in flight at a time). A 10-12 person team with a dedicated
+  admin-utility pod can compress Phase 1 to ~14-15 sprints, but coordination
+  overhead and design-review turnaround become the new bottleneck rather than
+  raw implementation capacity.
+
+phases:
+  - key: phase0
+    name: "Phase 0 — Foundation"
+    sprint_range: "Sprints 1–3"
+    week_range: "Weeks 1–6"
+    goal: "Discovery resolved, design system locked, skeletons deployed, auth working — gates all feature work per RFP §4.1.1."
+  - key: phase1
+    name: "Phase 1 — v1.0 (initial launch)"
+    sprint_range: "Sprints 4–19"
+    week_range: "Weeks 7–38"
+    goal: "Every P1 feature live on iOS, Android, Web, and Admin. App Store + Play Store approved. Public web launched. RFP §4.1."
+  - key: phase2
+    name: "Phase 2 — v1.5 (should-have follow-on)"
+    sprint_range: "Sprints 20–27"
+    week_range: "Weeks 39–54"
+    goal: "Member-gated content, governance transparency, richer educational resources. Hindi/Gujarati fully populated. RFP §4.2."
+  - key: phase3
+    name: "Phase 3 — v2.0 (nice-to-have, contingent)"
+    sprint_range: "Sprints 28–31 (+ parallel AI Chat workstream)"
+    week_range: "Weeks 55–62 (+10 wks AI Chat)"
+    goal: "Educational depth and intelligent assistance. Contingent on Phase 1 and Phase 2 acceptance gates. RFP §4.3."
+
+sprints:
+  - id: "S1"
+    phase: phase0
+    weeks: "Weeks 1–2"
+    modules: ["UI/UX Design — Mobile", "Architecture & Tech Stack", "Project Setup & CI/CD", "Discovery & Open Items"]
+    goal: "Kick off design-token extraction, ratify the stack, stand up five empty repos with CI, open every Discovery question."
+    complexity: "High"
+    gate: "Internal — repo + CI skeleton demo to JCA project committee"
+  - id: "S2"
+    phase: phase0
+    weeks: "Weeks 3–4"
+    modules: ["UI/UX Design — Mobile", "UI/UX Design — Web & Admin", "Database Schema & Data Model", "Project Setup & CI/CD", "Discovery & Open Items"]
+    goal: "Lock mobile screens in Figma with the corrected palette; begin web/admin derivation; first schema pass; audit the existing DB JCA mentioned."
+    complexity: "Very High"
+    gate: "Design review — 28 mobile screens + palette-conflict resolution memo"
+  - id: "S3"
+    phase: phase0
+    weeks: "Weeks 5–6"
+    modules: ["UI/UX Design — Web & Admin", "API Contract & Integration Map", "Project Setup & CI/CD", "Auth, Identity & RBAC", "Discovery & Open Items"]
+    goal: "Publish the OpenAPI contract, close all seven RFP §4.6 Discovery items, land Sign in with Apple/Google end-to-end."
+    complexity: "High"
+    gate: "Phase 0 exit gate — Discovery report + design system + API contract, per RFP §6.1.1 item 1"
+  - id: "S4"
+    phase: phase1
+    weeks: "Weeks 7–8"
+    modules: ["Home & Panchang", "Auth, Identity & RBAC"]
+    goal: "Home dashboard and Panchang live end-to-end on all three member surfaces; auth hardened."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S5"
+    phase: phase1
+    weeks: "Weeks 9–10"
+    modules: ["Calendar & Events", "Content & Newsletter"]
+    goal: "Month-grid calendar, event detail + RSVP, and admin-authored announcements/content shipping."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S6"
+    phase: phase1
+    weeks: "Weeks 11–12"
+    modules: ["Payments & Billing Infrastructure", "Admin — Shell, Dashboards & Members"]
+    goal: "Stripe + PayPal wired with webhooks and idempotency; admin shell with Member 360 view online."
+    complexity: "Very High"
+    gate: "Sprint demo — first real charge in staging"
+  - id: "S7"
+    phase: phase1
+    weeks: "Weeks 13–14"
+    modules: ["Donations & Causes", "Admin — Shell, Dashboards & Members"]
+    goal: "Causes list, quick-give, event-based prioritization, and Jeev Daya live; admin bulk import complete."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "S8"
+    phase: phase1
+    weeks: "Weeks 15–16"
+    modules: ["Recurring Giving & Subscriptions", "Membership, Family & Dues"]
+    goal: "Recurring giving with 2-tap pause/edit/cancel; family records and pending-dues card with Pay All Now."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "S9"
+    phase: phase1
+    weeks: "Weeks 17–18"
+    modules: ["Sponsorships & Religious Calendar"]
+    goal: "Sponsor a Tithi, five-tradition Daily Pooja & Abhishek schedule, Bhojanshala kitchen calendar, Sponsors of the Month."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "S10"
+    phase: phase1
+    weeks: "Weeks 19–20"
+    modules: ["Community Feed & Moderation"]
+    goal: "Whitelist-first community feed with author-only pending state; admin moderation queue with presence indicators."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S11"
+    phase: phase1
+    weeks: "Weeks 21–22"
+    modules: ["Notifications & Messaging"]
+    goal: "APNs/FCM/Web Push/email fan-out live; notification composer with multi-surface preview and segment builder."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "S12"
+    phase: phase1
+    weeks: "Weeks 23–24"
+    modules: ["Pathshala", "Volunteers & Seva"]
+    goal: "Children's class hub and volunteer sign-up/hour-logging live on all surfaces."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S13"
+    phase: phase1
+    weeks: "Weeks 25–26"
+    modules: ["Live Darshan", "Admin — Governance & Operations"]
+    goal: "Five-tradition HLS player with PiP/AirPlay/Cast; audit log, two-person confirmation, soft-delete trash, feature flags."
+    complexity: "Very High"
+    gate: "Sprint demo"
+  - id: "S14"
+    phase: phase1
+    weeks: "Weeks 27–28"
+    modules: ["Public Web & SEO"]
+    goal: "Public information pages indexable, structured data, sitemap/robots, unauthenticated donate + newsletter signup."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S15"
+    phase: phase1
+    weeks: "Weeks 29–30"
+    modules: ["Localization & Accessibility"]
+    goal: "Shared translation catalog wired end-to-end; English fully populated; per-surface accessibility audit closed."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S16"
+    phase: phase1
+    weeks: "Weeks 31–32"
+    modules: ["Security, Testing & QA"]
+    goal: "≥70% business-logic coverage; E2E suite for the five critical flows; dependency scanning in CI."
+    complexity: "High"
+    gate: "Sprint demo — coverage report"
+  - id: "S17"
+    phase: phase1
+    weeks: "Weeks 33–34"
+    modules: ["Security, Testing & QA"]
+    goal: "Third-party penetration test executed; remediation of High/Critical findings in progress."
+    complexity: "High"
+    gate: "Pen-test report delivered"
+  - id: "S18"
+    phase: phase1
+    weeks: "Weeks 35–36"
+    modules: ["Store & Launch Readiness"]
+    goal: "Store submission packages assembled; TestFlight + Play Internal Testing distribution; pen-test remediation closed."
+    complexity: "Medium"
+    gate: "TestFlight / Internal Testing build available to JCA committee"
+  - id: "S19"
+    phase: phase1
+    weeks: "Weeks 37–38"
+    modules: ["Store & Launch Readiness"]
+    goal: "App Store and Google Play approval; public web and admin utility in production."
+    complexity: "High"
+    gate: "Phase 1 acceptance gate — RFP §6.2, all four surfaces live"
+  - id: "S20"
+    phase: phase2
+    weeks: "Weeks 39–40"
+    modules: ["Governance & Documents"]
+    goal: "Meeting minutes archive (gated, searchable, PDF), JCA Policies, Credits & History."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S21"
+    phase: phase2
+    weeks: "Weeks 41–42"
+    modules: ["Library, Jinvani & Lectures"]
+    goal: "Scripture/lecture catalog with continue-reading state; Meilisearch stood up for full-text PDF search."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "S22"
+    phase: phase2
+    weeks: "Weeks 43–44"
+    modules: ["Library, Jinvani & Lectures"]
+    goal: "Pathshala Books digital library with grade-level browse and parental controls; offline audio download."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S23"
+    phase: phase2
+    weeks: "Weeks 45–46"
+    modules: ["Directory, Travel & Facility Booking"]
+    goal: "Business Directory, Restaurants, Jain Centers USA, and Facility Booking with deposit tracking and conflict view."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S24"
+    phase: phase2
+    weeks: "Weeks 47–48"
+    modules: ["Recognition Programs", "Youth & YJA"]
+    goal: "Service Awards nomination flow, Lifetime Supporter Program, Youth section with age-gating."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S25"
+    phase: phase2
+    weeks: "Weeks 49–50"
+    modules: ["Past Events & Gallery", "Reports & Analytics v2"]
+    goal: "Auto-generated Past Events archive; expanded admin reporting (cohort, retention, dues-aging trend)."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S26"
+    phase: phase2
+    weeks: "Weeks 51–52"
+    modules: ["Hindi & Gujarati Localization"]
+    goal: "Full Hindi and Gujarati translation populated across all surfaces with reviewer workflow."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S27"
+    phase: phase2
+    weeks: "Weeks 53–54"
+    modules: ["v1.5 Hardening & Release"]
+    goal: "Pen-test refresh for the v1.5 surface area; store updates submitted and approved."
+    complexity: "High"
+    gate: "Phase 2 acceptance gate — RFP §6.1.2"
+  - id: "S28"
+    phase: phase3
+    weeks: "Weeks 55–56"
+    modules: ["Jain Philosophy Module"]
+    goal: "Curriculum structure for anekantvad, ahimsa, syadvad, Nine Tattvas; lesson authoring tools."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S29"
+    phase: phase3
+    weeks: "Weeks 57–58"
+    modules: ["Jain Philosophy Module"]
+    goal: "Progress tracking across the Five Mahavratas and Twelve Vratas modules; full curriculum live."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "S30"
+    phase: phase3
+    weeks: "Weeks 59–60"
+    modules: ["JCA Cares"]
+    goal: "Charitable-campaign management integrated with the Causes module for disaster relief and outreach."
+    complexity: "Low"
+    gate: "Sprint demo"
+  - id: "S31"
+    phase: phase3
+    weeks: "Weeks 61–62"
+    modules: ["v2.0 Hardening & Release"]
+    goal: "Regression pass, updated pen-test scope, store updates for the v2.0 surface area."
+    complexity: "Medium"
+    gate: "Phase 3 acceptance gate — RFP §6.1.3 (excluding AI Chat)"
+  - id: "AI-1"
+    phase: phase3
+    weeks: "AI Chat Wk 1–2 (parallel to S28-S29)"
+    modules: ["AI Chat (contingent workstream)"]
+    goal: "Knowledge-base ingestion pipeline for JCA institutional content; retrieval architecture spike."
+    complexity: "High"
+    gate: "Internal — architecture review"
+  - id: "AI-2"
+    phase: phase3
+    weeks: "AI Chat Wk 3–4"
+    modules: ["AI Chat (contingent workstream)"]
+    goal: "Guardrail design: doctrine-deferral rules, source citation, escalation triggers."
+    complexity: "Very High"
+    gate: "Internal — guardrail review with JCA religious advisors"
+  - id: "AI-3"
+    phase: phase3
+    weeks: "AI Chat Wk 5–6"
+    modules: ["AI Chat (contingent workstream)"]
+    goal: "Chat UI on mobile + web; escalation-to-human-staff queue in the admin utility."
+    complexity: "High"
+    gate: "Sprint demo"
+  - id: "AI-4"
+    phase: phase3
+    weeks: "AI Chat Wk 7–8"
+    modules: ["AI Chat (contingent workstream)"]
+    goal: "Response audit tooling; user-feedback loop; knowledge-base curation UI for admins."
+    complexity: "Medium"
+    gate: "Sprint demo"
+  - id: "AI-5"
+    phase: phase3
+    weeks: "AI Chat Wk 9–10"
+    modules: ["AI Chat (contingent workstream)"]
+    goal: "Closed pilot with committee members; guardrail tuning; go/no-go for general release."
+    complexity: "Medium"
+    gate: "AI Chat acceptance gate — separate commission per RFP §6.1.3 item 19"

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — JCA</title>
+<meta name="description" content="Static walkthrough mockup — not a live application.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<div class="login-shell">
+  <div class="login-art">
+    <div class="medallion"><img src="assets/logo.png" alt="JCA emblem"></div>
+    <h2>Welcome back to the sangha</h2>
+    <div class="navkar">
+      Namo Arihantanam. Namo Siddhanam.<br>
+      Namo Ayariyanam. Namo Uvajjhayanam.<br>
+      Namo Loe Savva Sahunam.
+    </div>
+    <div class="shrines">
+      <span>Mahavir</span><span>Adinath</span><span>Upashray</span><span>Shrimad</span><span>Dadawadi</span>
+    </div>
+  </div>
+
+  <div class="login-form-wrap">
+    <form class="login-form" onsubmit="event.preventDefault(); window.location.href='app.html';">
+      <img class="logo-sm" src="assets/logo.png" alt="JCA">
+      <h1>Sign in</h1>
+      <div class="sub">Welcome, devotee.</div>
+
+      <div class="field"><label>Member ID or email</label><input type="text" placeholder="04812 or you@example.com" required></div>
+      <div class="field"><label>Password</label><input type="password" placeholder="••••••••" required></div>
+      <button class="btn btn-primary btn-block btn-lg" type="submit">Sign In</button>
+
+      <div class="divider-or">OR CONTINUE WITH</div>
+      <div class="social-row">
+        <a class="social-btn" href="app.html"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" stroke="none"><path d="M16.365 1.43c0 1.14-.463 2.101-1.187 2.816-.716.716-1.859 1.257-2.87 1.174-.134-1.096.42-2.244 1.11-2.96.741-.778 1.995-1.353 2.947-1.03zM20.7 17.44c-.45 1.037-.663 1.5-1.238 2.42-.802 1.283-1.933 2.882-3.335 2.895-1.245.013-1.567-.81-3.258-.8-1.69.01-2.045.815-3.29.802-1.4-.014-2.472-1.454-3.274-2.737-2.245-3.588-2.482-7.798-1.096-10.037.984-1.588 2.537-2.517 3.997-2.517 1.487 0 2.422.82 3.653.82 1.194 0 1.92-.82 3.638-.82 1.303 0 2.685.71 3.669 1.935-3.226 1.767-2.702 6.369.534 7.639z"/></svg>Apple</a>
+        <a class="social-btn" href="app.html">G Google</a>
+      </div>
+
+      <div class="login-links">
+        <a href="#">Forgot password?</a>
+        <a href="#">New to JCA? Become a Member</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

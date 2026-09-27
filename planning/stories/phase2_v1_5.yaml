@@ -1,0 +1,428 @@
+phase_key: phase2
+phase_name: "Phase 2 — v1.5 (should-have follow-on release)"
+
+modules:
+  - sheet_name: "Governance and Documents"
+    module: "Governance & Documents"
+    sprint: "S20"
+    sprint_weeks: "Weeks 39-40"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "GOVD-1"
+        story: "As a member, I want a membership-gated meeting-minutes archive with chronological browse, full-text search, and PDF download, per RFP §4.2."
+        acceptance_criteria: "Board / Executive Committee / General Body minutes are browsable chronologically, gated to signed-in members, full-text searchable, and downloadable as PDF."
+        subtasks:
+          - "Build the gated meeting-minutes archive UI"
+          - "Wire full-text search over minutes content"
+          - "Wire PDF download per minute"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "GOVD-2"
+        story: "As an admin, I want to upload, tag, version, redact, and publish meeting minutes with gating control, per RFP §4.2."
+        acceptance_criteria: "Admin uploads a PDF, tags meeting type and date, can redact sections before publish, versions the document, and controls which membership tiers can view it."
+        subtasks:
+          - "Build the minutes upload and tagging UI"
+          - "Implement version control and redaction workflow"
+          - "Wire the gating-rule control (uses the tier-based default from Discovery item DISC-5)"
+        surfaces: ["Admin", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "GOVD-3"
+        story: "As a member, I want to browse and search published JCA Policies so I understand the rules governing facility use, membership, and conduct, per RFP §4.2."
+        acceptance_criteria: "Policies are browsable and searchable, public to members without additional gating."
+        subtasks:
+          - "Build the Policies browse/search UI"
+          - "Wire admin authoring, versioning, and publish for policy documents"
+        surfaces: ["iOS", "Android", "Web", "Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Low"
+        status: "Ready"
+      - id: "GOVD-4"
+        story: "As a member, I want a long-form Credits & History narrative of the Center's founding, milestones, and restoration efforts, per RFP §4.2."
+        acceptance_criteria: "History page renders a CMS-authored narrative with images and a timeline component."
+        subtasks:
+          - "Build the Credits & History page with timeline component"
+          - "Build the CMS-style editor for images and timeline entries"
+        surfaces: ["iOS", "Android", "Web", "Admin", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "Library Jinvani and Lectures"
+    module: "Library, Jinvani & Lectures"
+    sprint: "S21-S22"
+    sprint_weeks: "Weeks 41-44"
+    sprint_complexity: "High"
+    gate: "Sprint demo"
+    stories:
+      - id: "LIB-1"
+        story: "As a member, I want a searchable library of Jain scriptures, commentaries, and children's editions with continue-reading state, per the walkthrough's slide 26."
+        acceptance_criteria: "Search covers full text of all catalog PDFs; tabs for All/Agam Sutras/Commentaries/Children/Bookmarks; a Continue Reading hero shows the last-read position (e.g. 'Tattvārtha Sūtra, p.84/312')."
+        subtasks:
+          - "Build the library catalog browse and tab UI"
+          - "Implement the Continue Reading state tracking"
+          - "Stand up Meilisearch and index the PDF catalog for full-text search"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "High"
+        complexity: "High"
+        status: "Ready"
+      - id: "LIB-2"
+        story: "As a member, I want audio versions of texts like Samayika so I can listen rather than read."
+        acceptance_criteria: "Audio playback available for tagged catalog entries; offline download available on mobile per RFP §4.2."
+        subtasks:
+          - "Build the audio player component"
+          - "Implement offline audio download on mobile"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "LIB-3"
+        story: "As a member, I want a Pravachan (lecture) archive organized by topic, speaker, and date so I can find teachings relevant to me, per RFP §4.2."
+        acceptance_criteria: "Lecture archive is browsable/filterable by topic, speaker, and date; audio/video playback with offline audio download on mobile; transcript available where uploaded."
+        subtasks:
+          - "Build the Pravachan archive browse/filter UI"
+          - "Implement offline audio download"
+          - "Wire transcript display where available"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "LIB-4"
+        story: "As a member, I want to browse the physical/digital library catalog, reserve a physical book, and download a licensed digital book, per RFP §4.2."
+        acceptance_criteria: "Catalog distinguishes physical vs. digital availability; reservation queue for physical books; digital download respects license restrictions."
+        subtasks:
+          - "Build the catalog browse with physical/digital distinction"
+          - "Implement the physical-book reservation queue"
+          - "Implement license-gated digital download"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "LIB-5"
+        story: "As an enrolled Pathshala family, I want a digital textbook library with grade-level browse, offline download, and parental controls, per RFP §4.2."
+        acceptance_criteria: "Pathshala Books section is gated to enrolled families; browsable by grade level; offline download available; parental controls restrict access appropriate to the child's grade."
+        subtasks:
+          - "Build the Pathshala Books grade-level browse UI"
+          - "Implement offline download"
+          - "Implement parental controls"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "LIB-6"
+        story: "As an admin, I want catalog management, reservation-queue handling, and license tracking for the library, plus per-grade textbook upload and download analytics for Pathshala Books, per RFP §4.2."
+        acceptance_criteria: "Admin manages the full library and Pathshala Books catalogs, including upload, tagging (tradition/language/topic), reservation approval, license tracking, and download analytics."
+        subtasks:
+          - "Build the library and Pathshala Books admin CRUD"
+          - "Build the reservation-queue management UI"
+          - "Build license tracking and download analytics reporting"
+        surfaces: ["Admin", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+
+  - sheet_name: "Directory Travel and Facility Booking"
+    module: "Directory, Travel & Facility Booking"
+    sprint: "S23"
+    sprint_weeks: "Weeks 45-46"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "DIR-1"
+        story: "As a member, I want a Business Directory of member-owned Jain businesses so I can support the sangha economically, per the walkthrough's slide 27."
+        acceptance_criteria: "Directory is category-filterable, shows sangha-discount tags where applicable, and lets a member list their own business for free."
+        subtasks:
+          - "Build the Business Directory browse/filter UI"
+          - "Build the + List Your Business submission flow"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "DIR-2"
+        story: "As a traveling member, I want to find Jain centers and pure-veg restaurants nationwide, per the walkthrough's slide 29."
+        acceptance_criteria: "Combined Centers/Restaurants/Map view lets a member find nearby centers and restaurants with Jain-friendly badges; tapping a pin opens directions in the device's maps app."
+        subtasks:
+          - "Build the Centers/Restaurants combined directory with map view"
+          - "Wire directions deep-linking to native maps apps"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "DIR-3"
+        story: "As a member, I want to reserve JCA halls with member-rate pricing and see a booking-policy card, per the walkthrough's slide 28."
+        acceptance_criteria: "Date picker shows the three facilities with member-rate pricing; booking-policy card (deposit percentage, refundability, pure-veg-only rule) is displayed before booking; Book routes to the shared payment-confirmation screen for the deposit."
+        subtasks:
+          - "Build the Facility Booking date picker and facility selector"
+          - "Build the booking-policy card"
+          - "Wire deposit payment through the shared confirmation screen"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "DIR-4"
+        story: "As an admin, I want to approve/decline facility bookings with a calendar-conflict view and deposit tracking, per RFP §3.4 item 11."
+        acceptance_criteria: "Admin sees pending booking requests with the calendar-conflict view from CAL-5 overlaid; approve/decline actions available; deposit paid/outstanding status tracked per booking."
+        subtasks:
+          - "Build the booking approval queue"
+          - "Reuse the calendar-conflict view for facility bookings"
+          - "Wire deposit-status tracking"
+        surfaces: ["Admin", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "DIR-5"
+        story: "As an admin, I want to approve member-submitted Business Directory and Restaurant listings so directory quality stays curated, per RFP §3.4 item 16."
+        acceptance_criteria: "Submitted listings enter a review queue; approve/decline with a reason; approved listings appear live immediately."
+        subtasks:
+          - "Build the listing review queue"
+          - "Wire approve/decline actions"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "Recognition Programs"
+    module: "Recognition Programs"
+    sprint: "S24"
+    sprint_weeks: "Weeks 47-48"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "REC-1"
+        story: "As a member, I want to nominate someone for a Service Award and see award recipients and ceremony info, per RFP §4.2."
+        acceptance_criteria: "Nomination form is available to members; recipient list and ceremony info are publicly viewable once published."
+        subtasks:
+          - "Build the nomination submission form"
+          - "Build the recipient/ceremony-info display"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Low"
+        status: "Ready"
+      - id: "REC-2"
+        story: "As an admin (selection committee), I want nomination intake and selection-committee tooling so the award process is organized and fair, per RFP §4.5."
+        acceptance_criteria: "Admin sees all nominations with eligibility criteria checked; a selection-committee scoring/voting tool aggregates decisions; approved recipients publish to the member-facing recipient list."
+        subtasks:
+          - "Build the nomination intake and eligibility-check view"
+          - "Build the selection-committee tooling"
+          - "Wire recipient publishing"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "REC-3"
+        story: "As a major donor, I want a Lifetime Supporter Program with perpetual profile recognition and anniversary acknowledgements, per RFP §4.2."
+        acceptance_criteria: "Lifetime Supporters have a distinct, perpetual public listing; anniversary acknowledgements trigger automatically on the giving anniversary date."
+        subtasks:
+          - "Build the Lifetime Supporter public listing"
+          - "Implement the anniversary-acknowledgement trigger"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+      - id: "REC-4"
+        story: "As an admin, I want recognition-rule and perpetual-listing management for the Lifetime Supporter Program, per RFP §4.5."
+        acceptance_criteria: "Admin configures the qualifying threshold and rule set for Lifetime Supporter status; perpetual listings are maintained without manual re-entry each year."
+        subtasks:
+          - "Build the recognition-rule configuration UI"
+          - "Automate perpetual-listing maintenance"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "Youth and YJA"
+    module: "Youth & YJA"
+    sprint: "S24"
+    sprint_weeks: "Weeks 47-48"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "YTH-1"
+        story: "As a Youth-age member (13-25), I want a dedicated Youth section with programming, mentorship, and social events distinct from Pathshala and YJA Programs, per Discovery item DISC-7."
+        acceptance_criteria: "Youth section is age-gated per the DISC-7 resolution; content is distinct from both Pathshala (under-18 classes) and YJA Programs (18-25 national programming)."
+        subtasks:
+          - "Build the Youth section UI and content model"
+          - "Implement age-gating per the DISC-7 resolution"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "YTH-2"
+        story: "As a YJA-age member, I want YJA programming (events, registration links, contact info) syndicated into the app, per RFP §4.2."
+        acceptance_criteria: "YJA events appear in the Calendar with a distinct YJA category; registration links route to YJA's own registration system; YJA contact info is discoverable."
+        subtasks:
+          - "Build the YJA event syndication feed"
+          - "Add the YJA event category to the Calendar filter set"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+      - id: "YTH-3"
+        story: "As an admin, I want age-gating configuration and youth-committee tools so Youth content stays appropriately scoped, per RFP §4.5."
+        acceptance_criteria: "Admin configures the age-gating rule (self-attested at signup, parental consent under 18 per DISC-7); youth-committee members get scoped access to author Youth-section content."
+        subtasks:
+          - "Build the age-gating configuration UI"
+          - "Build scoped youth-committee content-authoring access"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "Past Events and Gallery"
+    module: "Past Events & Gallery"
+    sprint: "S25"
+    sprint_weeks: "Weeks 49-50"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "PEG-1"
+        story: "As a member, I want an auto-generated Past Events archive with photo links, attendance counts, and donor recognition, per RFP §4.1.2 and §4.2."
+        acceptance_criteria: "Any event past its end date auto-populates into the Past Events archive with a link to its Gallery album, final attendance count, and donor-recognition summary if sponsored."
+        subtasks:
+          - "Implement the auto-generation trigger on event completion"
+          - "Build the Past Events archive browse UI"
+          - "Wire Gallery album and donor-recognition linking"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "PEG-2"
+        story: "As a member, I want an album-organized photo/video gallery searchable by year and event, per the walkthrough's slide 21."
+        acceptance_criteria: "Hero album shows the most recent festival; album grid organized by event with a year filter; tapping an album opens a masonry grid; video albums show a play overlay."
+        subtasks:
+          - "Build the gallery hero and album-grid layout"
+          - "Implement the year filter"
+          - "Build the masonry-grid album detail view with video play overlay"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "PEG-3"
+        story: "As an admin, I want to curate featured entries in the auto-generated Past Events archive so the most significant events get prominence, per RFP §4.2."
+        acceptance_criteria: "Admin can pin/feature specific past events above the auto-generated chronological order."
+        subtasks:
+          - "Build the featured-entry curation control"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "Reports and Analytics v2"
+    module: "Reports & Analytics v2"
+    sprint: "S25"
+    sprint_weeks: "Weeks 49-50"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "RPT-1"
+        story: "As a Treasurer, I want donor cohort analysis and retention metrics so I understand giving patterns beyond raw totals, per RFP §4.2."
+        acceptance_criteria: "Report segments donors by cohort (first-year, returning, lapsed) and shows retention rate trend over time; exportable as CSV and PDF."
+        subtasks:
+          - "Build the donor cohort segmentation query and report view"
+          - "Build the retention-trend visualization"
+          - "Wire CSV/PDF export"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "RPT-2"
+        story: "As a Treasurer, I want a dues-aging trend report and an events chair wants an event-attendance trend report, so both roles see change over time, not just a snapshot, per RFP §4.2."
+        acceptance_criteria: "Dues-aging trend shows the 30/60/90-day buckets over time; attendance trend shows RSVP and check-in rates across events over time; both exportable."
+        subtasks:
+          - "Build the dues-aging trend report"
+          - "Build the event-attendance trend report"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "RPT-3"
+        story: "As an admin, I want demographic breakdowns in reporting so program planning can be informed by who's actually participating, per RFP §4.2."
+        acceptance_criteria: "Reports can break down participation by age band, family role, and tradition, respecting the privacy-by-default principle (no individually identifying data exposed in aggregate views)."
+        subtasks:
+          - "Build the demographic-breakdown reporting view"
+          - "Verify aggregate-only exposure, no individual PII in the report output"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Medium"
+        status: "Ready"
+
+  - sheet_name: "Hindi and Gujarati Localization"
+    module: "Hindi & Gujarati Localization"
+    sprint: "S26"
+    sprint_weeks: "Weeks 51-52"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "L10N2-1"
+        story: "As a Hindi- or Gujarati-speaking member, I want the full app translated into my language across every surface, per RFP §4.2 and §5.2."
+        acceptance_criteria: "Every string in the localization_string catalog has a reviewed Hindi and Gujarati value; switching locale on any surface renders fully translated content with no English fallback strings remaining."
+        subtasks:
+          - "Populate Hindi translations for the full catalog"
+          - "Populate Gujarati translations for the full catalog"
+          - "Audit for any remaining untranslated/fallback strings"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "High"
+        complexity: "High"
+        status: "Ready"
+      - id: "L10N2-2"
+        story: "As an admin, I want a reviewer workflow for translation submissions so quality is verified before a translation goes live, per RFP §5.2."
+        acceptance_criteria: "A submitted translation enters a pending-review state; a designated reviewer approves or rejects with comments before it becomes the live value for that locale."
+        subtasks:
+          - "Build the translation submission and review-queue workflow"
+          - "Wire approve/reject with reviewer comments"
+        surfaces: ["Admin", "Backend"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "L10N2-3"
+        story: "As a translator, I want a context-aware editing interface showing where a string appears in the app so I can translate accurately, per RFP §5.2."
+        acceptance_criteria: "Translator UI shows a screenshot or screen-context preview alongside each string being translated; Sanskrit/Prakrit terms are visibly locked as non-translatable per L10N-3."
+        subtasks:
+          - "Build the context-aware translator interface with screen previews"
+          - "Enforce the non-translatable-term lock in the UI"
+        surfaces: ["Admin", "Backend"]
+        priority: "Medium"
+        complexity: "Medium"
+        status: "Ready"
+
+  - sheet_name: "v1.5 Hardening and Release"
+    module: "v1.5 Hardening & Release"
+    sprint: "S27"
+    sprint_weeks: "Weeks 53-54"
+    sprint_complexity: "High"
+    gate: "Phase 2 acceptance gate — RFP §6.1.2"
+    stories:
+      - id: "HARD1-1"
+        story: "As JCA, I want an updated third-party penetration test covering the v1.5 surface area so new Phase 2 features are security-verified before release, per RFP §6.1.2."
+        acceptance_criteria: "Pen test covers every Phase 2 feature (gated documents, library/Jinvani, directory, facility booking, recognition programs); all High/Critical findings remediated before the Phase 2 gate."
+        subtasks:
+          - "Scope and execute the v1.5 pen test"
+          - "Remediate and re-verify all High/Critical findings"
+        surfaces: ["Backend", "Web", "Admin", "iOS", "Android"]
+        priority: "Critical"
+        complexity: "High"
+        status: "Ready"
+      - id: "HARD1-2"
+        story: "As JCA, I want updated test coverage maintaining the v1.0 thresholds across all Phase 2 features, per RFP §6.1.2."
+        acceptance_criteria: "Business-logic coverage stays >=70% including all new Phase 2 modules; E2E suite extended to cover at least one Phase 2 critical flow (e.g. gated minutes access)."
+        subtasks:
+          - "Extend unit/integration test coverage to Phase 2 modules"
+          - "Add a Phase 2 E2E flow to the existing suite"
+        surfaces: ["Backend", "Web", "Admin", "iOS", "Android"]
+        priority: "Critical"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "HARD1-3"
+        story: "As the vendor, I want store updates for the v1.5 release submitted and approved on both stores, per RFP §6.1.2."
+        acceptance_criteria: "iOS and Android store listings updated with new screenshots/changelog reflecting Phase 2 features; both submissions approved."
+        subtasks:
+          - "Update store listing copy and screenshots for v1.5"
+          - "Submit and track both store review processes"
+        surfaces: ["iOS", "Android"]
+        priority: "High"
+        complexity: "Low"
+        status: "Ready"

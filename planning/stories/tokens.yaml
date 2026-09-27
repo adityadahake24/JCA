@@ -1,0 +1,133 @@
+# Design Tokens & Palette — extracted from jca-ny-app_vSHARE.html (the
+# RFP-compliant source of truth; see Discovery item DISC-8). Contrast ratios
+# computed via the WCAG 2.1 relative-luminance formula, verified against
+# --cream (#faf6ef), the dominant light background across all screens.
+# AA thresholds: 4.5:1 normal text, 3.0:1 large text (>=24px or >=19px bold)
+# and UI components/graphics.
+
+palette_note: >
+  jca-ny-app_vSHARE.html is authoritative (RFP §2.2: "white marble, crimson,
+  and gold — never saffron/orange"). jca-app-mockup.html and the entire
+  jca-admin-mocukups.html file use an indigo/saffron palette and are treated
+  as superseded design-exploration artifacts (Discovery item DISC-8). The
+  admin utility's visual language is re-derived from these vSHARE tokens,
+  not carried forward from its own mockup file.
+
+base_tokens:
+  - token: "--crimson"
+    value: "#a8202c"
+    role: "Primary brand color. Body text, primary buttons, active states, links."
+    contrast_vs_cream: "6.70:1"
+    aa_verdict: "Pass — AA normal text and AA large text"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--crimson-deep"
+    value: "#7a1620"
+    role: "Pressed/active states, headings on light backgrounds."
+    contrast_vs_cream: "9.93:1"
+    aa_verdict: "Pass — AAA normal text"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--crimson-soft"
+    value: "#c84252"
+    role: "Secondary accents, badges, non-critical highlights."
+    contrast_vs_cream: "4.47:1"
+    aa_verdict: "Pass — AA large text/UI only (fails AA normal text by 0.03; do not use for body copy)"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--gold"
+    value: "#c9a961"
+    role: "Ornamental only — borders, dividers, icon fills, decorative rules, ratnatraya/aṣṭamaṅgala motifs."
+    contrast_vs_cream: "2.09:1"
+    aa_verdict: "Fail — never use for text of any size"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--gold-light"
+    value: "#e3c889"
+    role: "Subtle background tints, hover fills behind icons — never text, never adjacent to cream as a foreground."
+    contrast_vs_cream: "1.51:1"
+    aa_verdict: "Fail — decorative background use only"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--gold-deep"
+    value: "#8c6f30"
+    role: "Legacy 'deep gold' token from vSHARE — retained only for large display headings (>=24px)."
+    contrast_vs_cream: "4.40:1"
+    aa_verdict: "Fail — AA normal text (misses 4.5:1 threshold by 0.10); Pass — AA large text only"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--gold-text (NEW — Discovery item DISC-10)"
+    value: "#7d6229"
+    role: "AA-safe gold for any place gold-colored TEXT is genuinely needed (e.g. a gold pill label). Introduced because the vSHARE --gold and --gold-deep tokens both fail AA body text."
+    contrast_vs_cream: "5.34:1"
+    aa_verdict: "Pass — AA normal text"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--cream"
+    value: "#faf6ef"
+    role: "Primary light background across all member-facing surfaces."
+    contrast_vs_cream: "n/a (background reference)"
+    aa_verdict: "n/a"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--cream-warm"
+    value: "#f4ecdd"
+    role: "Secondary background — cards, elevated surfaces on cream."
+    contrast_vs_cream: "n/a (background)"
+    aa_verdict: "n/a"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--paper"
+    value: "#ffffff"
+    role: "Elevated surfaces (modals, sheets) requiring maximum contrast."
+    contrast_vs_cream: "n/a (background)"
+    aa_verdict: "n/a"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--ink"
+    value: "#1c1410"
+    role: "Primary body text color."
+    contrast_vs_cream: "16.85:1"
+    aa_verdict: "Pass — AAA normal text"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--ink-soft"
+    value: "#4a3d35"
+    role: "Secondary text — captions, metadata, timestamps."
+    contrast_vs_cream: "9.70:1"
+    aa_verdict: "Pass — AAA normal text"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--muted"
+    value: "#8a7864"
+    role: "Tertiary text and disabled states — placeholder text, inactive tab labels."
+    contrast_vs_cream: "3.94:1"
+    aa_verdict: "Pass — AA large text/UI only (fails AA normal text; do not use for body copy or form labels)"
+    surfaces: "iOS, Android, Web, Admin"
+  - token: "--good"
+    value: "#3f7d5e"
+    role: "Success states — confirmed payment, approved content, open/available status."
+    contrast_vs_cream: "n/a (compute per use; verify before shipping any new success-state text)"
+    aa_verdict: "Verify per use"
+    surfaces: "iOS, Android, Web, Admin"
+
+typography:
+  - role: "Display / serif headings"
+    family: "Fraunces (serif)"
+    usage: "Screen titles, ornamental headings, the JCA wordmark treatment."
+  - role: "Body / UI text"
+    family: "Inter (sans-serif), -apple-system fallback"
+    usage: "All body copy, form labels, buttons, navigation labels."
+  - role: "Dynamic Type / accessibility"
+    family: "Both families scale with iOS Dynamic Type and Android font scaling; no hard-coded pixel line-heights — RFP §2.2 multi-generational accessibility requirement."
+    usage: "Applies platform-wide; verified per screen in the accessibility audit (Localization & Accessibility module)."
+
+spacing_and_shape:
+  - token: "Border radius (member surfaces)"
+    value: "Card: 16-20px · Button/chip: full-pill · Modal sheet: 24px top corners"
+  - token: "Border radius (admin utility, from indigo mockup's --r tokens, re-themed)"
+    value: "--r: 12px · --r-sm: 8px · --r-lg: 18px (denser than member surfaces, matches admin's productivity-first brief)"
+  - token: "Shadow — small"
+    value: "0 1px 2px rgba(28,20,16,0.04), 0 1px 3px rgba(28,20,16,0.06)"
+  - token: "Shadow — medium"
+    value: "0 4px 12px rgba(28,20,16,0.08), 0 2px 4px rgba(28,20,16,0.04)"
+
+iconography_note: >
+  Jain symbology only: siddhachakra, swastika (Jain form), aṣṭamaṅgala,
+  ratnatraya (three-jewel ornament), the five-shrine iconset (Mahavir,
+  Adinath, Upashray, Shrimad, Dadawadi). Explicitly excluded: Om, Ganesha,
+  trishul, or any Hindu iconography — RFP §2.2 "Jain, not Hindu."
+
+dark_mode_scope: >
+  Live Darshan and Virtual Tour ship dedicated dark-mode UI per the
+  walkthrough deck (slides 4 and 6). Dark-mode tokens are derived from the
+  same crimson/gold/ink palette, not a separate theme, so brand identity
+  holds in both modes.

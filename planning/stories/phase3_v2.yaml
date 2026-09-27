@@ -1,0 +1,159 @@
+phase_key: phase3
+phase_name: "Phase 3 — v2.0 (nice-to-have and contingent)"
+
+modules:
+  - sheet_name: "Jain Philosophy Module"
+    module: "Jain Philosophy Module"
+    sprint: "S28-S29"
+    sprint_weeks: "Weeks 55-58"
+    sprint_complexity: "Medium"
+    gate: "Sprint demo"
+    stories:
+      - id: "PHIL-1"
+        story: "As a member, I want a structured, multi-lesson educational module on anekantvad, ahimsa, syadvad, the Nine Tattvas, the Five Mahavratas, the Twelve Vratas, and karma theory, per RFP §4.3."
+        acceptance_criteria: "Curriculum is organized as sequential multi-lesson tracks per topic; a member can start, pause, and resume any track; content renders correctly with the diacritics/terminology rules from Phase 1."
+        subtasks:
+          - "Build the curriculum content model and lesson-sequencing engine"
+          - "Build the lesson-viewer UI with pause/resume"
+          - "Populate the Nine Tattvas and Five Mahavratas tracks as the initial content set"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "High"
+        status: "Ready"
+      - id: "PHIL-2"
+        story: "As a member, I want my progress tracked across lessons so I can see how far I've come in my study."
+        acceptance_criteria: "Progress bar per track and an overall completion percentage are visible; progress persists across sessions and devices for a signed-in member."
+        subtasks:
+          - "Implement progress tracking per lesson and track"
+          - "Sync progress across devices via the backend"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "PHIL-3"
+        story: "As an admin (curriculum author), I want curriculum authoring and lesson-sequencing tools plus progress analytics, per RFP §4.3."
+        acceptance_criteria: "Admin can author lessons, sequence them into tracks, and view aggregate progress analytics (completion rate per track, drop-off points)."
+        subtasks:
+          - "Build the curriculum authoring and sequencing UI"
+          - "Build the progress-analytics dashboard"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Medium"
+        status: "Ready"
+
+  - sheet_name: "JCA Cares"
+    module: "JCA Cares"
+    sprint: "S30"
+    sprint_weeks: "Weeks 59-60"
+    sprint_complexity: "Low"
+    gate: "Sprint demo"
+    stories:
+      - id: "CARES-1"
+        story: "As a member, I want to see and give to JCA Cares campaigns (disaster relief, partner-organization fundraising, community outreach) so I can support causes beyond the Center itself, per RFP §4.3."
+        acceptance_criteria: "JCA Cares campaigns render using the existing Cause/Donate infrastructure with a distinct visual treatment and partner-organization attribution."
+        subtasks:
+          - "Extend the Cause model to support external/partner-organization campaigns"
+          - "Build the distinct JCA Cares visual treatment on the Donate tab"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+      - id: "CARES-2"
+        story: "As an admin, I want campaign management integrated with the existing Causes tooling so JCA Cares doesn't require a parallel system, per RFP §4.3."
+        acceptance_criteria: "Admin manages JCA Cares campaigns through the same Causes & Donations section used for internal causes, with an added partner-organization field."
+        subtasks:
+          - "Add the partner-organization field to the Cause admin editor"
+          - "Verify JCA Cares campaigns report correctly in existing donation reports"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "v2.0 Hardening and Release"
+    module: "v2.0 Hardening & Release"
+    sprint: "S31"
+    sprint_weeks: "Weeks 61-62"
+    sprint_complexity: "Medium"
+    gate: "Phase 3 acceptance gate — RFP §6.1.3 (excludes AI Chat, which has its own gate)"
+    stories:
+      - id: "HARD2-1"
+        story: "As JCA, I want a regression pass and updated pen-test scope for the v2.0 surface area (Jain Philosophy, JCA Cares) before release, per RFP §6.1.3."
+        acceptance_criteria: "Full regression suite passes across all surfaces; pen-test scope extended to cover the two new Phase 3 modules; High/Critical findings remediated."
+        subtasks:
+          - "Run the full regression suite against the v2.0 build"
+          - "Extend pen-test scope to Jain Philosophy and JCA Cares"
+          - "Remediate and re-verify findings"
+        surfaces: ["Backend", "Web", "Admin", "iOS", "Android"]
+        priority: "High"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "HARD2-2"
+        story: "As the vendor, I want store updates for the v2.0 release submitted and approved on both stores, per RFP §6.1.3."
+        acceptance_criteria: "iOS and Android store listings updated reflecting v2.0 features; both submissions approved."
+        subtasks:
+          - "Update store listing copy and screenshots for v2.0"
+          - "Submit and track both store review processes"
+        surfaces: ["iOS", "Android"]
+        priority: "Medium"
+        complexity: "Low"
+        status: "Ready"
+
+  - sheet_name: "AI Chat"
+    module: "AI Chat (contingent workstream)"
+    sprint: "AI-1 to AI-5"
+    sprint_weeks: "AI Chat Wk 1-10 (parallel to Phase 3)"
+    sprint_complexity: "Very High"
+    gate: "AI Chat acceptance gate — separate commission per RFP §6.1.3 item 19"
+    stories:
+      - id: "AI-C-1"
+        story: "As the AI Chat team, I want a knowledge-base ingestion pipeline covering JCA institutional content, religious content, and FAQs so the chat has an accurate grounding corpus, per RFP §4.3."
+        acceptance_criteria: "Ingestion pipeline pulls from the Library/Jinvani catalog, FAQ, policies, and admin-curated source documents into a retrieval index; a content update in the source re-indexes within a defined SLA."
+        subtasks:
+          - "Build the ingestion pipeline from existing content sources"
+          - "Stand up the retrieval index (vector store)"
+          - "Implement the re-indexing SLA on content update"
+        surfaces: ["Backend"]
+        priority: "Low"
+        complexity: "High"
+        status: "Ready"
+      - id: "AI-C-2"
+        story: "As JCA's religious advisors, I want strict guardrails so the AI Chat never speculates on doctrine, always defers theological questions to acharyas, and cites sources for programming/factual claims, per RFP §4.3."
+        acceptance_criteria: "A doctrine-classification layer detects theological questions and returns a deferral response naming how to reach an acharya, never a generated theological answer; every factual/programming claim in a response includes a source citation; a red-team test set of doctrinal edge cases passes 100%."
+        subtasks:
+          - "Build the doctrine-question classifier and deferral response"
+          - "Implement mandatory source citation on factual claims"
+          - "Build and run the red-team doctrinal edge-case test set with JCA religious advisors"
+        surfaces: ["Backend"]
+        priority: "Critical"
+        complexity: "Very High"
+        status: "Ready"
+      - id: "AI-C-3"
+        story: "As a member, I want a chat interface on mobile and web so I can ask questions and get grounded answers or an escalation to staff, per RFP §4.3."
+        acceptance_criteria: "Chat UI available on iOS, Android, and web; every response is either grounded with a citation, a doctrine-deferral message, or an explicit hand-off to human staff — never an unlabeled guess."
+        subtasks:
+          - "Build the chat UI on mobile and web"
+          - "Wire the three response modes (grounded, deferral, hand-off)"
+        surfaces: ["iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "High"
+        status: "Ready"
+      - id: "AI-C-4"
+        story: "As an admin, I want an escalation queue for sensitive topics and a response-audit tool so a human reviews what the AI actually says, per RFP §4.3."
+        acceptance_criteria: "Any hand-off from the chat lands in an admin escalation queue with the conversation context; admins can audit any past AI response and flag it for correction or knowledge-base update."
+        subtasks:
+          - "Build the escalation queue in the admin utility"
+          - "Build the response-audit tool with flagging"
+        surfaces: ["Admin", "Backend"]
+        priority: "Low"
+        complexity: "Medium"
+        status: "Ready"
+      - id: "AI-C-5"
+        story: "As an admin (knowledge-base curator), I want a curation UI and a user-feedback loop so the AI's grounding corpus improves over time, per RFP §4.3."
+        acceptance_criteria: "Admin can add, edit, or remove knowledge-base entries directly; a thumbs-up/down on any chat response feeds a feedback queue reviewed by the curator."
+        subtasks:
+          - "Build the knowledge-base curation UI"
+          - "Build the user-feedback capture and review queue"
+        surfaces: ["Admin", "iOS", "Android", "Web", "Backend"]
+        priority: "Low"
+        complexity: "Medium"
+        status: "Ready"
