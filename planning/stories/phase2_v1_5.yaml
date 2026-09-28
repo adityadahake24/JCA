@@ -370,10 +370,10 @@ modules:
         status: "Ready"
       - id: "L10N2-2"
         story: "As an admin, I want a reviewer workflow for translation submissions so quality is verified before a translation goes live, per RFP §5.2."
-        acceptance_criteria: "A submitted translation enters a pending-review state; a designated reviewer approves or rejects with comments before it becomes the live value for that locale."
+        acceptance_criteria: "A submitted translation uses Payload's draft/publish workflow to enter a pending-review state; a designated reviewer approves (publishes) or rejects with comments before it becomes the live value for that locale, built on Payload's versioning rather than a bespoke review-state machine."
         subtasks:
-          - "Build the translation submission and review-queue workflow"
-          - "Wire approve/reject with reviewer comments"
+          - "Configure draft/publish access control on the LocalizationStrings collection"
+          - "Add a reviewer-comments field and approve/reject actions"
         surfaces: ["Admin", "Backend"]
         priority: "High"
         complexity: "Medium"
@@ -382,7 +382,7 @@ modules:
         story: "As a translator, I want a context-aware editing interface showing where a string appears in the app so I can translate accurately, per RFP §5.2."
         acceptance_criteria: "Translator UI shows a screenshot or screen-context preview alongside each string being translated; Sanskrit/Prakrit terms are visibly locked as non-translatable per L10N-3."
         subtasks:
-          - "Build the context-aware translator interface with screen previews"
+          - "Build a custom Payload field component adding the screen-context preview to the LocalizationStrings editor"
           - "Enforce the non-translatable-term lock in the UI"
         surfaces: ["Admin", "Backend"]
         priority: "Medium"

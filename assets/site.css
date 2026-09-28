@@ -229,6 +229,20 @@
   font-family:inherit; background:var(--paper); color:var(--ink); min-width:230px; }
 .site-input:focus { outline:none; border-color:var(--indigo-soft); box-shadow:0 0 0 3px rgba(46,58,89,0.10); }
 
+/* ===== NEWSLETTER — tall centred card, not a thin bar ===== */
+.site-newsletter { background:linear-gradient(135deg,var(--indigo-deep),var(--indigo)); border-radius:var(--r-lg);
+  padding:76px 40px; text-align:center; }
+.site-newsletter .site-eyebrow { color:var(--saffron-light); justify-content:center; }
+.site-newsletter .site-h2 { color:#fff; max-width:24ch; margin:0 auto 14px; }
+.site-newsletter p { color:rgba(246,241,231,0.82); max-width:46ch; margin:0 auto 32px; }
+.site-newsletter .site-subscribe { flex-direction:column; align-items:stretch; max-width:340px; margin:0 auto; gap:12px; }
+.site-newsletter .site-input { width:100%; background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.25); color:#fff; }
+.site-newsletter .site-input::placeholder { color:rgba(246,241,231,0.55); }
+.site-newsletter .btn-primary { width:100%; background:var(--saffron); color:var(--indigo-deep); }
+.site-newsletter .btn-primary:hover { background:var(--saffron-light); }
+.site-newsletter-note { color:rgba(246,241,231,0.55) !important; font-size:12px; max-width:none !important; margin:16px auto 0 !important; }
+@media (max-width:700px) { .site-newsletter { padding:56px 24px; } }
+
 /* ===== PHOTO STRIP (masonry reused, plus a simple even grid) ===== */
 .site-photogrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
 .site-photogrid .ph { aspect-ratio:4/3; border-radius:var(--r); overflow:hidden; position:relative; background:var(--sand-warm); }
@@ -247,6 +261,88 @@
 @media (max-width:800px) {
   .site-shrine, .site-shrine.rev { grid-template-columns:1fr; gap:20px; }
   .site-shrine.rev .art { order:0; }
+}
+
+/* ===== ANNOUNCEMENT TICKER ===== */
+.site-ticker { background:var(--indigo-deep); color:rgba(246,241,231,0.92); }
+.site-ticker-rail { max-width:1160px; margin:0 auto; padding:0 24px; height:38px; display:flex; align-items:center; gap:14px; }
+.site-ticker-icon { font-size:13px; flex-shrink:0; }
+.site-ticker-viewport { position:relative; flex:1; height:100%; overflow:hidden; }
+.site-ticker-item {
+  position:absolute; inset:0; display:flex; align-items:center; gap:6px;
+  font-size:12.5px; color:rgba(246,241,231,0.88);
+  opacity:0; transform:translateY(6px); transition:opacity .4s ease,transform .4s ease;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none;
+}
+.site-ticker-item.on { opacity:1; transform:translateY(0); pointer-events:auto; }
+.site-ticker-item a { color:var(--saffron-light); font-weight:600; }
+.site-ticker-dots { display:flex; gap:6px; flex-shrink:0; }
+.site-ticker-dots span { width:5px; height:5px; border-radius:50%; background:rgba(246,241,231,0.3); cursor:pointer; }
+.site-ticker-dots span.on { background:var(--saffron-light); }
+@media (max-width:700px) { .site-ticker-dots { display:none; } }
+
+/* ===== REVEAL-ON-SCROLL — applied selectively (gallery + app preview only),
+   never on every section: one deliberate entrance beats a scattered default. */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+@media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; } }
+
+/* photogrid additions: CTA tile, caption subtitle, hover zoom (interaction-triggered) */
+.site-photogrid .ph { transition:box-shadow .25s ease; }
+.site-photogrid .ph img { transition:transform .5s ease; }
+.site-photogrid .ph:hover img, .site-photogrid .ph:focus-visible img { transform:scale(1.05); }
+.site-photogrid .ph .cap em { display:block; font-style:normal; opacity:0.78; font-size:11px; margin-top:2px; }
+.site-photogrid .ph.more { display:flex; align-items:center; justify-content:center; background:var(--sand-warm); border:1px dashed var(--rule); }
+.site-photogrid .ph.more .more-in { text-align:center; font-family:'Fraunces',serif; font-weight:600; font-size:14.5px; color:var(--indigo); padding:0 20px; }
+.site-photogrid .ph.more svg { display:block; width:16px; height:16px; margin:8px auto 0; stroke:currentColor; fill:none; stroke-width:1.8; }
+
+/* ===== RECENT MOMENTS — auto-scrolling filmstrip, pauses on hover/focus =====
+   This strip is deliberately full-bleed (outside .site-wrap), so its
+   container can be wider than any single repeat of the 6 photos. FOUR
+   identical .site-moments-set children guarantee (n-1)*setWidth stays
+   wider than the viewport even on large desktop windows — a 2- or 3-set
+   track ran out of content before the animation's low point, so a bare
+   gap of empty section background showed before it repeated. Each set
+   carries its own trailing gap (not one gap on the shared track) so all
+   four are exactly equal width and -25% lands precisely on a seam, with
+   no visible jump. */
+.site-moments { overflow:hidden; padding:4px 0; }
+.site-moments-track { display:flex; width:max-content; animation:moments-scroll 50s linear infinite; }
+.site-moments:hover .site-moments-track, .site-moments:focus-within .site-moments-track { animation-play-state:paused; }
+.site-moments-set { display:flex; gap:28px; padding-right:28px; }
+.site-moments-set figure { flex-shrink:0; width:130px; text-align:center; }
+.site-moments-set img { width:130px; height:130px; border-radius:50%; object-fit:cover; box-shadow:var(--shadow-sm); border:3px solid var(--paper); }
+.site-moments-set figcaption { font-size:12px; color:var(--muted); margin-top:10px; max-width:140px; margin-left:auto; margin-right:auto; }
+@keyframes moments-scroll { from { transform:translateX(0); } to { transform:translateX(-25%); } }
+
+/* ===== APP PROMOTION ===== */
+.site-appband { background:var(--stone); }
+.site-applist { list-style:none; margin:22px 0 28px; display:flex; flex-direction:column; gap:11px; }
+.site-applist li { position:relative; padding-left:26px; font-size:14.5px; color:var(--ink-soft); }
+.site-applist li::before { content:''; position:absolute; left:0; top:5px; width:15px; height:15px; border-radius:50%; background:var(--paper); box-shadow:inset 0 0 0 1px var(--rule); }
+.site-applist li::after { content:''; position:absolute; left:5.5px; top:8px; width:4px; height:7px; border-right:2px solid var(--brass); border-bottom:2px solid var(--brass); transform:rotate(45deg); }
+
+.site-storebadges { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+.store-badge { display:flex; align-items:center; gap:10px; padding:9px 18px 9px 14px; background:var(--ink); color:#fff; border-radius:10px; border:1px solid var(--ink); }
+.store-badge:hover, .store-badge:focus-visible { background:var(--indigo-deep); }
+.store-badge .ic { width:21px; height:21px; flex-shrink:0; fill:currentColor; }
+.store-badge .tx { display:flex; flex-direction:column; line-height:1.18; }
+.store-badge .tx em { font-style:normal; font-size:9.5px; color:rgba(255,255,255,0.72); }
+.store-badge .tx b { font-family:'Fraunces',serif; font-size:15px; font-weight:600; }
+.site-appnote { font-size:12.5px; color:var(--muted); max-width:44ch; }
+.site-appnote a { color:var(--indigo); font-weight:600; }
+
+.site-phone-preview { position:relative; display:flex; justify-content:center; }
+.site-phone-glow { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:280px; height:280px; border-radius:50%;
+  background:radial-gradient(circle,rgba(176,141,79,0.28),transparent 70%); filter:blur(6px); z-index:0; }
+.site-phone-frame { position:relative; z-index:1; width:230px; height:498px; border-radius:34px; overflow:hidden; background:#050505;
+  box-shadow:0 0 0 2px #384265, 0 0 0 9px #14192b, 0 0 0 10px #384265, 0 40px 70px rgba(20,25,43,0.35); }
+.site-phone-notch { position:absolute; top:10px; left:50%; transform:translateX(-50%); width:74px; height:20px; background:#050505; border-radius:12px; z-index:2; }
+.site-phone-frame iframe { display:block; width:390px; height:844px; border:0; transform:scale(0.59); transform-origin:top left; pointer-events:none; }
+@media (max-width:960px) {
+  .site-phone-frame { width:200px; height:433px; }
+  .site-phone-frame iframe { transform:scale(0.5128); }
+  .site-phone-notch { width:64px; height:17px; }
 }
 
 /* ===== FOOTER ===== */

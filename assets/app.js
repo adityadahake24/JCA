@@ -299,6 +299,76 @@
     });
   })();
 
+  /* ---------- marketing announcement ticker (index.html only) ---------- */
+  (function siteTicker() {
+    var items = document.querySelectorAll('.site-ticker-item');
+    var dots = document.querySelectorAll('.site-ticker-dots span');
+    if (!items.length) return;
+    var i = 0;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(n) {
+      items[i].classList.remove('on');
+      if (dots[i]) dots[i].classList.remove('on');
+      i = ((n % items.length) + items.length) % items.length;
+      items[i].classList.add('on');
+      if (dots[i]) dots[i].classList.add('on');
+    }
+    var timer;
+    function restart() {
+      clearInterval(timer);
+      if (reduced) return;
+      timer = setInterval(function () { go(i + 1); }, 6000);
+    }
+    dots.forEach(function (d, n) {
+      d.addEventListener('click', function () { go(n); restart(); });
+    });
+    restart();
+  })();
+
+  /* ---------- reveal-on-scroll (elements opted in with .reveal, once each) ---------- */
+  (function revealOnScroll() {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.16 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
+  /* ---------- count-up figures (index.html gallery stats, [data-count-to]) ---------- */
+  (function countUpFigures() {
+    var els = document.querySelectorAll('[data-count-to]');
+    if (!els.length) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animate(el) {
+      var to = parseInt(el.dataset.countTo, 10) || 0;
+      var suffix = el.dataset.suffix || '';
+      if (reduced) { el.textContent = to.toLocaleString() + suffix; return; }
+      var start = null, dur = 1100;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min(1, (ts - start) / dur);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(to * eased).toLocaleString() + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if (!('IntersectionObserver' in window)) { els.forEach(animate); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { animate(en.target); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.5 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+
   /* ---------- floating chatbot widget (index.html only — element presence gates it) ---------- */
   (function chatWidget() {
     var toggle = document.getElementById('chat-toggle');
