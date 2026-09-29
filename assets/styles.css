@@ -95,7 +95,7 @@ img { max-width:100%; display:block; }
 .topbar .me .mn { font-size:13px; font-weight:600; }
 .topbar .me .mr { font-size:11px; color:var(--muted); }
 
-.view { padding:26px; max-width:1500px; width:100%; }
+.view { padding:26px 32px; width:100%; max-width:none; box-sizing:border-box; }
 .view-head { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:22px; gap:20px; flex-wrap:wrap; }
 .view-head h1 { font-family:'Fraunces',serif; font-size:27px; font-weight:600; letter-spacing:-0.01em; }
 .view-head .sub { font-size:13px; color:var(--muted); margin-top:4px; }
@@ -627,7 +627,7 @@ table.tbl { width:100%; border-collapse:collapse; font-size:13px; }
 
 /* document (edit) view */
 .cms-doc { display:grid; grid-template-columns:minmax(0,1fr) 320px; }
-.cms-doc-main { padding:24px 28px; max-width:760px; }
+.cms-doc-main { padding:24px 28px; max-width:none; }
 .cms-side { padding:20px 18px; border-left:1px solid var(--c-line); background:#fafafa; }
 .cms-tabs { display:flex; gap:4px; border-bottom:1px solid var(--c-line); padding:0 28px; margin:0; background:none; }
 .cms-tabs button { padding:11px 4px; margin-right:20px; font-size:12.5px; font-weight:600; color:var(--c-muted); border-bottom:2px solid transparent; border-radius:0; }
