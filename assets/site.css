@@ -536,3 +536,14 @@ button.jcal-cell:hover, .jcal-cell.sel { border-color:var(--brass); box-shadow:0
 .jcal-detail:not(.on) { display:none; }
 .jcal-detail .panel + .panel { margin-top:16px; }
 @media (max-width:560px){ .jcal-cell { padding:5px; font-size:13px; } .jcal-today { display:none; } }
+
+/* Givings journey card on the indigo theme */
+.journey-give .cause-card { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.2); box-shadow:none; color:#fff; }
+.journey-give .cause-card .ds, .journey-give .cause-card .amt-row { color:rgba(246,241,231,0.78); }
+.journey-give .bar { background:rgba(255,255,255,0.18); }
+.journey-give .bar .f, .journey-give .bar .f.i { background:linear-gradient(90deg,var(--saffron-light),var(--saffron)); }
+.journey-give .chip-amt { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.3); color:#fff; }
+.journey-give .chip-amt:hover, .journey-give .chip-amt.on { background:#fff; color:var(--indigo); border-color:#fff; }
+.journey-give .btn-primary { background:#fff; color:var(--indigo); }
+.journey-give .btn-primary:hover { background:var(--sand); }
+@media (max-width:900px){ .journey-give { padding:28px 26px; } }
