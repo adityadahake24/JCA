@@ -110,7 +110,7 @@ img { max-width:100%; display:block; }
 .phase-badge.v2 { background:var(--info-bg); color:var(--indigo); }
 
 /* buttons */
-.btn { display:inline-flex; align-items:center; gap:7px; padding:9px 16px; border-radius:var(--r-sm); font-size:13px; font-weight:600; border:1px solid transparent; white-space:nowrap; }
+.btn { display:inline-flex; align-items:center; justify-content:center; text-align:center; line-height:1.2; gap:7px; padding:9px 16px; border-radius:var(--r-sm); font-size:13px; font-weight:600; border:1px solid transparent; white-space:nowrap; }
 .btn svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:2; }
 .btn-primary { background:var(--indigo); color:#fff; }
 .btn-primary:hover { background:var(--indigo-soft); }
