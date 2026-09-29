@@ -31,7 +31,7 @@
     <div class="site-links">
       <a href="index.html">Home</a>
       <a href="calendar.html" class="on" aria-current="page">Calendar</a>
-      <a href="giving.html">Giving</a>
+      <a href="giving.html">Givings</a>
       <a href="community.html">Community</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
@@ -49,7 +49,7 @@
 <div class="site-drawer" id="site-drawer" data-site-drawer>
   <a href="index.html">Home</a>
   <a href="calendar.html" class="on">Calendar</a>
-  <a href="giving.html">Giving</a>
+  <a href="giving.html">Givings</a>
   <a href="community.html">Community</a>
   <a href="gallery.html">Gallery</a>
   <a href="about.html">About</a>
@@ -70,62 +70,21 @@
     </div>
   </section>
 
-  <!-- DAILY / WEEKLY RHYTHM -->
-  <section class="site-section tight">
-    <div class="site-wrap">
-      <div class="site-split">
-        <div class="head">
-          <div class="site-eyebrow">Every day</div>
-          <h2 class="site-h2">Open 7 AM to 7 PM, every day of the year</h2>
-          <p class="site-standfirst">No sign-in or appointment needed for darshan — arrive any time during open hours.</p>
-        </div>
-        <div class="grid g2">
-          <div class="panel">
-            <div class="panel-h"><h3>Today's schedule</h3><span class="pill good hours-open"><span class="d"></span>Open now</span></div>
-            <div class="panel-b">
-              <div class="hours-row"><span>Mangal Aarti</span><span>6:30 AM</span></div>
-              <div class="hours-row"><span>Darshan &amp; visiting hours</span><span>7:00 AM – 7:00 PM</span></div>
-              <div class="hours-row"><span>Pratikraman</span><span>6:45 PM</span></div>
-              <div class="hours-row"><span>Sandhya Aarti</span><span>7:00 PM</span></div>
-            </div>
-          </div>
-          <div class="panel">
-            <div class="panel-h"><h3>Every week</h3></div>
-            <div class="panel-b">
-              <div class="hours-row"><span>Pathshala classes</span><span>Sundays, Library</span></div>
-              <div class="hours-row"><span>Snatra Puja</span><span>First Sunday</span></div>
-              <div class="hours-row"><span>Youth Group</span><span>Sundays</span></div>
-              <div class="hours-row"><span>Senior Group</span><span>Wednesdays</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FULL YEAR -->
+  <!-- FULL CALENDAR -->
   <section class="site-section">
     <div class="site-wrap">
-      <div class="site-eyebrow">2026</div>
-      <h2 class="site-h2">This year's festivals &amp; gatherings</h2>
-      <div class="site-eventlist" style="margin-top:24px;">
-        <div class="site-event">
-          <div class="dt">Apr 26<span>Sunday</span></div>
-          <div><div class="nm">Bhagwan Mahavir Janma Kalyanak</div><div class="ds">The birth anniversary of the 24th Tirthankara — observed across all five shrines, with a full schedule of pujas.</div></div>
+      <div class="jcal" id="jcal">
+        <div class="jcal-head">
+          <button class="jcal-nav" id="jcal-prev" aria-label="Previous month">&#8249;</button>
+          <h2 class="jcal-title" id="jcal-title" aria-live="polite"></h2>
+          <button class="jcal-nav" id="jcal-next" aria-label="Next month">&#8250;</button>
+          <button class="btn btn-ghost jcal-today" id="jcal-today">Today</button>
         </div>
-        <div class="site-event">
-          <div class="dt">Aug 21–29<span>9 days</span></div>
-          <div><div class="nm">Paryushan &amp; Das Lakshan Maha Parv</div><div class="ds">The year's principal observance — fasting, pratikraman, and pravachan across every tradition, culminating in Samvatsari.</div></div>
-        </div>
-        <div class="site-event">
-          <div class="dt">Nov 8<span>Sunday</span></div>
-          <div><div class="nm">Diwali Celebration</div><div class="ds">Marking Bhagwan Mahavir's liberation (moksha) — lamps, sweets, and a community dinner in the Main Hall.</div></div>
-        </div>
-        <div class="site-event">
-          <div class="dt">Dec 14<span>Monday</span></div>
-          <div><div class="nm">General Body Meeting</div><div class="ds">The annual meeting of the membership — committee elections and the year's financial report.</div></div>
-        </div>
+        <div class="jcal-grid jcal-dow" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+        <div class="jcal-grid" id="jcal-days" role="grid"></div>
+        <p class="jcal-hint"><span class="jcal-legend-dot"></span> Days with an event &mdash; select one to see its details below.</p>
       </div>
+      <div class="jcal-detail" id="jcal-detail" tabindex="-1" aria-live="polite"></div>
     </div>
   </section>
 
@@ -176,10 +135,10 @@
         <a href="about.html#contact">Contact &amp; directions</a>
       </div>
       <div>
-        <h4>Give</h4>
+        <h4>Donate</h4>
         <a href="giving.html">Causes</a>
         <a href="giving.html#bhojanshala">Sponsor Bhojanshala</a>
-        <a href="giving.html#ways">Ways to give</a>
+        <a href="giving.html#ways">Ways to donate</a>
       </div>
       <div>
         <h4>Community</h4>
@@ -221,5 +180,58 @@
 </div>
 
 <script src="assets/app.js"></script>
+<script>
+(function(){
+  var EVENTS=[
+    {id:'mahavir-janma-kalyanak',name:'Bhagwan Mahavir Janma Kalyanak',start:'2026-04-26',end:'2026-04-26',when:'Sunday, April 26, 2026',tag:'1 day',desc:'The birth anniversary of the 24th Tirthankara \u2014 observed across all five shrines, with a full schedule of pujas.',loc:'All five shrines'},
+    {id:'paryushan',name:'Paryushan & Das Lakshan Maha Parv',start:'2026-08-21',end:'2026-08-29',when:'August 21\u201329, 2026',tag:'9 days',desc:'The year\u2019s principal observance \u2014 fasting, pratikraman, and pravachan across every tradition, culminating in Samvatsari.',loc:'All five shrines'},
+    {id:'diwali',name:'Diwali Celebration',start:'2026-11-08',end:'2026-11-08',when:'Sunday, November 8, 2026',tag:'1 day',desc:'Marking Bhagwan Mahavir\u2019s liberation (moksha) \u2014 lamps, sweets, and a community dinner in the Main Hall.',loc:'Main Hall'},
+    {id:'general-body-meeting',name:'General Body Meeting',start:'2026-12-14',end:'2026-12-14',when:'Monday, December 14, 2026',tag:'1 day',desc:'The annual meeting of the membership \u2014 committee elections and the year\u2019s financial report.',loc:'Main Hall'}
+  ];
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  function d(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function key(y,m,day){return y+'-'+('0'+(m+1)).slice(-2)+'-'+('0'+day).slice(-2);}
+  function eventsOn(k){return EVENTS.filter(function(e){return k>=e.start&&k<=e.end;});}
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+  var now=new Date(), todayKey=key(now.getFullYear(),now.getMonth(),now.getDate());
+  var upcoming=EVENTS.filter(function(e){return e.end>=todayKey;})[0]||EVENTS[0];
+  var vy=d(upcoming.start).getFullYear(), vm=d(upcoming.start).getMonth();
+  var selected=null;
+  var daysEl=document.getElementById('jcal-days'), detail=document.getElementById('jcal-detail');
+
+  function render(){
+    document.getElementById('jcal-title').textContent=MONTHS[vm]+' '+vy;
+    var first=new Date(vy,vm,1).getDay(), n=new Date(vy,vm+1,0).getDate(), h='';
+    for(var i=0;i<first;i++) h+='<span class="jcal-cell empty"></span>';
+    for(var day=1;day<=n;day++){
+      var k=key(vy,vm,day), ev=eventsOn(k), cls='jcal-cell'+(k===todayKey?' today':'')+(k===selected?' sel':'')+(ev.length?' has':'');
+      if(ev.length) h+='<button class="'+cls+'" data-k="'+k+'" aria-label="'+MONTHS[vm]+' '+day+': '+esc(ev.map(function(e){return e.name;}).join(', '))+'"><span class="n">'+day+'</span><span class="jcal-dot"></span></button>';
+      else h+='<span class="'+cls+'"><span class="n">'+day+'</span></span>';
+    }
+    daysEl.innerHTML=h;
+  }
+  function show(k,ev0,scroll){
+    selected=k; var ev=eventsOn(k);
+    if(ev0) ev=EVENTS.filter(function(e){return e.id===ev0;});
+    if(!ev.length) return;
+    detail.innerHTML=ev.map(function(e){return '<div class="panel"><div class="panel-b"><div class="pill info" style="margin-bottom:12px;">'+e.tag+'</div>'+
+      '<h3 style="font-family:var(--font-main);font-size:22px;margin-bottom:10px;">'+esc(e.name)+'</h3>'+
+      '<p style="font-size:14px;color:var(--ink-soft);line-height:1.7;">'+e.desc+'</p>'+
+      '<div class="hours-row" style="margin-top:14px;"><span>Date</span><span>'+e.when+'</span></div>'+
+      '<div class="hours-row"><span>Location</span><span>'+e.loc+'</span></div>'+
+      '<a class="btn btn-primary" href="login.html" style="margin-top:16px;">Get reminders for this event</a></div></div>';}).join('');
+    detail.classList.add('on'); render();
+    if(scroll){detail.scrollIntoView({behavior:'smooth',block:'start'}); try{detail.focus({preventScroll:true});}catch(x){}}
+  }
+  daysEl.addEventListener('click',function(e){var b=e.target.closest('[data-k]'); if(b) show(b.getAttribute('data-k'),null,true);});
+  document.getElementById('jcal-prev').onclick=function(){vm--; if(vm<0){vm=11;vy--;} render();};
+  document.getElementById('jcal-next').onclick=function(){vm++; if(vm>11){vm=0;vy++;} render();};
+  document.getElementById('jcal-today').onclick=function(){vy=now.getFullYear();vm=now.getMonth();render();};
+  render();
+  var hash=location.hash.slice(1), he=EVENTS.filter(function(e){return e.id===hash;})[0];
+  if(he){vy=d(he.start).getFullYear();vm=d(he.start).getMonth();show(he.start,he.id,true);}
+})();
+</script>
 </body>
 </html>

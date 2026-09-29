@@ -34,6 +34,7 @@
   --dark-text:rgba(246,241,231,0.92); --dark-text-soft:rgba(246,241,231,0.6);
 }
 
+* { font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; }
 * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
 html { scroll-behavior:smooth; }
 body { font-family:var(--font-main); font-feature-settings:"lnum" 1; /* Playfair defaults to old-style figures — use lining so times/dates/amounts read evenly */ background:var(--sand); color:var(--ink); font-size:14px; line-height:1.5; }
@@ -723,7 +724,7 @@ table.tbl { width:100%; border-collapse:collapse; font-size:13px; }
 }
 
 /* one font everywhere — form controls must not fall back to the browser's system font */
-input, select, textarea, button { font-family:inherit; }
+input, select, textarea, button { font-family:inherit; font-feature-settings:"lnum" 1; font-variant-numeric:lining-nums; }
 
 /* quote font — ONE style for every mantra / thought / quote (matches Thought for Today) */
 .thought-card .q, .login-art .navkar, .site-hero-home .navkar, .site-quote p {

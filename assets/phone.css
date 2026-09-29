@@ -38,6 +38,7 @@
    Reset & base
    ========================================================================== */
 
+* { font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; }
 * { box-sizing:border-box; margin:0; padding:0; -webkit-font-smoothing:antialiased; }
 html { scroll-behavior:smooth; }
 body {
@@ -582,4 +583,4 @@ img { max-width:100%; display:block; }
 }
 
 /* one font everywhere — form controls must not fall back to the browser system font */
-input, select, textarea, button { font-family:inherit; }
+input, select, textarea, button { font-family:inherit; font-feature-settings:"lnum" 1; font-variant-numeric:lining-nums; }
