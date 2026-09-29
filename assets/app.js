@@ -299,6 +299,44 @@
     });
   })();
 
+  /* ---------- transparent nav over the home hero photo (index.html only) ---------- */
+  (function siteHeroNav() {
+    var nav = document.querySelector('.site-nav');
+    var hero = document.querySelector('.site-hero-home');
+    if (!nav || !hero) return;
+    if (!('IntersectionObserver' in window)) return;
+    nav.classList.add('site-nav--on-hero');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        nav.classList.toggle('site-nav--on-hero', entry.isIntersecting);
+      });
+    });
+    io.observe(hero);
+  })();
+
+  /* ---------- home hero logo shrinks into the nav logo as you scroll (index.html only) ---------- */
+  (function siteHeroLogo() {
+    var hero = document.querySelector('.site-hero-home');
+    var heroLogo = document.querySelector('.site-hero-logo');
+    if (!hero || !heroLogo) return;
+    var root = document.documentElement;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var end = hero.offsetHeight * 0.55;
+      var p = end > 0 ? Math.min(1, Math.max(0, window.scrollY / end)) : 0;
+      root.style.setProperty('--hlp', p.toFixed(3));
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
+
   /* ---------- marketing announcement ticker (index.html only) ---------- */
   (function siteTicker() {
     var items = document.querySelectorAll('.site-ticker-item');
@@ -325,6 +363,44 @@
     restart();
   })();
 
+  /* ---------- scrollytelling journey: dotted arc + crossfading photos (index.html only) ---------- */
+  (function journeyScrolly() {
+    var section = document.querySelector('.journey');
+    if (!section) return; // 4 steps / 4 photos / 4 dots
+    var steps = section.querySelectorAll('.journey-step');
+    var photos = section.querySelectorAll('.journey-photo');
+    var dots = section.querySelectorAll('.journey-dot');
+    var clipRect = section.querySelector('.journey-arc-clip-rect');
+    var arcViewboxHeight = 780; // matches the arc <svg viewBox="0 0 800 780"> in index.html
+    function setActive(i) {
+      photos.forEach(function (p, idx) { p.classList.toggle('active', idx === i); });
+      dots.forEach(function (d, idx) {
+        d.classList.toggle('active', idx <= i);
+        d.classList.toggle('current', idx === i);
+      });
+      if (clipRect && steps.length > 1) {
+        var progress = i / (steps.length - 1);
+        clipRect.setAttribute('height', String(arcViewboxHeight * progress));
+      }
+    }
+    if (!steps.length) return;
+    // active step = the card whose centre is nearest the viewport centre (the card sitting beside the sticky photo)
+    var current = -1;
+    function update() {
+      var mid = window.innerHeight / 2, best = 0, bestD = Infinity;
+      steps.forEach(function (s, idx) {
+        var card = s.querySelector('.journey-step-card') || s;
+        var r = card.getBoundingClientRect();
+        var d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestD) { bestD = d; best = idx; }
+      });
+      if (best !== current) { current = best; setActive(best); }
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
   /* ---------- reveal-on-scroll (elements opted in with .reveal, once each) ---------- */
   (function revealOnScroll() {
     var els = document.querySelectorAll('.reveal');
@@ -341,7 +417,7 @@
     els.forEach(function (e) { io.observe(e); });
   })();
 
-  /* ---------- count-up figures (index.html gallery stats, [data-count-to]) ---------- */
+  /* ---------- count-up figures (index.html/visit.html stat strips, [data-count-to]) ---------- */
   (function countUpFigures() {
     var els = document.querySelectorAll('[data-count-to]');
     if (!els.length) return;

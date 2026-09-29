@@ -4,7 +4,7 @@
 
    Loads on top of styles.css and uses its tokens (:root) and shared
    primitives (.btn, .pill, .tag, .panel, .grid, .cause-card, .chip-amt,
-   .panchang-card, .timeline, .ratna3, .medallion, .navkar, .field, .tbl,
+   .panchang-card, .timeline, .medallion, .navkar, .field, .tbl,
    .chat-toggle/.chat-panel) without modifying any of them — those are
    load-bearing in app.html / admin.html / phone.html / login.html too.
 
@@ -28,27 +28,38 @@
 .site-skip:focus { left:16px; top:16px; }
 
 /* ===== TOP NAV ===== */
-.site-nav { position:sticky; top:0; z-index:40; background:rgba(250,246,239,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+.site-nav { position:sticky; top:0; z-index:40; background:rgba(250,246,239,0.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); transition:background .25s ease, border-color .25s ease; }
+.site-nav.site-nav--on-hero { background:transparent; backdrop-filter:none; border-bottom-color:transparent; }
+.site-nav--on-hero .site-logo .bt { color:var(--ink); text-shadow:0 1px 4px rgba(255,255,255,0.55); }
+.site-nav--on-hero .site-logo .bs { color:var(--ink-soft); text-shadow:0 1px 4px rgba(255,255,255,0.55); }
 .site-nav-inner { max-width:1160px; margin:0 auto; padding:0 24px; height:76px; display:flex; align-items:center; gap:6px; }
 .site-logo { display:flex; align-items:center; gap:11px; margin-right:auto; }
 .site-logo img { width:38px; height:38px; border-radius:50%; }
 .site-logo .bt { display:block; font-family:'Fraunces',serif; font-variation-settings:'opsz' 24; font-size:16px; font-weight:600; color:var(--ink); line-height:1.15; }
 .site-logo .bs { display:block; font-size:10.5px; color:var(--muted); margin-top:1px; }
-.site-links { display:flex; gap:30px; margin-right:28px; }
-.site-links a { font-size:14px; font-weight:600; color:var(--ink-soft); padding:4px 0; border-bottom:2px solid transparent; }
-.site-links a:hover { color:var(--indigo); }
-.site-links a.on { color:var(--indigo); border-bottom-color:var(--saffron); }
+.site-links { display:flex; gap:6px; margin-right:20px; }
+.site-links a { font-size:14px; font-weight:600; padding:9px 14px; border-radius:var(--r-sm); }
 .site-cta { display:flex; gap:10px; align-items:center; }
+/* Every nav-bar control except "Become a member": same tint as the nav bar itself (no
+   border) so each one visually merges with the bar once scrolled solid, and reads as a
+   soft glass chip while the bar is transparent over the hero photo — one rule covers
+   both states because the colour never changes. */
+.site-nav .btn-ghost, .site-nav .site-phone-link, .site-nav .site-nav-toggle, .site-nav .site-links a {
+  background:rgba(250,246,239,0.65); border-color:transparent; color:var(--ink);
+  backdrop-filter:blur(8px) saturate(140%); -webkit-backdrop-filter:blur(8px) saturate(140%);
+  transition:background .25s ease;
+}
+.site-nav .btn-ghost:hover, .site-nav .site-phone-link:hover, .site-nav .site-nav-toggle:hover,
+.site-nav .site-links a:hover { background:rgba(250,246,239,0.92); }
+.site-nav .site-links a.on { color:var(--indigo); }
 /* Temp dev/demo switcher to the phone mockup — mirrors phone.html's own
    "Desktop app" / "Marketing site" links back to this site, and app.html's
    sidebar "Phone App" link, so all three surfaces can reach one another. */
 .site-phone-link { display:flex; align-items:center; justify-content:center; width:38px; height:38px;
   border-radius:50%; border:1px solid var(--line); color:var(--muted); background:var(--paper); flex-shrink:0; }
-.site-phone-link:hover { background:var(--sand-warm); color:var(--ink); }
 .site-phone-link svg { width:17px; height:17px; stroke:currentColor; fill:none; stroke-width:1.8; }
-.site-nav-toggle { display:none; width:40px; height:40px; align-items:center; justify-content:center; color:var(--ink); border-radius:8px; flex-shrink:0; }
+.site-nav-toggle { display:none; width:40px; height:40px; align-items:center; justify-content:center; color:var(--ink); border-radius:8px; flex-shrink:0; transition:background .25s ease, box-shadow .25s ease; }
 .site-nav-toggle svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; }
-.site-nav-toggle:hover { background:var(--sand-warm); }
 
 @media (max-width:900px) {
   .site-links { display:none; }
@@ -88,30 +99,9 @@
   .site-split .head { position:static; }
 }
 
-/* A — full-bleed band. Plain (gradient only) by default: the project's real
-   photos are ~416px wide and visibly blur when stretched full-bleed, so a
-   photographic band only applies when a source photo is confirmed large
-   enough (see .site-band.photo, currently unused for that reason). */
-.site-band { position:relative; color:#fff; overflow:hidden;
-  background:linear-gradient(120deg,var(--indigo-deep),var(--indigo)); }
-.site-band.photo { background:var(--indigo-deep); }
-.site-band .ph { position:absolute; inset:0; }
-.site-band .ph img { width:100%; height:100%; object-fit:cover; }
-.site-band .ph::after { content:''; position:absolute; inset:0;
-  background:linear-gradient(180deg,rgba(29,36,56,0.55),rgba(20,25,40,0.85)); }
-.site-band .in { position:relative; padding:96px 0; }
-.site-band h2, .site-band h3 { color:#fff; }
-.site-band p { color:rgba(246,241,231,0.82); }
-.site-band .site-eyebrow { color:var(--saffron-light); }
-@media (max-width:700px) { .site-band .in { padding:64px 0; } }
-
 /* C — single reading column */
 .site-measure { max-width:70ch; margin:0 auto; }
 .site-measure.left { margin:0; }
-
-/* section mark — reuses .ratna3, just recentres it without the hero's top margin */
-.site-mark { display:flex; justify-content:center; }
-.site-mark .ratna3 { margin-top:0; }
 
 /* page hero (interior pages) */
 .site-pagehero { padding:60px 0 46px; border-bottom:1px solid var(--line); }
@@ -119,16 +109,46 @@
 .site-pagehero h1 { font-family:'Fraunces',serif; font-variation-settings:'opsz' 144; font-weight:600;
   font-size:clamp(32px,4.6vw,46px); line-height:1.1; margin-bottom:16px; max-width:17ch; }
 
-/* home hero */
-.site-hero-home { padding:56px 0 36px; }
-.site-hero-home .gr { display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
-@media (max-width:960px) { .site-hero-home .gr { grid-template-columns:1fr; } }
-.site-hero-home .status { display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-soft); margin-bottom:22px; }
-.site-hero-home .status .d { width:7px; height:7px; border-radius:50%; background:var(--good); }
-.site-hero-home h1 { font-family:'Fraunces',serif; font-variation-settings:'opsz' 144; font-weight:600;
-  font-size:clamp(32px,4.6vw,50px); line-height:1.13; margin-bottom:22px; max-width:14ch; }
-.site-hero-home .navkar { font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:var(--ink-soft); line-height:1.9; margin-bottom:28px; }
+/* home hero — full-bleed photo, runs from behind the nav to the bottom of the first screen */
+.site-hero-home { position:relative; margin-top:-76px; height:calc(100vh - 38px); min-height:480px;
+  display:flex; align-items:flex-end; overflow:hidden; padding-bottom:64px; }
+.site-hero-home-media { position:absolute; inset:0; z-index:0; }
+.site-hero-home-media img { width:100%; height:100%; object-fit:cover; }
+.site-hero-home-media::after { content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg,rgba(16,18,28,0.05) 0%,rgba(16,18,28,0.28) 55%,rgba(12,14,22,0.72) 100%); }
+.site-hero-home .site-wrap { position:relative; z-index:1; width:100%; display:flex; align-items:flex-end; justify-content:space-between; gap:48px; }
+.site-hero-home-content { max-width:620px; }
+.site-hero-home .navkar { font-family:'Fraunces',serif; font-style:italic; font-size:15px; color:rgba(255,255,255,0.88); line-height:1.9; margin-bottom:28px; }
 .site-hero-home .cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+@media (max-width:700px) { .site-hero-home { padding-bottom:44px; } }
+
+/* home hero — right-side "wing" panchang card (vertical timeline variant of .panchang-card) */
+.site-hero-panchang { flex-shrink:0; width:300px; background:rgba(20,24,38,0.56); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.16); border-radius:var(--r-lg); padding:26px 28px 28px; color:#fff; box-shadow:var(--shadow-lg); }
+.site-hero-panchang-eyebrow { font-size:10.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--saffron-light); }
+.site-hero-panchang-date { font-family:'Fraunces',serif; font-size:20px; font-weight:600; margin-top:8px; }
+.site-hero-panchang-day { font-size:12.5px; color:rgba(255,255,255,0.62); margin-top:3px; margin-bottom:22px; }
+.site-hero-panchang-rail { position:relative; padding-left:44px; }
+.site-hero-panchang-rail::before { content:''; position:absolute; left:17px; top:4px; bottom:4px; width:1px; background:rgba(255,255,255,0.2); }
+.site-hero-panchang-row { position:relative; display:flex; align-items:baseline; justify-content:space-between; gap:14px; padding:13px 0; }
+.site-hero-panchang-row .ic { position:absolute; left:-44px; top:50%; transform:translateY(-50%); width:34px; height:34px; border-radius:50%;
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.18); display:flex; align-items:center; justify-content:center; }
+.site-hero-panchang-row .ic svg { width:16px; height:16px; stroke:var(--saffron-light); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.site-hero-panchang-row .lb { font-size:13px; color:rgba(255,255,255,0.76); }
+.site-hero-panchang-row .tm { font-family:'Fraunces',serif; font-size:16px; font-weight:600; white-space:nowrap; }
+@media (max-width:900px) { .site-hero-home .site-wrap { flex-wrap:wrap; } .site-hero-panchang { width:100%; max-width:340px; } }
+@media (max-width:700px) { .site-hero-panchang { display:none; } }
+
+/* home hero logo lockup — shrinks and fades into the nav's own logo as the page scrolls (--hlp, 0→1, set in app.js) */
+.site-hero-logo { display:flex; align-items:center; gap:18px; margin-bottom:26px; transform-origin:left center;
+  opacity:calc(1 - var(--hlp,0)); transform:scale(calc(1 - 0.3*var(--hlp,0))) translateY(calc(-16px*var(--hlp,0)));
+  transition:opacity .12s linear, transform .12s linear; }
+.site-hero-logo img { width:72px; height:72px; border-radius:50%; box-shadow:0 4px 18px rgba(0,0,0,0.28); flex-shrink:0; }
+.site-hero-logo h1 { font-family:'Fraunces',serif; font-variation-settings:'opsz' 144; font-weight:600; color:#fff;
+  font-size:clamp(28px,4.2vw,42px); line-height:1.15; margin:0; text-shadow:0 2px 20px rgba(0,0,0,0.3); }
+.site-hero-logo h1 span { display:block; font-family:'Inter',sans-serif; font-size:0.4em; font-weight:500;
+  letter-spacing:0.01em; color:rgba(255,255,255,0.82); margin-top:5px; }
+.site-logo { opacity:var(--hlp,1); transition:opacity .12s linear; }
 
 /* ===== BUILDING ELEVATION — the site's organising device ===== */
 .site-elevation { border:1px solid var(--line); border-radius:var(--r-lg); background:var(--panel);
@@ -176,7 +196,7 @@
 
 /* ===== EVENT LIST ===== */
 .site-eventlist { display:flex; flex-direction:column; }
-.site-event { display:grid; grid-template-columns:128px 1fr auto; gap:20px; align-items:baseline; padding:22px 0; border-bottom:1px solid var(--line-soft); }
+.site-event { display:grid; grid-template-columns:128px 1fr; gap:20px; align-items:baseline; padding:22px 0; border-bottom:1px solid var(--line-soft); }
 .site-event:last-child { border-bottom:none; }
 .site-event .dt { font-family:'Fraunces',serif; font-weight:600; font-size:16px; color:var(--indigo); line-height:1.3; }
 .site-event .dt span { display:block; font-family:'Inter',sans-serif; font-weight:600; font-size:11px; color:var(--muted); letter-spacing:0.02em; }
@@ -184,7 +204,6 @@
 .site-event .ds { font-size:13px; color:var(--muted); margin-top:4px; }
 @media (max-width:700px) {
   .site-event { grid-template-columns:1fr; gap:6px; }
-  .site-event .tag { justify-self:flex-start; }
 }
 
 /* ===== STEPS (genuinely sequential content only) ===== */
@@ -243,14 +262,6 @@
 .site-newsletter-note { color:rgba(246,241,231,0.55) !important; font-size:12px; max-width:none !important; margin:16px auto 0 !important; }
 @media (max-width:700px) { .site-newsletter { padding:56px 24px; } }
 
-/* ===== PHOTO STRIP (masonry reused, plus a simple even grid) ===== */
-.site-photogrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-.site-photogrid .ph { aspect-ratio:4/3; border-radius:var(--r); overflow:hidden; position:relative; background:var(--sand-warm); }
-.site-photogrid .ph img { width:100%; height:100%; object-fit:cover; }
-.site-photogrid .ph .cap { position:absolute; left:0; right:0; bottom:0; padding:10px 12px; color:#fff; font-size:12px;
-  background:linear-gradient(180deg,transparent,rgba(20,25,40,0.72)); }
-@media (max-width:700px) { .site-photogrid { grid-template-columns:repeat(2,1fr); } }
-
 /* ===== SHRINE / FLOOR ROW (photo + description, alternating) ===== */
 .site-shrine { display:grid; grid-template-columns:320px 1fr; gap:40px; align-items:start; }
 .site-shrine.rev { grid-template-columns:1fr 320px; }
@@ -263,14 +274,119 @@
   .site-shrine.rev .art { order:0; }
 }
 
+/* ===== JOURNEY — scrollytelling through the five shrines (index.html only).
+   A true semicircle sits flush against the actual left edge of the browser
+   (.journey-arc-outer, absolutely positioned against the full-bleed .journey
+   section rather than the centred .site-wrap, so it reaches the real screen
+   edge on any viewport width) and opens toward the page — mirror image of a
+   "(" — bulging right so its midpoint runs well into the photo. The photo
+   (.journey-wrap, higher z-index) paints IN FRONT of the arc, so the line
+   appears to run *through* it, threading in and out from behind. Track and
+   fill are the same path with the same dot pattern (.journey-arc-track is
+   the always-visible muted dots; .journey-arc-fill is an identical dotted
+   line, same colour family but brighter, revealed top-down through a clipPath
+   rect as scroll progresses) so only one dotted line is ever on screen — the
+   "revealed" dots simply recolour in place rather than a second line drawing
+   over the first. Both the arc rail and the photo are position:sticky within
+   same-height containers so they release in sync as the five "steps" on the
+   right scroll past (state driven by app.js via IntersectionObserver: .active
+   toggled on .journey-photo/.journey-dot, and the clip rect's height animated
+   on scroll to reveal .journey-arc-fill). */
+.journey { position:relative; }
+.journey-arc-outer { position:absolute; inset:0; left:0; width:min(48vw,760px); z-index:0; pointer-events:none; }
+.journey { --jh:min(600px, calc(100vh - 170px)); }
+.journey { --joff:calc(50vh - var(--jh) / 2); }
+.journey-arc-rail { margin-top:var(--joff); position:sticky; top:calc(50vh - var(--jh) / 2); height:var(--jh); }
+.journey-arc-rail svg { width:100%; height:100%; display:block; overflow:visible; }
+.journey-arc-track { fill:none; stroke:var(--rule); stroke-width:2.5; stroke-dasharray:1 9; stroke-linecap:round; }
+.journey-arc-fill { fill:none; stroke:var(--brass); stroke-width:2.5; stroke-dasharray:1 9; stroke-linecap:round; }
+.journey-arc-clip-rect { transition:height .6s ease; }
+.journey-dot { fill:var(--paper); stroke:var(--rule); stroke-width:2.5; transition:fill .35s ease, stroke .35s ease; }
+.journey-dot.active { fill:var(--brass-light); stroke:var(--brass); }
+.journey-dot.current { fill:var(--brass); stroke:var(--brass); }
+
+.journey-wrap { position:relative; z-index:1; display:grid; grid-template-columns:minmax(320px,460px) 1fr; gap:56px; align-items:start; }
+.journey-media { margin-top:var(--joff); position:sticky; top:calc(50vh - var(--jh) / 2); height:var(--jh); display:flex; align-items:center; justify-content:center; }
+.journey-frame { position:relative; width:100%; max-width:460px; height:var(--jh); border-radius:var(--r-lg);
+  overflow:hidden; box-shadow:var(--shadow-lg); background:var(--sand-warm); margin:0 auto; }
+.journey-photo { position:absolute; inset:0; opacity:0; transform:scale(1.04); transition:opacity .8s ease, transform 1s ease; }
+.journey-photo.active { opacity:1; transform:scale(1); z-index:1; }
+.journey-photo img { width:100%; height:100%; object-fit:cover; }
+.journey-photo .cap { position:absolute; left:0; right:0; bottom:0; padding:18px 20px; color:#fff; font-size:14px;
+  background:linear-gradient(180deg,transparent,rgba(20,25,40,0.8)); }
+.journey-photo .cap em { display:block; font-style:normal; opacity:0.78; font-size:11.5px; margin-top:2px; }
+
+.journey-steps { display:flex; flex-direction:column; }
+.journey-steps { padding-top:var(--joff); }
+/* cards stack directly under each other (one photo-height each, small gap) so a card is always beside the sticky photo */
+.journey-step { display:flex; align-items:flex-start; padding:0 0 48px; }
+.journey-step:last-child { padding-bottom:0; }
+.journey-step-card { max-width:640px; width:100%; height:var(--jh); overflow:hidden; display:flex; flex-direction:column; justify-content:center; }
+.journey-panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:32px 40px; box-shadow:var(--shadow-sm); }
+.journey-panel .site-event { padding:14px 0; }
+.journey-step-dark { background:linear-gradient(120deg,var(--indigo-deep),var(--indigo)); color:#fff;
+  border-radius:var(--r-lg); padding:44px 40px; }
+.journey-gallery { display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:1fr; gap:10px; margin-top:20px; flex:1; min-height:0; }
+.journey-gallery a { position:relative; border-radius:var(--r-md,12px); overflow:hidden; background:var(--sand-warm); }
+.journey-gallery img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.journey-gallery a:hover img { transform:scale(1.06); }
+.journey-gallery .more { display:flex; align-items:center; justify-content:center; background:var(--indigo); color:#fff; font-weight:600; font-size:14px; }
+.journey-gallery .more:hover { background:var(--indigo-deep); }
+.journey-step-dark .site-eyebrow { color:var(--saffron-light); }
+
+@media (max-width:860px) {
+  .journey-arc-outer { display:none; }
+  .journey-wrap { grid-template-columns:1fr; gap:8px; }
+  .journey { --jh:auto; }
+  .journey-media { margin-top:0; position:static; height:320px; margin-bottom:8px; }
+  .journey-frame { max-width:260px; height:320px; }
+  .journey-steps { padding-top:0; }
+  .journey-step, .journey-step:last-child { min-height:auto; padding:36px 0; }
+  .journey-step-card { height:auto; }
+  .journey-gallery { grid-auto-rows:110px; }
+  .journey-panel { padding:28px 26px; }
+}
+@media (max-width:520px) {
+  .journey-media { height:280px; }
+  .journey-frame { max-width:220px; }
+}
+
+/* ===== GALLERY PAGE ===== */
+.gal-layout { display:grid; grid-template-columns:200px 1fr; gap:40px; align-items:start; }
+.gal-tabs { position:sticky; top:100px; display:flex; flex-direction:column; gap:6px; }
+.gal-tab { text-align:left; padding:13px 18px; border-radius:var(--r-sm); font-size:15px; font-weight:600; color:var(--ink-soft); border:1px solid transparent; }
+.gal-tab:hover { background:var(--stone); }
+.gal-tab.on { background:var(--indigo); color:#fff; }
+.gal-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; }
+.gal-grid figure { position:relative; margin:0; aspect-ratio:4/3; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+.gal-grid img { width:100%; height:100%; object-fit:cover; }
+.gal-grid figcaption { position:absolute; left:0; right:0; bottom:0; padding:22px 14px 10px; color:#fff; font-size:13px; font-weight:600; background:linear-gradient(180deg,transparent,rgba(20,25,40,0.78)); }
+.gal-album { position:relative; display:block; aspect-ratio:4/3; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+.gal-album div { position:absolute; left:0; right:0; bottom:0; padding:28px 16px 14px; color:#fff; background:linear-gradient(180deg,transparent,rgba(20,25,40,0.85)); }
+.gal-album b { display:block; font-family:'Fraunces',serif; font-size:17px; }
+.gal-album span { font-size:12px; opacity:.8; }
+.gal-tour { display:grid; grid-template-columns:1fr 260px; gap:20px; }
+.gal-tour-view { position:relative; aspect-ratio:16/10; border-radius:var(--r-lg); overflow:hidden; background:var(--sand-warm); }
+.gal-tour-view img { width:100%; height:100%; object-fit:cover; }
+.gal-tour-badge { position:absolute; left:14px; top:14px; background:rgba(20,25,40,0.7); color:#fff; font-size:12px; font-weight:600; padding:6px 12px; border-radius:100px; }
+.gal-tour-list { display:flex; flex-direction:column; gap:8px; }
+.gal-tour-list button { text-align:left; padding:12px 14px; border:1px solid var(--line); border-radius:var(--r-sm); font-size:13.5px; font-weight:600; background:var(--panel); }
+.gal-tour-list button.on { border-color:var(--indigo); color:var(--indigo); }
+@media (max-width:860px) {
+  .gal-layout { grid-template-columns:1fr; gap:20px; }
+  .gal-tabs { position:static; flex-direction:row; }
+  .gal-tour { grid-template-columns:1fr; }
+}
+
 /* ===== ANNOUNCEMENT TICKER ===== */
-.site-ticker { background:var(--indigo-deep); color:rgba(246,241,231,0.92); }
+.site-ticker { background:var(--indigo-deep); color:#fff; }
 .site-ticker-rail { max-width:1160px; margin:0 auto; padding:0 24px; height:38px; display:flex; align-items:center; gap:14px; }
 .site-ticker-icon { font-size:13px; flex-shrink:0; }
 .site-ticker-viewport { position:relative; flex:1; height:100%; overflow:hidden; }
-.site-ticker-item {
+.site-ticker .site-ticker-item {
   position:absolute; inset:0; display:flex; align-items:center; gap:6px;
-  font-size:12.5px; color:rgba(246,241,231,0.88);
+  font-size:12.5px; color:#fff; max-width:none;
   opacity:0; transform:translateY(6px); transition:opacity .4s ease,transform .4s ease;
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis; pointer-events:none;
 }
@@ -286,34 +402,6 @@
 .reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
 .reveal.in { opacity:1; transform:translateY(0); }
 @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; } }
-
-/* photogrid additions: CTA tile, caption subtitle, hover zoom (interaction-triggered) */
-.site-photogrid .ph { transition:box-shadow .25s ease; }
-.site-photogrid .ph img { transition:transform .5s ease; }
-.site-photogrid .ph:hover img, .site-photogrid .ph:focus-visible img { transform:scale(1.05); }
-.site-photogrid .ph .cap em { display:block; font-style:normal; opacity:0.78; font-size:11px; margin-top:2px; }
-.site-photogrid .ph.more { display:flex; align-items:center; justify-content:center; background:var(--sand-warm); border:1px dashed var(--rule); }
-.site-photogrid .ph.more .more-in { text-align:center; font-family:'Fraunces',serif; font-weight:600; font-size:14.5px; color:var(--indigo); padding:0 20px; }
-.site-photogrid .ph.more svg { display:block; width:16px; height:16px; margin:8px auto 0; stroke:currentColor; fill:none; stroke-width:1.8; }
-
-/* ===== RECENT MOMENTS — auto-scrolling filmstrip, pauses on hover/focus =====
-   This strip is deliberately full-bleed (outside .site-wrap), so its
-   container can be wider than any single repeat of the 6 photos. FOUR
-   identical .site-moments-set children guarantee (n-1)*setWidth stays
-   wider than the viewport even on large desktop windows — a 2- or 3-set
-   track ran out of content before the animation's low point, so a bare
-   gap of empty section background showed before it repeated. Each set
-   carries its own trailing gap (not one gap on the shared track) so all
-   four are exactly equal width and -25% lands precisely on a seam, with
-   no visible jump. */
-.site-moments { overflow:hidden; padding:4px 0; }
-.site-moments-track { display:flex; width:max-content; animation:moments-scroll 50s linear infinite; }
-.site-moments:hover .site-moments-track, .site-moments:focus-within .site-moments-track { animation-play-state:paused; }
-.site-moments-set { display:flex; gap:28px; padding-right:28px; }
-.site-moments-set figure { flex-shrink:0; width:130px; text-align:center; }
-.site-moments-set img { width:130px; height:130px; border-radius:50%; object-fit:cover; box-shadow:var(--shadow-sm); border:3px solid var(--paper); }
-.site-moments-set figcaption { font-size:12px; color:var(--muted); margin-top:10px; max-width:140px; margin-left:auto; margin-right:auto; }
-@keyframes moments-scroll { from { transform:translateX(0); } to { transform:translateX(-25%); } }
 
 /* ===== APP PROMOTION ===== */
 .site-appband { background:var(--stone); }
@@ -355,3 +443,9 @@
   color:rgba(246,241,231,0.42); padding-top:24px; border-top:1px solid rgba(246,241,231,0.12); }
 @media (max-width:900px) { .site-footer-grid { grid-template-columns:1fr 1fr 1fr; } }
 @media (max-width:600px) { .site-footer-grid { grid-template-columns:1fr 1fr; } }
+
+.site-footer-social { display:flex; gap:10px; margin-top:16px; }
+.site-footer-social a { display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%;
+  background:rgba(246,241,231,0.08); border:1px solid rgba(246,241,231,0.14); margin:0; flex-shrink:0; transition:background .15s, border-color .15s; }
+.site-footer-social a:hover { background:rgba(246,241,231,0.16); border-color:rgba(246,241,231,0.3); }
+.site-footer-social svg { width:15px; height:15px; fill:rgba(246,241,231,0.85); }

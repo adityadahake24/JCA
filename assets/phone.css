@@ -116,14 +116,6 @@ img { max-width:100%; display:block; }
   position:absolute; top:12px; left:50%; transform:translateX(-50%);
   width:126px; height:36px; background:#050505; border-radius:20px; z-index:400;
 }
-.p-statusbar {
-  height:50px; flex-shrink:0; position:relative; z-index:300;
-  display:flex; align-items:flex-end; justify-content:space-between;
-  padding:0 26px 7px; font-size:15px; font-weight:600; letter-spacing:-0.01em;
-  color:var(--ink); font-family:-apple-system,'SF Pro Display',system-ui,sans-serif;
-}
-.p-statusbar .icons { display:flex; align-items:center; gap:6px; }
-.p-statusbar svg { width:17px; height:11px; }
 .p-screens { position:relative; flex:1; overflow:hidden; }
 .p-home-ind {
   position:absolute; bottom:8px; left:50%; transform:translateX(-50%);
@@ -167,11 +159,16 @@ img { max-width:100%; display:block; }
   color:var(--ink-soft); flex-shrink:0; position:relative;
 }
 .p-header .p-action svg { width:18px; height:18px; }
+.p-header .p-action.ic-dots svg { fill:currentColor; stroke:none; }
 .p-header .p-action .dot {
   position:absolute; top:6px; right:6px; width:7px; height:7px; border-radius:50%;
   background:var(--danger); border:1.5px solid var(--paper);
 }
 .p-header.root { padding-left:18px; }
+.p-header-brand { flex:1; display:flex; align-items:center; gap:8px; min-width:0; }
+.p-header-brand img { width:24px; height:24px; border-radius:6px; flex-shrink:0; }
+.p-header-brand span { font-family:'Fraunces',serif; font-weight:600; font-size:15px; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.p-screen.dark .p-header-brand span { color:#fff; }
 .p-header .p-search-input {
   flex:1; display:flex; align-items:center; gap:8px; background:var(--sand-warm); border-radius:100px;
   padding:8px 13px; color:var(--muted); font-size:13px;
@@ -576,7 +573,7 @@ img { max-width:100%; display:block; }
     width:100vw; width:100dvw; height:100vh; height:100dvh; border-radius:0; box-shadow:none;
   }
   .p-island { display:none; }
-  .p-statusbar { padding-top:env(safe-area-inset-top,0px); height:calc(44px + env(safe-area-inset-top,0px)); }
+  .p-header { padding-top:env(safe-area-inset-top,0px); height:calc(48px + env(safe-area-inset-top,0px)); }
   .p-tabbar { padding-bottom:env(safe-area-inset-bottom,0px); }
   .p-home-ind { display:none; }
 }

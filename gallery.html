@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Jain Center of America</title>
+<meta name="description" content="Photos, albums, and a 360° tour of the Jain Center of America in Elmhurst, New York.">
+<!-- Static walkthrough mockup — not a live application. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body class="site">
+<a class="site-skip" href="#main">Skip to content</a>
+
+<nav class="site-nav">
+  <div class="site-nav-inner">
+    <a class="site-logo" href="index.html">
+      <img src="assets/logo.png" alt="JCA">
+      <span><span class="bt">Jain Center</span><span class="bs">of America</span></span>
+    </a>
+    <div class="site-links">
+      <a href="index.html">Home</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="giving.html">Giving</a>
+      <a href="community.html">Community</a>
+      <a href="gallery.html" class="on" aria-current="page">Gallery</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="site-cta">
+      <a class="site-phone-link" href="phone.html" title="Phone app (temp)" aria-label="Phone app"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></a>
+      <a class="btn btn-ghost" href="login.html">Sign in</a>
+      <a class="btn btn-primary" href="login.html">Become a member</a>
+    </div>
+    <button class="site-nav-toggle" data-site-nav-toggle aria-expanded="false" aria-controls="site-drawer" aria-label="Open menu">
+      <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+<div class="site-drawer" id="site-drawer" data-site-drawer>
+  <a href="index.html">Home</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="giving.html">Giving</a>
+  <a href="community.html">Community</a>
+  <a href="gallery.html" class="on">Gallery</a>
+  <a href="about.html">About</a>
+  <div class="site-drawer-cta">
+    <a class="btn btn-ghost btn-block" href="phone.html">Phone app (temp) ↗</a>
+    <a class="btn btn-ghost btn-block" href="login.html">Sign in</a>
+    <a class="btn btn-primary btn-block" href="login.html">Become a member</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="site-pagehero">
+    <div class="site-wrap">
+      <div class="site-eyebrow">Gallery</div>
+      <h1>The Center, in pictures</h1>
+      <p class="site-standfirst">Browse photographs, themed albums, and a 360° walk through all five floors.</p>
+    </div>
+  </section>
+
+  <section class="site-section tight">
+    <div class="site-wrap">
+      <div class="gal-layout">
+
+        <div class="gal-tabs" role="tablist" aria-label="Gallery sections">
+          <button class="gal-tab on" role="tab" data-gal="photos" aria-selected="true">Photos</button>
+          <button class="gal-tab" role="tab" data-gal="albums" aria-selected="false">Albums</button>
+          <button class="gal-tab" role="tab" data-gal="tour" aria-selected="false">360° Tour</button>
+        </div>
+
+        <div class="gal-body">
+
+          <!-- PHOTOS -->
+          <div class="gal-panel" data-gal-panel="photos">
+            <div class="gal-grid">
+              <figure><img src="assets/img/tradition-mahavir.jpg" alt="Mahavir Swami Temple sanctum" loading="lazy"><figcaption>Mahavir Swami Temple</figcaption></figure>
+              <figure><img src="assets/img/tradition-adinath.jpg" alt="Adinathji Temple marble idols" loading="lazy"><figcaption>Adinathji Temple</figcaption></figure>
+              <figure><img src="assets/img/tradition-upashray.jpg" alt="Navkar Mantra at the Upashray Lecture Hall" loading="lazy"><figcaption>Upashray Lecture Hall</figcaption></figure>
+              <figure><img src="assets/img/tradition-shrimad.jpg" alt="Shrimad Rajchandra Meditation Hall" loading="lazy"><figcaption>Shrimad Rajchandra Hall</figcaption></figure>
+              <figure><img src="assets/img/tradition-dadawadi.jpg" alt="Dadawadi shrine" loading="lazy"><figcaption>Dadawadi Temple</figcaption></figure>
+            </div>
+          </div>
+
+          <!-- ALBUMS -->
+          <div class="gal-panel hide" data-gal-panel="albums">
+            <div class="gal-grid albums">
+              <a class="gal-album" href="#"><img src="assets/img/tradition-mahavir.jpg" alt="" loading="lazy"><div><b>The Five Shrines</b><span>5 photos</span></div></a>
+              <a class="gal-album" href="#"><img src="assets/img/tradition-dadawadi.jpg" alt="" loading="lazy"><div><b>Asthapad Maha Tirth</b><span>Fourth floor</span></div></a>
+              <a class="gal-album" href="#"><img src="assets/img/tradition-upashray.jpg" alt="" loading="lazy"><div><b>Festivals &amp; Celebrations</b><span>Illustrative album</span></div></a>
+              <a class="gal-album" href="#"><img src="assets/img/tradition-shrimad.jpg" alt="" loading="lazy"><div><b>Pathshala &amp; Community</b><span>Illustrative album</span></div></a>
+            </div>
+          </div>
+
+          <!-- 360 TOUR -->
+          <div class="gal-panel hide" data-gal-panel="tour">
+            <div class="gal-tour">
+              <div class="gal-tour-view">
+                <img src="assets/img/tradition-mahavir.jpg" alt="" loading="lazy">
+                <div class="gal-tour-badge">360° · drag to look around</div>
+              </div>
+              <div class="gal-tour-list">
+                <button class="on">Mahavir Swami Temple · 2nd floor</button>
+                <button>Upashray Lecture Hall · 2nd floor</button>
+                <button>Adinathji Temple · 3rd floor</button>
+                <button>Shrimad Rajchandra Hall · 3rd floor</button>
+                <button>Dadawadi Temple · 4th floor</button>
+              </div>
+            </div>
+            <p style="font-size:12.5px;color:var(--muted);margin-top:12px;">Mockup placeholder — the live tour from the original site would be embedded here.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-wrap">
+    <div class="site-footer-grid">
+      <div>
+        <h4>Jain Center of America</h4>
+        <p>43-11 Ithaca Street, Elmhurst, NY 11373</p>
+        <p>(718) 478-9141 &nbsp;·&nbsp; nyjaincenter@gmail.com</p>
+        <p style="margin-top:12px;">501(c)(3) nonprofit, Tax ID 13-3135532</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html#contact">Contact &amp; directions</a>
+      </div>
+      <div>
+        <h4>Give</h4>
+        <a href="giving.html">Causes</a>
+        <a href="giving.html#ways">Ways to give</a>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <a href="community.html">Pathshala</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="about.html">Board &amp; leadership</a>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <a href="login.html">Sign in</a>
+        <a href="login.html">Register</a>
+        <a href="admin.html">Admin utility</a>
+      </div>
+    </div>
+    <div class="site-footer-fine">
+      <span>© 2026 Jain Center of America.</span>
+      <span>Static walkthrough mockup for presentation purposes.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.gal-tab');
+  var panels = document.querySelectorAll('[data-gal-panel]');
+  function open(name) {
+    tabs.forEach(function (t) { var on = t.dataset.gal === name; t.classList.toggle('on', on); t.setAttribute('aria-selected', on); });
+    panels.forEach(function (p) { p.classList.toggle('hide', p.dataset.galPanel !== name); });
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { open(t.dataset.gal); history.replaceState(null, '', '#' + t.dataset.gal); }); });
+  var h = location.hash.replace('#', '');
+  if (h && document.querySelector('[data-gal-panel="' + h + '"]')) open(h);
+  document.querySelectorAll('.gal-tour-list button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('.gal-tour-list button').forEach(function (x) { x.classList.remove('on'); });
+      b.classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>
