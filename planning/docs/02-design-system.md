@@ -31,7 +31,7 @@ components/graphics.
 
 | Role | Family | Usage |
 |---|---|---|
-| Display / serif headings | Fraunces (serif) | Screen titles, ornamental headings, the JCA wordmark treatment. |
+| Display / serif headings | Playfair Display (serif) | Screen titles, ornamental headings, the JCA wordmark treatment. |
 | Body / UI text | Inter (sans-serif), -apple-system fallback | All body copy, form labels, buttons, navigation labels. |
 | Dynamic Type / accessibility | Both families scale with iOS Dynamic Type and Android font scaling; no hard-coded pixel line-heights — RFP §2.2 multi-generational accessibility requirement. | Applies platform-wide; verified per screen in the accessibility audit (Localization & Accessibility module). |
 

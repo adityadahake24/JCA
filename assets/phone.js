@@ -292,7 +292,7 @@
     }
     apply();
     window.addEventListener('resize', apply);
-    // re-measure once the webfont swaps in — Fraunces vs. the fallback serif
+    // re-measure once the webfont swaps in — Playfair vs. the fallback serif
     // can reflow the hint text onto a different number of lines, changing
     // its height after the first paint.
     if (document.fonts && document.fonts.ready) { document.fonts.ready.then(apply); }

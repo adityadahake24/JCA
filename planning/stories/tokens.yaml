@@ -101,7 +101,7 @@ base_tokens:
 
 typography:
   - role: "Display / serif headings"
-    family: "Fraunces (serif)"
+    family: "Playfair Display (serif)"
     usage: "Screen titles, ornamental headings, the JCA wordmark treatment."
   - role: "Body / UI text"
     family: "Inter (sans-serif), -apple-system fallback"
