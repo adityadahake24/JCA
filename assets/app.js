@@ -343,6 +343,11 @@
     var dots = document.querySelectorAll('.site-ticker-dots span');
     if (!items.length) return;
     var i = 0;
+    var viewport = document.querySelector('.site-ticker-viewport');
+    /* size the viewport to the active message so the dots sit right after the text */
+    function fit() {
+      if (viewport) viewport.style.width = items[i].offsetWidth + 'px';
+    }
     var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function go(n) {
       items[i].classList.remove('on');
@@ -350,6 +355,7 @@
       i = ((n % items.length) + items.length) % items.length;
       items[i].classList.add('on');
       if (dots[i]) dots[i].classList.add('on');
+      fit();
     }
     var timer;
     function restart() {
@@ -360,6 +366,10 @@
     dots.forEach(function (d, n) {
       d.addEventListener('click', function () { go(n); restart(); });
     });
+    fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('load', fit);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
     restart();
   })();
 

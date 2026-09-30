@@ -14,7 +14,7 @@
 <!-- Static walkthrough mockup — not a live application. -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/styles.css">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.css?v=6">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"PlaceOfWorship","name":"Jain Center of America","alternateName":"JCA","foundingDate":"1976",
  "address":{"@type":"PostalAddress","streetAddress":"43-11 Ithaca Street","addressLocality":"Elmhurst","addressRegion":"NY","postalCode":"11373","addressCountry":"US"},
@@ -28,7 +28,6 @@
 <!-- ===== ANNOUNCEMENT TICKER ===== -->
 <div class="site-ticker" role="region" aria-label="Announcements">
   <div class="site-ticker-rail">
-    <span class="site-ticker-icon" aria-hidden="true">🪔</span>
     <div class="site-ticker-viewport" aria-live="polite">
       <p class="site-ticker-item on">Live darshan streams every morning at 6:30 from the Mahavir Swami Temple.</p>
       <p class="site-ticker-item">Paryushan &amp; Das Lakshan Maha Parv — August 21–29, 2026.</p>
@@ -140,16 +139,52 @@
   <!-- JOURNEY INTRO -->
   <section class="site-section tight">
     <div class="site-wrap">
-      <h2 class="site-h2" style="max-width:26ch;">Five traditions, five shrines, one building</h2>
-      <p class="site-standfirst" style="margin-bottom:36px;">Every floor holds a different Jain tradition.</p>
-      <div class="site-figures reveal">
-        <div class="it"><div class="v" data-count-to="16625" data-suffix=" ft²">0</div><div class="l">under one roof</div></div>
-        <div class="it"><div class="v" data-count-to="5">0</div><div class="l">Jain traditions</div></div>
-        <div class="it"><div class="v" data-count-to="50" data-suffix="+ yrs">0</div><div class="l">Since 1976</div></div>
-        <div class="it"><div class="v" data-count-to="500" data-suffix="+">0</div><div class="l">capacity, Main Hall</div></div>
+      <div class="site-intro">
+        <div class="site-intro-text">
+          <h2 class="site-h2">Five traditions, five shrines, one building</h2>
+          <p class="site-standfirst">Every floor holds a different Jain tradition.</p>
+          <div class="site-figures reveal">
+            <div class="it"><div class="v" data-count-to="16625" data-suffix=" ft²">0</div><div class="l">under one roof</div></div>
+            <div class="it"><div class="v" data-count-to="5">0</div><div class="l">Jain traditions</div></div>
+            <div class="it"><div class="v" data-count-to="50" data-suffix="+ yrs">0</div><div class="l">Since 1976</div></div>
+            <div class="it"><div class="v" data-count-to="500" data-suffix="+">0</div><div class="l">capacity, Main Hall</div></div>
+          </div>
+          <div class="site-intro-cta">
+          </div>
+        </div>
+        <div class="site-intro-building" id="jcBuilding">
+          <div class="jcb-roof" aria-hidden="true"><svg viewBox="0 0 120 40"><path d="M60 2 L66 14 H54 Z M40 22 L60 8 L80 22 Z M20 40 V26 H100 V40" /></svg></div>
+          <div class="jcb-floor active">
+            <button type="button" class="jcb-head" aria-expanded="true"><b>4</b><span>Dadawadi<em>Asthapad Maha Tirth</em></span><i aria-hidden="true">+</i></button>
+            <div class="jcb-body"><div><p>A serene shrine to the revered Dadagurus, crowned by the Asthapad Maha Tirth.</p></div></div>
+          </div>
+          <div class="jcb-floor">
+            <button type="button" class="jcb-head" aria-expanded="false"><b>3</b><span>Adinathji Temple<em>Digambar</em></span><i aria-hidden="true">+</i></button>
+            <div class="jcb-body"><div><p>Marble idols of Adinathji and a quiet hall for Digambar worship and Das Lakshan Maha Parv.</p></div></div>
+          </div>
+          <div class="jcb-floor">
+            <button type="button" class="jcb-head" aria-expanded="false"><b>2</b><span>Mahavir Swami & Upashray<em>Shvetambar · Sthanakvasi</em></span><i aria-hidden="true">+</i></button>
+            <div class="jcb-body"><div><p>Two traditions on one floor: the Murtipujak temple and the Upashray Lecture Hall for pravachan and scholars' talks.</p></div></div>
+          </div>
+          <div class="jcb-floor">
+            <button type="button" class="jcb-head" aria-expanded="false"><b>1</b><span>Shrimad Hall, Library & Gallery<em>Learn · Gather</em></span><i aria-hidden="true">+</i></button>
+            <div class="jcb-body"><div><p>Pathshala for children, the Ashtapad research library, an art gallery and the Bhojanshala community meal.</p></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+  (function(){
+    var root=document.getElementById('jcBuilding'); if(!root) return;
+    var fl=[].slice.call(root.querySelectorAll('.jcb-floor')), cur=0, t;
+    function show(i){cur=i;fl.forEach(function(f,k){var on=k===i;f.classList.toggle('active',on);f.querySelector('.jcb-head').setAttribute('aria-expanded',on)});}
+    function auto(){clearInterval(t);t=setInterval(function(){show((cur+1)%fl.length)},4500);}
+    fl.forEach(function(f,i){f.querySelector('.jcb-head').addEventListener('click',function(){show(i);clearInterval(t);});});
+    root.addEventListener('mouseenter',function(){clearInterval(t)});root.addEventListener('mouseleave',auto);auto();
+  })();
+  </script>
 
   <!-- SCROLLYTELLING JOURNEY: a true semicircle flush to the screen's left edge,
        five shrine photos crossfading through it, each paired with a different
@@ -261,7 +296,7 @@
         </div>
 
         <div class="journey-step" data-step="3">
-          <div class="journey-step-card journey-panel">
+          <div class="journey-step-card journey-panel comm-card">
             <div class="site-eyebrow">Gallery</div>
             <h2 class="site-h2">Life at the Center, in pictures</h2>
             <div class="journey-gallery">
@@ -405,6 +440,6 @@
   </div>
 </div>
 
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=6"></script>
 </body>
 </html>
