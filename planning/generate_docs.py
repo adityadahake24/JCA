@@ -186,7 +186,7 @@ def build_api_doc():
         "Representative endpoints per module (not exhaustive of every route),",
         "each traced to the tables it touches, the surfaces that call it, the",
         "minimum role required, and the story that specifies it. The full",
-        "contract is published as OpenAPI 3.1 via drf-spectacular",
+        "contract is published as OpenAPI 3.1 natively by FastAPI",
         "(see `API-1` in the API Contract & Integration Map module).",
         "",
         "**Versioning:** all routes are prefixed `/api/v1/`. Breaking changes",

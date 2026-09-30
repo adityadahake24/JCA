@@ -180,7 +180,7 @@ erDiagram
 | `faq` | FAQ entries with a managed taxonomy. | category, question, answer, sort_order | — | phase1 |
 | `policy_doc` | JCA Policies — authored, versioned, published (Phase 2). | title, body, version, published_at | — | phase2 |
 | `meeting_minute` | Board / Executive Committee / General Body meeting minutes — gated, searchable, PDF (Phase 2). | meeting_type, meeting_date, pdf_url, gated | — | phase2 |
-| `media_asset` | Uploaded media (image, PDF, audio) stored in Cloud Storage/CDN, referenced across many content types. | storage_url, mime_type, alt_text, uploaded_by | uploaded_by -> user | phase0 |
+| `media_asset` | Uploaded media (image, PDF, audio) stored in S3/CloudFront, referenced across many content types. | storage_url, mime_type, alt_text, uploaded_by | uploaded_by -> user | phase0 |
 
 ```mermaid
 erDiagram
@@ -231,7 +231,7 @@ erDiagram
 | `notification_preference` | Per-member, per-category notification opt-in/opt-out (includes birthday/anniversary opt-in per family member). | user_id, category, channel, enabled | user_id -> user | phase1 |
 | `feature_flag` | Feature-flag console backing — staff/committee/percentage/full rollout stages. | key, rollout_stage, rollout_percentage | — | phase1 |
 | `localization_string` | Centralized translation catalog — one row per key/locale, per RFP §3.1. | key, locale, value, reviewed_by | — | phase0 |
-| `integration_credential` | Encrypted-at-rest vault entry for payment/push/email/streaming/SSO credentials — Super-Admin only. | provider, credential_ref (Secret Manager pointer), rotated_at | — | phase0 |
+| `integration_credential` | Encrypted-at-rest vault entry for payment/push/email/streaming/SSO credentials — Super-Admin only. | provider, credential_ref (AWS Secrets Manager pointer), rotated_at | — | phase0 |
 | `tombstone` | Central index of soft-deleted records across all tables, backing the 30-day trash/recovery UI. | table_name, record_id, deleted_by, deleted_at, purge_at | deleted_by -> user | phase0 |
 
 ```mermaid

@@ -1032,9 +1032,9 @@ modules:
         status: "Ready"
       - id: "GOV-6"
         story: "As a Super-Admin, I want an encrypted integration-credentials vault so payment, push, email, and streaming secrets are managed centrally and never exposed in plaintext, per RFP §4.5.3."
-        acceptance_criteria: "Credentials vault stores references to Secret Manager entries, not raw secrets, in the database; only Super-Admin role can view/edit; every credential rotation is audit-logged."
+        acceptance_criteria: "Credentials vault stores references to AWS Secrets Manager entries, not raw secrets, in the database; only Super-Admin role can view/edit; every credential rotation is audit-logged."
         subtasks:
-          - "Build the credentials vault UI backed by Secret Manager references"
+          - "Build the credentials vault UI backed by AWS Secrets Manager references"
           - "Enforce Super-Admin-only access"
           - "Wire rotation events to the audit log"
         surfaces: ["Admin", "Backend"]
@@ -1047,7 +1047,7 @@ modules:
         subtasks:
           - "Build the backup-status visibility panel"
           - "Build the restore-from-backup workflow with mandatory confirmation"
-          - "Configure automated daily backups on Cloud SQL"
+          - "Configure automated daily backups on RDS (with point-in-time recovery)"
         surfaces: ["Admin", "Backend"]
         priority: "High"
         complexity: "Medium"

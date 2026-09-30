@@ -93,13 +93,13 @@ source (`stories/decisions.yaml`) and cannot drift from each other.
 
 ## Cloud hosting
 
-**Options considered:** GCP (Cloud Run + Cloud SQL + Cloud Storage/CDN) · AWS (ECS/Fargate + RDS + S3/CloudFront)
+**Options considered:** AWS (ECS Fargate + RDS + S3/CloudFront) · GCP (Cloud Run + Cloud SQL + Cloud Storage/CDN)
 
-**Offense (case for):** Google for Nonprofits offers substantial Cloud credit grants to registered 501(c)(3) organizations — directly relevant to JCA's budget as a nonprofit. Cloud Run's scale-to-zero model suits a congregation-sized traffic pattern with sharp peaks around festivals (Paryushan, Diwali, MJK) and otherwise-quiet weekdays, and hosts the FastAPI service and the Payload admin/CMS app as two independent Cloud Run services against the same Cloud SQL instance. Cloud Build gives a native CI/CD path matching the team's existing GCP experience.
+**Offense (case for):** AWS is the chosen host. ECS Fargate runs the FastAPI service, the Payload admin/CMS app, and the Celery workers as independent services with no servers to patch, against one shared RDS Postgres 16 instance. SQS gives durable job queues with dead-letter queues, SES handles email with bounce/complaint events, CloudFront + S3 serve the pre-rendered public web and media, and CloudWatch/X-Ray plus Sentry cover observability. Deploys run from GitHub Actions using OIDC roles, with no long-lived AWS keys. Full component list and rationale in docs/06-aws-architecture.md.
 
-**Defence (risk / case against):** Cloud Run cold starts add latency on the first request after an idle period — mitigated with a minimum-instance-count of 1 on both the FastAPI service and the Payload admin service so the admin utility and payment endpoints never cold-start. AWS ECS/Fargate + RDS + S3/CloudFront is recorded as the equivalent alternative if JCA's board has an existing AWS relationship or credit commitment; the Terraform/ IaC layer is written to keep this swap feasible without an application-code rewrite.
+**Defence (risk / case against):** Fargate has no scale-to-zero, so a small always-on baseline cost is paid (minimum 1-2 tasks for the API and admin services), and JCA loses the Google for Nonprofits credit grants that favoured GCP in the earlier plan — mitigated by applying for AWS nonprofit credits (e.g. TechSoup, AWS Imagine Grant). GCP (Cloud Run + Cloud SQL) remains the recorded alternative; the Terraform layer is modular enough to keep that swap feasible without an application-code rewrite.
 
-**Recommendation:** GCP — Cloud Run (FastAPI + Payload), Cloud SQL (Postgres), Cloud Storage + Cloud CDN, Secret Manager, Cloud Build
+**Recommendation:** AWS — ECS Fargate (FastAPI + Payload + Celery), RDS Postgres 16, S3 + CloudFront, SQS + ElastiCache, SES, Secrets Manager, CloudWatch/X-Ray + Sentry, GitHub Actions (OIDC) + ECR
 
 **Blocks:** S1
 

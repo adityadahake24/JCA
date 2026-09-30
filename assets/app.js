@@ -409,6 +409,17 @@
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
+
+    // phone: photos are a swipeable row, so the pager dots follow its scroll position
+    var frame = section.querySelector('.journey-frame');
+    var pager = section.querySelectorAll('.journey-pager i');
+    if (frame && pager.length) {
+      frame.addEventListener('scroll', function () {
+        var first = photos[0], stride = first.offsetWidth + 14;
+        var idx = Math.max(0, Math.min(photos.length - 1, Math.round(frame.scrollLeft / stride)));
+        pager.forEach(function (d, n) { d.classList.toggle('on', n === idx); });
+      }, { passive: true });
+    }
   })();
 
   /* ---------- reveal-on-scroll (elements opted in with .reveal, once each) ---------- */

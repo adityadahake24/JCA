@@ -166,7 +166,7 @@ modules:
         subtasks:
           - "Define environment variable and secrets strategy per environment"
           - "Document the staging-to-production promotion flow for Payload-authored content"
-          - "Provision the three GCP projects/environments"
+          - "Provision the AWS accounts/environments (staging, production) under AWS Organizations"
         surfaces: ["Backend", "Web", "Admin"]
         priority: "High"
         complexity: "Medium"
@@ -293,10 +293,10 @@ modules:
         complexity: "Medium"
         status: "Ready"
       - id: "SETUP-4"
-        story: "As a DevOps engineer, I want infrastructure as code for the GCP environment so staging and production are provisioned identically and repeatably."
-        acceptance_criteria: "Terraform (or equivalent) provisions Cloud Run services for both the FastAPI backend and the Payload admin app, a shared Cloud SQL instance, Cloud Storage buckets, and Secret Manager entries for both staging and production from the same module with environment-specific variables."
+        story: "As a DevOps engineer, I want infrastructure as code for the AWS environment so staging and production are provisioned identically and repeatably."
+        acceptance_criteria: "Terraform (or equivalent) provisions ECS Fargate services for the FastAPI backend, the Payload admin app, and the Celery worker, a shared RDS Postgres instance, S3 buckets, SQS queues, and Secrets Manager entries for both staging and production from the same module with environment-specific variables."
         subtasks:
-          - "Write Terraform modules for the two Cloud Run services, Cloud SQL, and Cloud Storage"
+          - "Write Terraform modules for the ECS Fargate services, RDS, S3, SQS, and networking"
           - "Parameterize staging vs production variables"
           - "Provision both environments and verify parity"
         surfaces: ["Backend"]
@@ -304,10 +304,10 @@ modules:
         complexity: "High"
         status: "Ready"
       - id: "SETUP-5"
-        story: "As a DevOps engineer, I want Cloud Build (or equivalent) wired to deploy on merge to main so every accepted change reaches staging without a manual step."
+        story: "As a DevOps engineer, I want GitHub Actions (OIDC to AWS) wired to deploy on merge to main so every accepted change reaches staging without a manual step."
         acceptance_criteria: "A merge to main triggers build, test, and deploy to staging for the affected surface(s) only (FastAPI, Payload, or the Expo app); a failed pipeline blocks the deploy and notifies the team."
         subtasks:
-          - "Configure Cloud Build triggers per surface"
+          - "Configure GitHub Actions path-filtered workflows and OIDC deploy roles per surface"
           - "Wire failure notifications to the team channel"
           - "Verify path-based triggers only rebuild affected surfaces"
         surfaces: ["Backend", "Admin"]
@@ -387,9 +387,9 @@ modules:
         status: "Ready"
       - id: "PAYSETUP-3"
         story: "As a backend engineer, I want sandbox/test-mode API keys for both Stripe and PayPal provisioned into the credentials vault early so payment feature sprints aren't blocked waiting on account approval."
-        acceptance_criteria: "Stripe and PayPal sandbox/test-mode keys are stored in Secret Manager and referenced from the credentials vault before the Payments & Billing sprint starts; a test charge and a test PayPal payment both succeed against sandbox from a throwaway script."
+        acceptance_criteria: "Stripe and PayPal sandbox/test-mode keys are stored in AWS Secrets Manager and referenced from the credentials vault before the Payments & Billing sprint starts; a test charge and a test PayPal payment both succeed against sandbox from a throwaway script."
         subtasks:
-          - "Provision Stripe and PayPal sandbox keys into Secret Manager"
+          - "Provision Stripe and PayPal sandbox keys into AWS Secrets Manager"
           - "Wire the credentials vault to reference (not store) these secrets"
           - "Run a throwaway smoke test charge against each sandbox"
         surfaces: ["Backend"]
