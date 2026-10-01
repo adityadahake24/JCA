@@ -77,6 +77,13 @@
     }
   });
 
+  /* "All" tab of the Community Feed shows every panel */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.seg[data-seg-group="ann-tab"] button[data-seg="all"]');
+    if (!btn) return;
+    document.querySelectorAll('[data-seg-panel="ann-tab"]').forEach(function (p) { p.classList.remove('hide'); });
+  });
+
   /* ---------- sub-nav tabs (.subnav button[data-subnav]) ---------- */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('.subnav button[data-subnav]');
