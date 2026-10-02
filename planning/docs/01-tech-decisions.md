@@ -27,7 +27,7 @@ source (`stories/decisions.yaml`) and cannot drift from each other.
 
 **Offense (case for):** User has directed Payload CMS as the admin and content layer, replacing a bespoke admin SPA. Payload generates a production admin UI — sidebar navigation, list views with sort/filter/search/bulk actions, a document editor, and a Cmd+K jump-to search — directly from a collection config, so most of the RFP's 20 admin sections (§3.4) exist as configuration, not hand-built screens. Per-collection and per-field access control covers a large share of the granular-permissions requirement (§4.4.1). Built-in drafts/versioning and document locking cover much of the audit-trail and concurrent-edit requirements (§4.4.1, §4.5.3) without a custom implementation. Content authored in Payload — announcements, pages, FAQ, policies, translation strings — is exposed over a REST/ GraphQL API the Expo app consumes, which is exactly the "admin can edit everything, including the landing page copy" outcome the user wants.
 
-**Defence (risk / case against):** Payload runs on Node.js/Next.js with its own Postgres adapter — a second server-side stack alongside the Python FastAPI service, a real increase in operational surface versus one backend. **Mitigation:** both services point at the same Postgres 16 instance (Payload owns content/CMS tables, FastAPI owns transactional business tables — money, membership, dues, RSVPs), so there is one database to operate and back up, not two. Screens the RFP needs that don't map onto a generic Payload collection view (Member 360, the Operations Dashboard, the two-person money-confirmation modal, the dues-aging report) are built as custom Payload admin components, keeping exactly one admin application in production rather than a second bespoke app. Payload has no built-in MFA or no-code role editor — both are named as explicitly custom-built work in the Auth & RBAC module rather than assumed free.
+**Defence (risk / case against):** Payload runs on Node.js/Next.js with its own Postgres adapter — a second server-side stack alongside the Python FastAPI service, a real increase in operational surface versus one backend. **Mitigation:** both services point at the same Postgres 18 instance (Payload owns content/CMS tables, FastAPI owns transactional business tables — money, membership, dues, RSVPs), so there is one database to operate and back up, not two. Screens the RFP needs that don't map onto a generic Payload collection view (Member 360, the Operations Dashboard, the two-person money-confirmation modal, the dues-aging report) are built as custom Payload admin components, keeping exactly one admin application in production rather than a second bespoke app. Payload has no built-in MFA or no-code role editor — both are named as explicitly custom-built work in the Auth & RBAC module rather than assumed free.
 
 **Recommendation:** Payload CMS as the admin utility and content layer, self-hosted, Postgres adapter, custom admin views for the screens a generic collection view can't express
 
@@ -51,13 +51,13 @@ source (`stories/decisions.yaml`) and cannot drift from each other.
 
 ## Primary database
 
-**Options considered:** PostgreSQL 16 · MySQL 8 · migrate/extend JCA's existing database
+**Options considered:** PostgreSQL 18 · MySQL 8 · migrate/extend JCA's existing database
 
 **Offense (case for):** Relational integrity is non-negotiable for money and membership data. Postgres adds JSONB for flexible content blocks (event schedules, quiz questions), `pg_trgm` + `unaccent` for typo-tolerant, diacritic-aware search over Sanskrit/Prakrit terms (§4.4.1), and row-level audit triggers that back the immutable audit log. Both the FastAPI service and Payload CMS target this same Postgres instance, in separate schemas, so there is one datastore to provision, back up, and monitor.
 
 **Defence (risk / case against):** RFP §1.1 states a database is "already available," and §3.4 item 15 says "the database of library books is already available." We do not yet know what that system is. **Mitigation:** a dedicated audit and migration-path story is booked in the Data Migration Planning module before the schema is frozen, so existing data is assessed before Postgres is committed to as the system of record.
 
-**Recommendation:** PostgreSQL 16, pending the Phase 0 legacy-database audit
+**Recommendation:** PostgreSQL 18, pending the Phase 0 legacy-database audit
 
 **Blocks:** S2
 
@@ -95,11 +95,11 @@ source (`stories/decisions.yaml`) and cannot drift from each other.
 
 **Options considered:** AWS (ECS Fargate + RDS + S3/CloudFront) · GCP (Cloud Run + Cloud SQL + Cloud Storage/CDN)
 
-**Offense (case for):** AWS is the chosen host. ECS Fargate runs the FastAPI service, the Payload admin/CMS app, and the Celery workers as independent services with no servers to patch, against one shared RDS Postgres 16 instance. SQS gives durable job queues with dead-letter queues, SES handles email with bounce/complaint events, CloudFront + S3 serve the pre-rendered public web and media, and CloudWatch/X-Ray plus Sentry cover observability. Deploys run from GitHub Actions using OIDC roles, with no long-lived AWS keys. Full component list and rationale in docs/06-aws-architecture.md.
+**Offense (case for):** AWS is the chosen host. ECS Fargate runs the FastAPI service, the Payload admin/CMS app, and the Celery workers as independent services with no servers to patch, against one shared RDS Postgres 18 instance. SQS gives durable job queues with dead-letter queues, SES handles email with bounce/complaint events, CloudFront + S3 serve the pre-rendered public web and media, and CloudWatch/X-Ray plus Sentry cover observability. Deploys run from GitHub Actions using OIDC roles, with no long-lived AWS keys. Full component list and rationale in docs/06-aws-architecture.md.
 
 **Defence (risk / case against):** Fargate has no scale-to-zero, so a small always-on baseline cost is paid (minimum 1-2 tasks for the API and admin services), and JCA loses the Google for Nonprofits credit grants that favoured GCP in the earlier plan — mitigated by applying for AWS nonprofit credits (e.g. TechSoup, AWS Imagine Grant). GCP (Cloud Run + Cloud SQL) remains the recorded alternative; the Terraform layer is modular enough to keep that swap feasible without an application-code rewrite.
 
-**Recommendation:** AWS — ECS Fargate (FastAPI + Payload + Celery), RDS Postgres 16, S3 + CloudFront, SQS + ElastiCache, SES, Secrets Manager, CloudWatch/X-Ray + Sentry, GitHub Actions (OIDC) + ECR
+**Recommendation:** AWS — ECS Fargate (FastAPI + Payload + Celery), RDS Postgres 18, S3 + CloudFront, SQS + ElastiCache, SES, Secrets Manager, CloudWatch/X-Ray + Sentry, GitHub Actions (OIDC) + ECR
 
 **Blocks:** S1
 

@@ -14,7 +14,7 @@
 | Money and 501(c)(3) receipts | PCI SAQ-A (card data never touches us), idempotent webhooks, immutable audit log, PDF receipts stored durably. |
 | Admin MFA, two-person confirmation | Admin app isolated behind its own hostname and WAF rules. |
 | WCAG 2.1 AA, elder devices | Fast first paint: pre-rendered public pages served from CloudFront. |
-| One backend, one database | FastAPI and Payload share one RDS Postgres 16 instance in separate schemas. |
+| One backend, one database | FastAPI and Payload share one RDS Postgres 18 instance in separate schemas. |
 
 ## 2. Confirmed stack
 
@@ -23,7 +23,7 @@
 | Client | Expo (Router + React Native Web): iOS, Android, Web from one codebase |
 | Admin / CMS | Payload CMS (Next.js, Postgres adapter) |
 | API | FastAPI + SQLAlchemy 2 + Alembic + Pydantic |
-| Database | PostgreSQL 16 (RDS) |
+| Database | PostgreSQL 18 (RDS) |
 | Repo | Turborepo + pnpm: `apps/expo`, `apps/admin`, `packages/tokens`, `packages/ui`, `packages/api-client`, `services/api` |
 | Compute | ECS Fargate |
 | Queue | Celery on SQS; ElastiCache Valkey for cache, rate limits, presence |
@@ -51,7 +51,7 @@
 | 10 | Load balancer | ALB (host-based routing: `api.`, `admin.`) | Health checks, TLS, WAF attach | 0 | SETUP-4 |
 | 11 | Container registry | ECR (scan on push) | Signed, immutable image tags | 0 | SETUP-2 |
 | **Data** | | | | | |
-| 12 | Database | RDS Postgres 16, Multi-AZ in prod; `core` and `payload` schemas | System of record | 0 | DB-1/2 |
+| 12 | Database | RDS Postgres 18, Multi-AZ in prod; `core` and `payload` schemas | System of record | 0 | DB-1/2 |
 | 13 | Connection pooling | RDS Proxy | Protects DB from Fargate scale-out spikes | 1 | |
 | 14 | Cache | ElastiCache Valkey | Cache, rate limits, admin presence and locks | 1 | GOV, COM-4 |
 | 15 | Object storage | S3: `media`, `docs` (receipts, minutes, PDFs), `exports`; KMS; presigned uploads | Hero images, post media, PDFs | 1 | PAY-5, CN |
@@ -169,7 +169,7 @@ flowchart TB
       MEI[Meilisearch P2]
     end
     subgraph Data
-      RDS[(RDS Postgres 16)]
+      RDS[(RDS Postgres 18)]
       RED[(Valkey)]
     end
   end
@@ -319,7 +319,7 @@ Sentry, EAS and Firebase have free or low tiers to start. Apply for nonprofit cr
 > 3. **AWS Region box, containing a VPC box spanning two Availability Zones (AZ-a, AZ-b):**
 >    - **Public subnets:** Application Load Balancer and NAT Gateway.
 >    - **Private app subnets (ECS Fargate cluster):** four service tiles: "api (FastAPI)", "admin (Payload CMS)", "worker (Celery)", and a faded dashed "Meilisearch (Phase 2)". Each has a small ADOT sidecar marker.
->    - **Isolated data subnets:** Amazon RDS for PostgreSQL 16 (Multi-AZ, primary and standby, with RDS Proxy), Amazon ElastiCache (Valkey).
+>    - **Isolated data subnets:** Amazon RDS for PostgreSQL 18 (Multi-AZ, primary and standby, with RDS Proxy), Amazon ElastiCache (Valkey).
 >    - VPC endpoint markers for S3, SQS, ECR, Secrets Manager.
 > 4. **Async and scheduling (below the Fargate group, inside the region):** Amazon SQS with a dead-letter queue, connected to the worker; Amazon EventBridge Scheduler feeding SQS.
 > 5. **Messaging and payments (right column, outside AWS, labelled "External services"):** Firebase Cloud Messaging (with APNs beneath it, labelled "iOS + Web Push via FCM"), Amazon SES, Stripe, PayPal, and "HLS stream sources (JCA shrines)" feeding the client players.
@@ -333,4 +333,4 @@ Sentry, EAS and Firebase have free or low tiers to start. Apply for nonprofit cr
 
 ### Short prompt (for tools with length limits)
 
-> Professional AWS reference-architecture diagram, 16:9, official AWS icons. Left to right: iOS / Android / Web clients → Route 53 → WAF → CloudFront → (S3 web, S3 media, ALB). Inside a VPC across two AZs: ALB and NAT in public subnets; ECS Fargate services api (FastAPI), admin (Payload CMS), worker (Celery) in private subnets; RDS PostgreSQL 16 Multi-AZ with RDS Proxy and ElastiCache in isolated subnets. SQS with DLQ and EventBridge Scheduler feed the worker. Worker sends push via Firebase Cloud Messaging (APNs) and email via Amazon SES; Stripe and PayPal webhooks (dashed) enter the ALB. Bottom lane: CloudWatch, X-Ray, SNS alerts, Sentry. Side lane: Secrets Manager, KMS, GuardDuty, CloudTrail. Top lane: GitHub → GitHub Actions (OIDC) → ECR → ECS deploy, S3 sync, and Expo EAS → TestFlight / Google Play. Solid arrows sync, dashed async, small legend.
+> Professional AWS reference-architecture diagram, 16:9, official AWS icons. Left to right: iOS / Android / Web clients → Route 53 → WAF → CloudFront → (S3 web, S3 media, ALB). Inside a VPC across two AZs: ALB and NAT in public subnets; ECS Fargate services api (FastAPI), admin (Payload CMS), worker (Celery) in private subnets; RDS PostgreSQL 18 Multi-AZ with RDS Proxy and ElastiCache in isolated subnets. SQS with DLQ and EventBridge Scheduler feed the worker. Worker sends push via Firebase Cloud Messaging (APNs) and email via Amazon SES; Stripe and PayPal webhooks (dashed) enter the ALB. Bottom lane: CloudWatch, X-Ray, SNS alerts, Sentry. Side lane: Secrets Manager, KMS, GuardDuty, CloudTrail. Top lane: GitHub → GitHub Actions (OIDC) → ECR → ECS deploy, S3 sync, and Expo EAS → TestFlight / Google Play. Solid arrows sync, dashed async, small legend.
