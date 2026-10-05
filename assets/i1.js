@@ -7,21 +7,6 @@
   function $$(s, c) { return [].slice.call((c || d).querySelectorAll(s)); }
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; }
 
-  /* ---------- theme toggle (indigo / crimson) ---------- */
-  function setTheme(t, persist) {
-    if (t !== 'indigo' && t !== 'crimson') t = 'indigo';
-    root.classList.add('theming');
-    root.setAttribute('data-theme', t);
-    $$('[data-theme-set]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-theme-set') === t); });
-    var m = $('meta[name="theme-color"]'); if (m) m.setAttribute('content', t === 'crimson' ? '#a8202c' : '#2e3a59');
-    if (persist) store('jca-i1-theme', t);
-    clearTimeout(setTheme._t); setTheme._t = setTimeout(function () { root.classList.remove('theming'); }, 700);
-  }
-  setTheme(root.getAttribute('data-theme') || store('jca-i1-theme') || 'indigo', false);
-  d.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-theme-set]'); if (b) setTheme(b.getAttribute('data-theme-set'), true);
-  });
-
   /* ---------- header: solid after scroll, parallax var ---------- */
   var hdr = $('.hdr'), ticking = false;
   function onScroll() {

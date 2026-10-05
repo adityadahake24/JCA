@@ -5,7 +5,6 @@
   var root = document.getElementById('h6'); if (!root) return;
   var $ = function (s) { return root.querySelector(s); };
   var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var q = new URLSearchParams(location.search);
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
   function ss(a, b, x) { var t = clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); }
 
@@ -39,7 +38,6 @@
   }
   var now0 = new Date(), T = sunTimes(now0), DAY = T.ss - T.sr;
   function nowMin() {
-    if (q.get('t')) { var m = /^(\d{1,2}):(\d{2})$/.exec(q.get('t')); if (m) return +m[1] * 60 + +m[2]; }
     var d = new Date(); return d.getHours() * 60 + d.getMinutes() + d.getSeconds() / 60;
   }
   function fmt(min) {

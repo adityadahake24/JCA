@@ -1,7 +1,6 @@
 /* ==========================================================================
    JCA · Iteration 1 — design system
-   Two interchangeable themes (indigo / crimson) driven by tokens on :root.
-   Components use ONLY semantic tokens, so switching theme = one attribute.
+   Crimson + gold theme, driven by tokens on :root. Components use ONLY semantic tokens.
 
    IMAGE ALLOCATION (keep repetition to a minimum; Gallery may repeat):
    - Home hero ........ assets/img/i1/JCA-*.jpg (web-optimised copies of JCA.png; also Gallery + Story "About JCA")
@@ -28,19 +27,8 @@
   --wrap: 1200px;
 }
 
-/* ---- Theme: Indigo + gold (default) ---- */
-:root, :root[data-theme="indigo"] {
-  --brand: #2e3a59; --brand-deep: #1b2236; --brand-soft: #4a5a85; --brand-rgb: 46,58,89;
-  --bg: #f7f3ea; --bg-alt: #eee6d5; --surface: #fffdf8;
-  --ink: #1f2330; --ink-soft: #4a5062; --muted: #6f6b5e;
-  --line: rgba(31,35,48,.12); --line-soft: rgba(31,35,48,.07);
-  --dark: #141a2b; --dark-2: #1f2845; --on-dark: #f6f1e7; --on-dark-soft: rgba(246,241,231,.74);
-  --accent-ink: #7d6229; --good: #3d6b76; --danger: #a23b3b;
-  --hero-a: #10162a; --hero-b: #2e3a59;
-  --swatch: #2e3a59;
-}
 /* ---- Theme: Crimson + gold (RFP palette) ---- */
-:root[data-theme="crimson"] {
+:root {
   --brand: #a8202c; --brand-deep: #5e0f18; --brand-soft: #c84252; --brand-rgb: 168,32,44;
   --bg: #faf6ef; --bg-alt: #f3e9d8; --surface: #ffffff;
   --ink: #1c1410; --ink-soft: #4a3d35; --muted: #75634f;
@@ -56,10 +44,6 @@
   --saffron: var(--gold); --saffron-light: var(--gold-soft); --brass: var(--accent-ink);
   --sand: var(--bg); --stone: var(--bg-alt); --paper: var(--surface);
   --font-main: var(--font-display); --font-quote: var(--font-display);
-}
-
-html.theming *, html.theming *::before, html.theming *::after {
-  transition: background-color .55s var(--ease), color .55s var(--ease), border-color .55s var(--ease), fill .55s var(--ease), stroke .55s var(--ease), box-shadow .55s var(--ease) !important;
 }
 
 /* ---- Base ---- */
@@ -141,13 +125,19 @@ ul { margin: 0; padding: 0; }
    Announcement ticker
    ========================================================================== */
 .ticker { background: var(--brand-deep); color: var(--on-dark); font-size: 13px; position: relative; z-index: 61; }
-.ticker-in { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; height: 38px; display: flex; align-items: center; gap: 14px; }
+.ticker-in { max-width: 1320px; margin: 0 auto; padding: 0 24px; height: 38px; display: flex; align-items: center; gap: 14px; }
 .ticker-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex: none; box-shadow: 0 0 0 0 rgba(201,169,97,.7); animation: ripple 2.2s infinite; }
 .ticker-view { position: relative; flex: 1; height: 38px; overflow: hidden; }
 .ticker-item { position: absolute; inset: 0; display: flex; align-items: center; margin: 0; opacity: 0; transform: translateY(10px); transition: opacity .5s var(--ease), transform .5s var(--ease); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--on-dark); }
 .ticker-item.on { opacity: 1; transform: none; }
 .ticker-item a { color: var(--gold); font-weight: 600; margin-left: 10px; border-bottom: 1px solid rgba(201,169,97,.5); }
-@media (max-width: 600px) { .ticker-in { padding: 0 16px; } .ticker-item { font-size: 12px; } }
+.ticker-social { display: flex; align-items: center; gap: 2px; flex: none; margin: 0 -6px 0 auto; }
+.ticker-social a { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: var(--on-dark-soft); transition: color .2s, background-color .2s, transform .3s var(--ease); }
+.ticker-social svg { width: 15px; height: 15px; fill: currentColor; display: block; }
+.ticker-social a:hover, .ticker-social a:focus-visible { color: var(--gold); background: rgba(255,255,255,.1); transform: translateY(-1px); }
+.ticker-social a:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+@media (max-width: 600px) { .ticker-in { padding: 0 14px; gap: 10px; } .ticker-item { font-size: 12px; } .ticker-social { margin-right: -4px; gap: 0; } .ticker-social a { width: 28px; height: 28px; } .ticker-social svg { width: 14px; height: 14px; } }
+@media (max-width: 360px) { .ticker-social .soc-pin { display: none; } }
 
 /* ==========================================================================
    Header + mega menu
@@ -179,18 +169,8 @@ ul { margin: 0; padding: 0; }
 .hdr.solid .btn-primary:hover { background: var(--brand-deep); }
 .hdr-signin { display: none; }
 .hdr.solid.drawer-open { --fg: #fff; background: var(--dark); box-shadow: none; backdrop-filter: none; }
-.hdr.solid.drawer-open .theme { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.22); } .hdr.solid.drawer-open .theme button i { border-color: rgba(255,255,255,.85); }
 .drawer .btn-ghost { color: var(--on-dark); border-color: rgba(255,255,255,.3); }
 
-/* theme toggle */
-.theme { display: inline-flex; padding: 3px; gap: 2px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); position: relative; }
-.hdr.solid .theme { background: var(--brand-tint, rgba(var(--brand-rgb), .08)); border-color: var(--line); }
-.theme button { width: 28px; height: 28px; border-radius: 50%; position: relative; z-index: 1; display: grid; place-items: center; }
-.theme button i { width: 16px; height: 16px; border-radius: 50%; display: block; border: 2px solid rgba(255,255,255,.85); transition: transform .3s var(--ease), box-shadow .3s; }
-.theme button[data-theme-set="indigo"] i { background: #2e3a59; } .theme button[data-theme-set="crimson"] i { background: #a8202c; }
-.theme button[aria-pressed="true"] i { transform: scale(1.12); box-shadow: 0 0 0 2px var(--gold); }
-.hdr.solid .theme button i { border-color: var(--surface); }
-.theme-label { font: 600 9px/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; color: inherit; opacity: .7; align-self: center; padding: 0 6px 0 8px; display: none; }
 
 .burger { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid color-mix(in srgb, var(--fg) 26%, transparent); }
 .burger span { display: block; width: 18px; height: 2px; background: currentColor; border-radius: 2px; position: relative; transition: background .2s; }
@@ -247,7 +227,6 @@ body.menu-open { overflow: hidden; }
   .burger, .drawer { display: none; }
   .brand-text { display: block; }
   .hdr-signin { display: inline-flex; }
-  .theme-label { display: block; }
 }
 @media (max-width: 1099px) { .hdr-tools .btn-primary { display: none; } .hdr-tools { gap: 8px; } }
 @media (min-width: 1100px) and (max-width: 1259px) { .brand-text { display: none; } .nav-link { padding: 10px 10px; } }
@@ -670,7 +649,7 @@ button.jcal-cell.has { background: rgba(var(--brand-rgb), .07); cursor: pointer;
 .social-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; } .social-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font: 600 14px var(--font-body); transition: all .25s; } .social-btn:hover { border-color: var(--brand); color: var(--brand); }
 .login-links { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 22px; font-size: 13.5px; } .login-links a { color: var(--brand); font-weight: 600; text-decoration: underline; text-decoration-color: var(--gold); }
 .login-top { position: absolute; top: 18px; left: 18px; right: 18px; z-index: 5; display: flex; justify-content: space-between; align-items: center; }
-.login-top a { color: #fff; font: 600 13px var(--font-body); } .login-top .theme { background: rgba(255,255,255,.14); }
+.login-top a { color: #fff; font: 600 13px var(--font-body); }
 @media (min-width: 900px) { .login-top { right: auto; width: calc(52% - 36px); } }
 
 @media (max-width: 600px) { .hdr-in { padding: 0 14px; gap: 10px; } .brand-mark { width: 42px; height: 42px; } .jcal-cell { font-size: 13px; border-radius: 10px; } .jcal-grid { gap: 3px; } .site-card, .panel-b { padding: 20px; } .chat-panel { right: 10px; bottom: 82px; } .phero .mandala { right: -40%; } }
