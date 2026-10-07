@@ -20,6 +20,36 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
+  /* ---------- mock sign-in state: login link keeps you on this page; signed in -> profile menu ---------- */
+  (function () {
+    var sc = $$('script[src*="assets/i1.js"]')[0]; if (!sc) return;
+    var root = new URL('../', new URL(sc.getAttribute('src'), location.href).href.split('?')[0]).href;   // site root (…/assets/i1.js -> …/)
+    var rel = location.pathname.slice(new URL(root).pathname.length) || 'iteration1/';
+    var authed = store('jca-auth') === '1';
+    var loginHref = root + 'login.html?next=' + encodeURIComponent(rel);
+    $$('a[href$="login.html"]').forEach(function (a) { a.setAttribute('href', loginHref); });
+    if (!authed) return;
+    var tools = $('.hdr-tools'), signin = $('.hdr-signin'); if (!tools) return;
+    var app = root + 'iteration2/';
+    var LINKS = [['Profile', 'Your details and household', '#profile'], ['Family & Dues', 'Members, passes and what is due', '#family'], ['Settings', 'Notifications and preferences', '#settings'], ['Donation History', 'Receipts and tax statements', '#history'], ['Recurring Seva', 'Your monthly offerings', '#recurring']];
+    var prof = d.createElement('div'); prof.className = 'nav-item prof';
+    prof.innerHTML = '<button type="button" class="prof-btn nav-link" aria-expanded="false" aria-controls="prof-menu" aria-label="Account menu"><span class="prof-av">MS</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><use href="#chev"/></svg></button>' +
+      '<div class="mega prof-menu" id="prof-menu" role="region" aria-label="Account menu"><div class="prof-head"><span class="prof-av lg">MS</span><div><b>Manan Shah</b><span>Patron · ID 04812</span></div></div><div class="mega-links">' +
+      LINKS.map(function (l) { return '<a href="' + app + l[2] + '"><i class="dot"></i><div><b>' + l[0].replace('&', '&amp;') + '</b><span>' + l[1] + '</span></div></a>'; }).join('') +
+      '</div><button type="button" class="prof-out">Sign out</button></div>';
+    if (signin) signin.remove();
+    tools.insertBefore(prof, tools.firstChild);
+    function out() { try { localStorage.removeItem('jca-auth'); } catch (e) {} location.reload(); }
+    $('.prof-out', prof).addEventListener('click', out);
+    var cta = $('.drawer-cta'), dsign = cta && $('a[href*="login.html"]', cta);
+    if (cta && dsign) {
+      var dt = d.createElement('details');
+      dt.innerHTML = '<summary>Manan Shah</summary><div class="sub">' + LINKS.map(function (l) { return '<a href="' + app + l[2] + '">' + l[0].replace('&', '&amp;') + '<span>' + l[1] + '</span></a>'; }).join('') + '</div>';
+      cta.parentNode.insertBefore(dt, cta);
+      dsign.textContent = 'Sign out'; dsign.setAttribute('href', '#'); dsign.addEventListener('click', function (e) { e.preventDefault(); out(); });
+    }
+  })();
+
   /* ---------- mega menu ---------- */
   var items = $$('.nav-item'), closeT;
   function closeAll(except) {
@@ -258,4 +288,13 @@
       });
     });
   })();
+  /* ---------- daily quiz: mark the pick, reveal the right answer ---------- */
+  d.addEventListener('click', function (e) {
+    var o = e.target.closest && e.target.closest('.quiz-opt[data-quiz]'); if (!o) return;
+    var box = o.closest('.quiz'); if (!box || box.dataset.done) return; box.dataset.done = '1';
+    var ok = o.dataset.quiz === 'correct';
+    $$('.quiz-opt', box).forEach(function (b) { b.disabled = true; if (b.dataset.quiz === 'correct') b.classList.add('correct'); });
+    if (!ok) o.classList.add('wrong');
+    var r = $('.quiz-res', box); if (r) r.textContent = ok ? 'Correct — Ahimsa is non-violence. Jai Jinendra!' : 'Not quite — Ahimsa is non-violence, the first great vow.';
+  });
 })();

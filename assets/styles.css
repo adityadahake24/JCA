@@ -49,7 +49,8 @@ img { max-width:100%; display:block; }
   *, *::before, *::after { animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
 }
 
-.app { display:grid; grid-template-columns:248px 1fr; min-height:100vh; }
+.app { display:grid; grid-template-columns:var(--sb-w,248px) minmax(0,1fr); min-height:100vh; transition:grid-template-columns .26s cubic-bezier(.2,.8,.2,1); }
+.app.sb-collapsed { --sb-w:64px; }
 
 /* ===== SIDEBAR ===== */
 .sidebar { background:var(--indigo-deep); color:rgba(246,241,231,0.85); display:flex; flex-direction:column; position:sticky; top:0; height:100vh; }
@@ -733,3 +734,41 @@ input, select, textarea, button { font-family:inherit; font-feature-settings:"ln
 
 /* iteration-1 typography: Inter for UI, Playfair Display for headings and brand */
 h1,h2,h3,h4,.brand .bt,.view-head h1,.panel-h h3,.stat .val { font-family:'Playfair Display',Georgia,serif; }
+
+/* ===== COLLAPSIBLE SIDEBAR =====
+   The sidebar's inner layout is identical open or closed: collapsing only narrows the column (clipping) and
+   fades the text, so nothing reflows and the icons never move. */
+.sidebar { z-index:30; overflow:visible; }
+.sidebar .brand { padding-left:12px; }
+.admin-switch svg, .back-switch svg { flex:none; }
+.sidebar .brand-link, .sidebar .sidebar-foot { overflow:hidden; }
+.nav { overflow-x:hidden; }
+.brand-txt, .nav-label, .nav-item .phase-tag { white-space:nowrap; transition:opacity .16s ease .1s; }
+.nav-label { overflow:hidden; text-overflow:clip; }
+.nav-group { position:relative; white-space:nowrap; overflow:hidden; transition:color .16s ease .1s; }
+.nav-group::after { content:''; position:absolute; left:12px; right:12px; top:50%; height:1px; background:rgba(255,255,255,0.12); opacity:0; transition:opacity .16s ease; }
+.sb-toggle { position:absolute; right:-13px; top:52px; z-index:40; width:26px; height:26px; display:grid; place-items:center; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink-soft); box-shadow:0 2px 8px rgba(20,10,10,.18); cursor:pointer; transition:background .15s, color .15s, transform .15s; }
+.sb-toggle:hover { background:var(--indigo-deep); color:#fff; transform:scale(1.08); }
+.sb-toggle svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2.2; transition:transform .26s cubic-bezier(.2,.8,.2,1); }
+.app.sb-anim .main { will-change:transform; pointer-events:none; }
+@media (min-width:901px){
+  .app.sb-collapsed .brand-txt, .app.sb-collapsed .nav-label, .app.sb-collapsed .nav-item .phase-tag { opacity:0; transition-delay:0s; }
+  .app.sb-collapsed .nav-group { color:transparent; transition-delay:0s; }
+  .app.sb-collapsed .nav-group::after { opacity:1; transition-delay:.1s; }
+  .app.sb-collapsed .sb-toggle svg { transform:rotate(180deg); }
+}
+@media (max-width:900px){
+  .sb-toggle { right:12px; top:17px; }
+  .sb-toggle svg { transform:rotate(90deg); }
+  .app.sb-collapsed .sb-toggle svg { transform:rotate(-90deg); }
+  .app.sb-collapsed .nav, .app.sb-collapsed .sidebar-foot { display:none; }
+}
+
+/* ===== TOP BAR BLENDS INTO THE HERO (Home only) ===== */
+.topbar { transition:background .3s ease, border-color .3s ease, color .3s ease; }
+body.on-hero .topbar:not(.solid) { background:transparent; border-bottom-color:transparent; }
+body.on-hero .topbar:not(.solid) .crumb, body.on-hero .topbar:not(.solid) .crumb b, body.on-hero .topbar:not(.solid) .bell, body.on-hero .topbar:not(.solid) .me .mn { color:#fff; }
+body.on-hero .topbar:not(.solid) .me .mr { color:rgba(255,255,255,.75); }
+body.on-hero .topbar:not(.solid) .search { background:rgba(255,255,255,.14); border-color:rgba(255,255,255,.28); color:rgba(255,255,255,.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+body.on-hero .topbar:not(.solid) .search span { color:rgba(255,255,255,.85) !important; }
+body.on-hero .topbar:not(.solid) .search .kbd { color:#fff; border-color:rgba(255,255,255,.4); }

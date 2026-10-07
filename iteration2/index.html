@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#a8202c">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JCA — Member App</title>
+<meta name="description" content="Static walkthrough mockup — not a live application.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css?v=5"><link rel="stylesheet" href="../assets/hero6.css?v=8">
+</head>
+<body data-fallback-view="home">
+<div class="app">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <button type="button" class="sb-toggle" id="sb-toggle" aria-label="Collapse menu" aria-expanded="true" aria-controls="sb-nav" title="Collapse menu"><svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <a class="brand-link" href="../index.html" style="text-decoration:none;">
+      <div class="brand" style="border-bottom:none;padding-bottom:0;">
+        <div class="logo"><img src="../assets/logo.png" alt="JCA"></div>
+        <div class="brand-txt"><div class="bt">Jain Center</div><div class="bs">of America</div></div>
+      </div>
+    </a>
+    <nav class="nav" id="sb-nav">
+      <div class="nav-group">Today</div>
+      <a title="Home" class="nav-item active" data-view="home"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span class="nav-label">Home</span></a>
+      <a title="Live Darshan" class="nav-item" data-view="darshan"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span class="nav-label">Live Darshan</span></a>
+
+      <div class="nav-group">Events</div>
+      <a title="Events" class="nav-item" data-view="calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="nav-label">Events</span></a>
+      <a title="Past Events" class="nav-item" data-view="past-events"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg><span class="nav-label">Past Events</span><span class="phase-tag">1.5</span></a>
+
+      <div class="nav-group">Givings</div>
+      <a title="Donate" class="nav-item" data-view="donate"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg><span class="nav-label">Donate</span></a>
+      <a title="My Donation History" class="nav-item" data-view="history"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg><span class="nav-label">My Donation History</span></a>
+      <a title="Recurring Seva" class="nav-item" data-view="recurring"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg><span class="nav-label">Recurring Seva</span></a>
+
+      <div class="nav-group">Community</div>
+      <a title="Community Feed" class="nav-item" data-view="announcements"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span class="nav-label">Community Feed</span></a>
+      <a title="Volunteer & Seva" class="nav-item" data-view="volunteer"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m19 8 2 2 4-4"/></svg><span class="nav-label">Volunteer &amp; Seva</span></a>
+      <a title="Youth" class="nav-item" data-view="youth"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="nav-label">Youth</span><span class="phase-tag">1.5</span></a>
+
+      <div class="nav-group">Learning &amp; Directory</div>
+      <a title="Pathshala" class="nav-item" data-view="pathshala"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span class="nav-label">Pathshala</span></a>
+      <a title="Jinvani Library" class="nav-item" data-view="jinvani"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span class="nav-label">Jinvani Library</span><span class="phase-tag">1.5</span></a>
+      <a title="Jain Philosophy" class="nav-item" data-view="philosophy"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span class="nav-label">Jain Philosophy</span><span class="phase-tag">2.0</span></a>
+      <a title="Jain Centers USA" class="nav-item" data-view="centers"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg><span class="nav-label">Jain Centers USA</span><span class="phase-tag">1.5</span></a>
+      <a title="Facility Booking" class="nav-item" data-view="facility"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg><span class="nav-label">Facility Booking</span><span class="phase-tag">1.5</span></a>
+
+      <div class="nav-group">Institution</div>
+      <a title="Meeting Minutes" class="nav-item" data-view="minutes"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span class="nav-label">Meeting Minutes</span><span class="phase-tag">1.5</span></a>
+      <a title="Service Award — Nominate" class="nav-item" data-view="awards"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.2 13 7 22l5-3 5 3-1.2-9"/></svg><span class="nav-label">Service Award — Nominate</span><span class="phase-tag">1.5</span></a>
+
+      <div class="nav-group">Account</div>
+      <a title="Profile" class="nav-item" data-view="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg><span class="nav-label">Profile</span></a>
+      <a title="Family & Dues" class="nav-item" data-view="family"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><span class="nav-label">Family &amp; Dues</span></a>
+      <a title="Settings" class="nav-item" data-view="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">Settings</span></a>
+    </nav>
+    <div class="sidebar-foot">
+      <a class="admin-switch" href="../admin.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="nav-label">Admin Utility</span></a>
+      <a class="admin-switch" href="../phone.html" style="margin-top:6px;"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg><span class="nav-label">Phone App</span></a>
+      <a class="back-switch" href="../login.html" style="margin-top:6px;"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg><span class="nav-label">Log Out</span></a>
+    </div>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <div class="main">
+    <header class="topbar">
+      <div class="crumb">JCA · <b id="crumb">Home</b></div>
+      <button class="search cmdk-trigger" data-cmdk-open style="cursor:pointer;">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span style="flex:1;text-align:left;color:var(--muted);">Search events, causes, members…</span>
+        <span class="kbd">⌘K</span>
+      </button>
+      <button class="bell" data-jump="more" title="Explore More" aria-label="Explore More"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" stroke="none"><circle cx="5.25" cy="5.25" r="2.1"/><circle cx="12" cy="5.25" r="2.1"/><circle cx="18.75" cy="5.25" r="2.1"/><circle cx="5.25" cy="12" r="2.1"/><circle cx="12" cy="12" r="2.1"/><circle cx="18.75" cy="12" r="2.1"/><circle cx="5.25" cy="18.75" r="2.1"/><circle cx="12" cy="18.75" r="2.1"/><circle cx="18.75" cy="18.75" r="2.1"/></svg></button>
+      <div class="bell-wrap">
+        <button class="bell" data-bell-toggle="bell-panel"><svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="dot"></span></button>
+        <div class="bell-dropdown hide" id="bell-panel">
+          <div class="bell-dropdown-h">Notifications</div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg></div><div class="tx"><div class="tt">Event reminder</div><div class="ds">Mahavir Janma Kalyanak begins in 12 days.</div><div class="ts">2h ago</div></div></div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div><div class="tx"><div class="tt">Donation received</div><div class="ds">Thank you for your $1,251 gift.</div><div class="ts">Yesterday</div></div></div>
+          <div class="bell-item"><div class="ic"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/></svg></div><div class="tx"><div class="tt">Pathshala class reminder</div><div class="ds">Class starts in 30 minutes.</div><div class="ts">Yesterday</div></div></div>
+        </div>
+      </div>
+      <div class="me" data-jump="profile" style="cursor:pointer;"><div class="av">MS</div><div><div class="mn">Manan Shah</div><div class="mr">Patron · ID 04812</div></div></div>
+    </header>
+
+    <!-- ========================================================= HOME -->
+    <section class="view" id="v-home">
+      <section class="h6" id="h6" data-phase="day"><div class="h6-sky" aria-hidden="true"><i class="sky-day"></i><i class="sky-dawn"></i><i class="sky-dusk"></i><i class="stars"></i><i class="glow glow-warm"></i><i class="glow glow-day"></i><div class="orb"><i class="orb-halo"></i><i class="orb-core"></i><i class="orb-warm"></i></div><div class="moon"></div></div><div class="wrap h6-copy"><div class="h6-kicker">Jain Center of America · Member Home</div><h1 class="h6-title"><small>Jai Jinendra, Manan — a place to</small><span class="rot" aria-hidden="true"><i style="--i:0">worship</i><i style="--i:1">learn</i><i style="--i:2">celebrate</i><i style="--i:3">serve</i><i style="--i:4">give</i></span><span class="sr">worship, learn, celebrate, serve and give</span></h1><p class="h6-sub">Welcome back. Take darshan, see what is coming up, and give or serve.</p><div class="h6-pills"><a data-jump="darshan"><svg class="ic5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="2.5"/><path d="M6.5 6.5a8 8 0 0 0 0 11M17.5 6.5a8 8 0 0 1 0 11"/></svg>Live darshan</a><a data-jump="calendar"><svg class="ic5" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Events</a><a data-jump="donate"><svg class="ic5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>Donate</a><a data-jump="volunteer"><svg class="ic5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="7" r="4"/><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/></svg>Volunteer</a></div><div class="h6-track"><div class="h6-pan"><div class="h6-tithi">Chaitra Sud · Ashtami</div><div class="h6-times"><span class="h6-t">Sunrise<b data-sr>—</b></span><p class="h6-read"><span class="h6-read-t"></span><button type="button" class="h6-now" hidden>Now</button></p><span class="h6-t">Sunset<b data-ss>—</b></span></div></div><div class="h6-rail"><div class="rail-over l"></div><div class="rail-over r"></div><div class="rail-line"></div><i class="mark sr"></i><i class="mark ss"></i><button type="button" class="h6-thumb" role="slider" aria-label="Time of day — drag the sun left or right" aria-orientation="horizontal" aria-valuemin="0" aria-valuemax="1440" aria-valuenow="720"><i class="th-ar l" style="--k:0" aria-hidden="true"></i><i class="th-ar l" style="--k:1" aria-hidden="true"></i><i class="th-ar l" style="--k:2" aria-hidden="true"></i><i class="th-sun" aria-hidden="true"></i><i class="th-ar r" style="--k:0" aria-hidden="true"></i><i class="th-ar r" style="--k:1" aria-hidden="true"></i><i class="th-ar r" style="--k:2" aria-hidden="true"></i></button></div><p class="h6-hint">Drag the sun left or right — the sky, light and shadows follow.</p></div></div><div class="h6-scene" aria-hidden="true"><svg class="side side-l" viewBox="0 0 600 220" preserveAspectRatio="xMaxYMax slice"><path d="M0 220V96H34V62H78V104H112V40H168V84H206V122H250V70H300V110H336V52H392V92H428V132H470V84H520V120H560V150H600V220Z"/></svg><svg class="side side-r" viewBox="0 0 600 220" preserveAspectRatio="xMinYMax slice"><path d="M0 220V150H40V116H92V86H138V128H180V60H238V100H276V44H294V30H300V44H318V100H350V78H402V122H450V92H500V64H548V108H600V220Z"/></svg><div class="ground"><i class="g-dim"></i></div><div class="temple-wrap"><img class="t-shadow" src="../assets/img/i1/temple-shadow.webp?v=2" alt="" width="480" height="264"><div class="temple"><img src="../assets/img/i1/temple-1000.webp?v=2" srcset="../assets/img/i1/temple-640.webp?v=2 640w, ../assets/img/i1/temple-1000.webp?v=2 1000w" sizes="(max-width:639px) 90vw, (max-width:999px) 64vw, 44vw" alt="" width="1000" height="549" fetchpriority="high"><div class="t-fx" style="-webkit-mask-image:url(../assets/img/i1/temple-640.webp?v=2);mask-image:url(../assets/img/i1/temple-640.webp?v=2)"><i class="t-dim"></i><i class="t-warm"></i><i class="t-shl"></i><i class="t-shr"></i><i class="t-sunl"></i><i class="t-sunr"></i></div><img class="t-lights" src="../assets/img/i1/temple-lights.webp?v=3" alt="" width="1000" height="549" aria-hidden="true"></div></div></div></section>
+      <div class="view-head">
+        <div><h1>Jai Jinendra, Manan 🙏</h1><div class="sub">Tuesday, 14 April 2026</div></div>
+      </div>
+
+      <div class="panel alert-panel" style="margin-bottom:18px;">
+        <div class="panel-b" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+          <div><strong>Pending Dues — Total Due by May 1: $479.00</strong><div class="mt">2026 Annual Dues, MJK Family Pass, Pathshala Term Fee</div></div>
+          <button class="btn btn-saffron" data-jump="family">Pay All Now</button>
+        </div>
+      </div>
+
+      <div class="grid g-2-1" style="margin-bottom:18px;">
+        <div class="panchang-card">
+          <div><div class="panchang-date">Chaitra Sud · Ashtami</div><div class="panchang-tithi">Tuesday, April 14, 2026</div></div>
+          <div class="panchang-stats">
+            <div class="it"><div class="v">6:12 AM</div><div class="l">Sunrise</div></div>
+            <div class="it"><div class="v">7:34 PM</div><div class="l">Sunset</div></div>
+            <div class="it"><div class="v">6:45 PM</div><div class="l">Pratikraman</div></div>
+          </div>
+        </div>
+        <div class="panel"><div class="panel-b">
+          <div class="lbl" style="font-size:11px;color:var(--muted);font-weight:700;">Today's Swamivatsalya</div>
+          <div class="nm" style="font-family:var(--font-main);font-size:16px;margin-top:4px;">Sponsored by the Doshi Family</div>
+          <div class="mt" style="margin-top:4px;">Snatra Puja · 9:00 AM · Mahavir Swami Temple</div>
+        </div></div>
+      </div>
+
+      <div class="grid g2" style="margin-bottom:18px;">
+        <div class="thought-card">
+          <div class="lbl" style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px;">Thought for Today</div>
+          <div class="q">"Live and let live" — non-violence is not passive, it is the active practice of compassion.</div>
+        </div>
+        <div class="thought-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <div class="lbl" style="font-size:11px;color:var(--muted);font-weight:700;">Daily Quiz · Day 47</div>
+          </div>
+          <div style="font-size:13.5px;font-weight:600;margin-bottom:4px;">Which of the five great vows is "Ahimsa"?</div>
+          <div class="quiz-opts">
+            <button class="quiz-opt" data-quiz="correct">Non-violence</button>
+            <button class="quiz-opt" data-quiz="wrong">Non-attachment</button>
+            <button class="quiz-opt" data-quiz="wrong">Truthfulness</button>
+            <button class="quiz-opt" data-quiz="wrong">Non-stealing</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mkt-section-h" style="margin-bottom:14px;"><h2 style="font-size:17px;">Quick Actions</h2></div>
+      <div class="quick-row" style="margin-bottom:24px;">
+        <a class="quick-card" data-jump="darshan"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="nm">Darshan</div></a>
+        <a class="quick-card" data-jump="donate"><div class="ic"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></div><div class="nm">Donate</div></a>
+        <a class="quick-card" data-jump="calendar"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="nm">Events</div></a>
+        <a class="quick-card" data-jump="volunteer"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m19 8 2 2 4-4"/></svg></div><div class="nm">Volunteer</div></a>
+      </div>
+
+      <div class="grid g-2-1">
+        <div class="panel">
+          <div class="panel-h"><h3>Upcoming events</h3><a class="link" data-jump="calendar">See all →</a></div>
+          <table class="tbl">
+            <tbody>
+              <tr><td class="nm" style="cursor:pointer;" data-jump="calendar" data-cal-reveal="calendar-event-detail">Mahavir Janma Kalyanak</td><td class="mt">Apr 26</td></tr>
+              <tr><td class="nm">Pathshala Family Day</td><td class="mt">Apr 19</td></tr>
+              <tr><td class="nm">Pravachan by Acharya Vijay</td><td class="mt">May 4</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="panel">
+          <div class="panel-h"><h3>Center Hours</h3><span class="pill good hours-open"><span class="d"></span>Open Now</span></div>
+          <div class="panel-b">
+            <div class="hours-row"><span>Mon – Sun</span><span>7:00 AM – 7:00 PM</span></div>
+            <div class="mt" style="margin-top:10px;">43-11 Ithaca Street, Elmhurst, NY 11373</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:18px;">
+        <div class="panel-h"><h3>Latest Announcements</h3><a class="link" data-jump="announcements">Open community feed →</a></div>
+        <div class="panel-b">
+          <div class="post"><div class="post-head"><div class="tbl av" style="width:30px;height:30px;">JCA</div><div><div class="nm">JCA Official</div><div class="mt">Pinned · 2h ago</div></div></div><div class="post-body">Mahavir Janma Kalyanak — full schedule released. Abhishek begins 8:00 AM across all shrines.</div></div>
+          <div class="post"><div class="post-head"><div class="tbl av" style="width:30px;height:30px;">JCA</div><div><div class="nm">JCA Official <span class="pill warn" style="margin-left:6px;">Update</span></div><div class="mt">4h ago</div></div></div><div class="post-body">Update — Pathshala Spring Term kicked off Sunday. The children's Navkar Mantra recitation filled the hall. 🙏</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= LIVE DARSHAN (dark) -->
+    <section class="view hide" id="v-darshan">
+      <div class="dark-view">
+        <div class="view-head" style="margin-bottom:16px;">
+          <div><h2 style="font-size:24px;">Live Darshan</h2><div class="sub" style="color:var(--dark-text-soft);">Five shrines, one sangha — streaming now</div></div>
+          <span class="live-badge"><span class="d"></span>LIVE</span>
+        </div>
+        <div class="dark-panel" style="padding:18px;margin-bottom:18px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+            <div><h3 style="font-size:17px;">Mahavir Swami Temple</h3><div class="mt" style="color:var(--dark-text-soft);margin-top:4px;">Mangal Aarti in progress · 324 watching</div></div>
+            <div style="display:flex;gap:8px;">
+              <button class="icon-btn" style="background:transparent;border-color:var(--dark-line);color:#fff;" title="Picture in picture"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><rect x="12" y="12" width="8" height="6" rx="1" fill="currentColor" stroke="none"/></svg></button>
+              <button class="icon-btn" style="background:transparent;border-color:var(--dark-line);color:#fff;" title="AirPlay"><svg viewBox="0 0 24 24"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><polygon points="12 15 17 21 7 21 12 15"/></svg></button>
+            </div>
+          </div>
+          <div class="stream-tile" style="margin-top:14px;border:none;"><div class="art" style="aspect-ratio:21/9;"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="live-badge lb"><span class="d"></span>LIVE</span><span class="vw">324 watching</span></div></div>
+        </div>
+        <div class="stream-grid">
+          <a class="stream-tile" data-jump="darshan"><div class="art"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="live-badge lb"><span class="d"></span>LIVE</span><span class="vw">187</span></div><div class="info"><div class="nm">Adinathji</div><div class="mt">Streaming now</div></div></a>
+          <a class="stream-tile" data-jump="darshan"><div class="art"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="live-badge lb"><span class="d"></span>LIVE</span><span class="vw">94</span></div><div class="info"><div class="nm">Dadawadi</div><div class="mt">Streaming now</div></div></a>
+          <a class="stream-tile" data-jump="darshan"><div class="art"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="info"><div class="nm">Shrimad Rajchandra Hall</div><div class="mt">Next: 6:00 PM</div></div></a>
+          <a class="stream-tile" data-jump="darshan"><div class="art"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="info"><div class="nm">Upashray</div><div class="mt">Lecture at 7:00 PM</div></div></a>
+        </div>
+        <div class="dark-panel" style="padding:16px 18px;margin-top:18px;">
+          <h3 style="font-size:15px;margin-bottom:6px;">Today's Aarti Schedule</h3>
+          <div class="dark-row"><span>Mangal Aarti</span><span class="mt">6:30 AM</span></div>
+          <div class="dark-row"><span>Snatra Puja</span><span class="mt">9:00 AM</span></div>
+          <div class="dark-row"><span>Sandhya Aarti</span><span class="mt">7:00 PM</span></div>
+          <div class="dark-row"><span>Bhavna</span><span class="mt">8:30 PM</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= CALENDAR -->
+    <section class="view hide" id="v-calendar">
+      <div class="view-head"><div><h1>Events</h1><div class="sub">April 2026 · festivals, parva days, and JCA events</div></div>
+        <div class="view-actions"><button class="icon-btn">‹</button><button class="icon-btn">›</button></div>
+      </div>
+      <div class="grid g-2-1">
+        <div class="panel"><div class="panel-b">
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:11px;color:var(--muted);font-weight:700;margin-bottom:8px;">
+            <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;">
+            <div class="mt" style="padding:10px 0;opacity:0.3;text-align:center;">29</div><div class="mt" style="padding:10px 0;opacity:0.3;text-align:center;">30</div><div class="mt" style="padding:10px 0;opacity:0.3;text-align:center;">31</div>
+            <div style="padding:10px 0;text-align:center;border-radius:8px;">1</div><div style="padding:10px 0;text-align:center;border-radius:8px;">2</div><div style="padding:10px 0;text-align:center;border-radius:8px;">3</div><div style="padding:10px 0;text-align:center;border-radius:8px;">4</div>
+            <div style="padding:10px 0;text-align:center;border-radius:8px;">5</div><div style="padding:10px 0;text-align:center;border-radius:8px;">6</div><div style="padding:10px 0;text-align:center;border-radius:8px;position:relative;">7<div style="width:5px;height:5px;background:var(--saffron);border-radius:50%;margin:2px auto 0;"></div></div><div style="padding:10px 0;text-align:center;border-radius:8px;">8</div><div style="padding:10px 0;text-align:center;border-radius:8px;">9</div><div style="padding:10px 0;text-align:center;border-radius:8px;">10</div><div style="padding:10px 0;text-align:center;border-radius:8px;">11</div>
+            <div style="padding:10px 0;text-align:center;border-radius:8px;">12</div><div style="padding:10px 0;text-align:center;border-radius:8px;">13</div><div style="padding:10px 0;text-align:center;border-radius:8px;background:var(--indigo);color:#fff;font-weight:700;cursor:pointer;" data-cal-reveal="calendar-event-detail">14</div><div style="padding:10px 0;text-align:center;border-radius:8px;">15</div><div style="padding:10px 0;text-align:center;border-radius:8px;">16</div><div style="padding:10px 0;text-align:center;border-radius:8px;position:relative;">17<div style="width:5px;height:5px;background:var(--indigo);border-radius:50%;margin:2px auto 0;"></div></div><div style="padding:10px 0;text-align:center;border-radius:8px;">18</div>
+            <div style="padding:10px 0;text-align:center;border-radius:8px;position:relative;">19<div style="width:5px;height:5px;background:var(--indigo);border-radius:50%;margin:2px auto 0;"></div></div><div style="padding:10px 0;text-align:center;border-radius:8px;">20</div><div style="padding:10px 0;text-align:center;border-radius:8px;">21</div><div style="padding:10px 0;text-align:center;border-radius:8px;">22</div><div style="padding:10px 0;text-align:center;border-radius:8px;">23</div><div style="padding:10px 0;text-align:center;border-radius:8px;">24</div><div style="padding:10px 0;text-align:center;border-radius:8px;">25</div>
+            <div style="padding:10px 0;text-align:center;border-radius:8px;position:relative;cursor:pointer;" data-cal-reveal="calendar-event-detail">26<div style="width:5px;height:5px;background:var(--saffron);border-radius:50%;margin:2px auto 0;"></div></div><div style="padding:10px 0;text-align:center;border-radius:8px;">27</div><div style="padding:10px 0;text-align:center;border-radius:8px;">28</div><div style="padding:10px 0;text-align:center;border-radius:8px;">29</div><div style="padding:10px 0;text-align:center;border-radius:8px;">30</div><div class="mt" style="padding:10px 0;opacity:0.3;text-align:center;">1</div><div class="mt" style="padding:10px 0;opacity:0.3;text-align:center;">2</div>
+          </div>
+          <div class="legend" style="margin-top:14px;"><span class="k"><span class="sw" style="background:var(--saffron);border-radius:50%;"></span>Festival / parva day</span><span class="k"><span class="sw" style="background:var(--indigo);border-radius:50%;"></span>JCA event</span></div>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Parva Days</h3></div><div class="panel-b">
+          <div class="tl-item" style="padding-bottom:14px;cursor:pointer;" data-cal-reveal="calendar-event-detail"><div class="tm">In 12 days</div><div class="lb">Mahavir Janma Kalyanak</div></div>
+          <div class="tl-item" style="padding-bottom:14px;"><div class="tm">In 4 days</div><div class="lb">Ayambil Oli</div></div>
+          <div class="tl-item"><div class="tm">In 10 days</div><div class="lb">Akshay Tritiya</div></div>
+        </div></div>
+      </div>
+
+      <!-- inline event detail — revealed here when a calendar date/event is clicked -->
+      <div class="panel hide" id="calendar-event-detail" style="margin-top:18px;">
+        <div class="panel-h">
+          <h3>Mahavir Janma Kalyanak 2026</h3>
+          <button class="icon-btn" data-cal-hide="calendar-event-detail" title="Close"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+        </div>
+        <div class="panel-b">
+          <div class="sub" style="margin-bottom:16px;">Major Festival · Main Hall &amp; all shrines</div>
+          <div class="grid g-2-1">
+            <div>
+              <div class="panel" style="margin-bottom:18px;overflow:hidden;">
+                <div style="aspect-ratio:21/9;background:linear-gradient(135deg,var(--sand-warm),var(--sand));display:flex;align-items:center;justify-content:center;color:var(--brass);"><svg viewBox="0 0 24 24" style="width:44px;height:44px;stroke:currentColor;fill:none;stroke-width:1.3;"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+              </div>
+              <div class="panel"><div class="panel-b">
+                <p class="mt" style="color:var(--ink-soft);line-height:1.7;">Celebrating the birth of Bhagwan Mahavir across all five shrines. Abhishek, snatra puja, and swamivatsalya continue throughout the day, welcoming all five traditions equally.</p>
+                <h3 style="font-family:var(--font-main);font-size:16px;margin:20px 0 12px;">Schedule</h3>
+                <div class="timeline">
+                  <div class="tl-item"><div class="tm">8:00 AM</div><div class="lb">Abhishek — all shrines</div></div>
+                  <div class="tl-item"><div class="tm">10:00 AM</div><div class="lb">Snatra Puja — Main Hall</div></div>
+                  <div class="tl-item"><div class="tm">12:30 PM</div><div class="lb">Swamivatsalya lunch — Bhojanshala</div></div>
+                  <div class="tl-item"><div class="tm">6:00 PM</div><div class="lb">Sandhya Aarti &amp; Bhavna</div></div>
+                </div>
+              </div></div>
+            </div>
+            <div>
+              <div class="panel" style="margin-bottom:18px;"><div class="panel-b">
+                <div class="mt" style="margin-bottom:6px;">📍 Main Hall &amp; all shrines, JCA Elmhurst</div>
+                <div style="aspect-ratio:16/9;background:var(--sand-warm);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;">Map preview</div>
+              </div></div>
+              <div class="panel"><div class="panel-b">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;"><span class="nm">1,034 going</span><span class="pill good"><span class="d"></span>Confirmed</span></div>
+                <button class="btn btn-primary btn-block" style="margin-bottom:10px;">You're going — Manage RSVP</button>
+                <button class="btn btn-ghost btn-block" data-jump="donate">Sponsor this event</button>
+              </div></div>
+            </div>
+          </div>
+          <div class="grid g3" style="margin-top:18px;">
+            <div class="panel" style="padding:16px;"><div class="nm" style="margin-bottom:4px;">Confirmed</div><span class="pill good"><span class="d"></span>Your RSVP</span></div>
+            <div class="panel" style="padding:16px;"><div class="nm" style="margin-bottom:4px;">Waitlisted</div><div class="mt">37 members — auto-promoted on cancellation</div></div>
+            <div class="panel" style="padding:16px;"><div class="nm" style="margin-bottom:4px;">Full — Bhojanshala shift</div><div class="mt">Sign up as a volunteer instead</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= PAST EVENTS (v1.5) -->
+    <section class="view hide" id="v-past-events">
+      <div class="view-head"><div><h1>Past Events <span class="phase-badge v15">v1.5</span></h1><div class="sub">Auto-archived after each event ends, with photos and donor recognition.</div></div></div>
+      <div class="grid g3">
+        <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--sand-warm),var(--sand));"></div><div class="panel-b"><div class="nm">Paryushan Maha Parv 2025</div><div class="mt">1,842 attended · $61,200 raised</div></div></div>
+        <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--sand-warm),var(--sand));"></div><div class="panel-b"><div class="nm">Diwali Celebration 2025</div><div class="mt">960 attended · $18,400 raised</div></div></div>
+        <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:4/3;background:linear-gradient(135deg,var(--sand-warm),var(--sand));"></div><div class="panel-b"><div class="nm">MJK 2025</div><div class="mt">1,120 attended · $52,900 raised</div></div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= DONATE (subnav: Causes · Bhojanshala · Tithi · Sponsors) -->
+    <section class="view hide" id="v-donate">
+      <div class="view-head"><div><h1>Daan &amp; Dharma</h1></div></div>
+      <div class="subnav" data-subnav-group="donate">
+        <button data-subnav="causes" class="on">Causes</button>
+        <button data-subnav="bhoj">Sponsor Bhojanshala</button>
+        <button data-subnav="tithi">Sponsor a Tithi</button>
+        <button data-subnav="sponsors">Sponsors of the Month</button>
+      </div>
+
+      <div data-subnav-panel="donate" data-subnav-val="causes">
+        <div class="bar lg" style="margin-bottom:18px;"><div class="f i" style="width:68%;"></div></div>
+        <div class="grid g3">
+          <div class="cause-card"><div class="nm">General Fund</div><div class="ds">Unrestricted — sustains daily operations.</div><span class="tag rel">Religious</span><div class="bar" style="margin-top:12px;"><div class="f i" style="width:68%;"></div></div><div class="amt-row"><span>$340,210</span><span>Goal $500,000</span></div><div class="chip-amounts"><button class="chip-amt">$51</button><button class="chip-amt on">$108</button><button class="chip-amt">$251</button><button class="chip-amt">$501</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="payment">Donate now</button></div>
+          <div class="cause-card"><div class="nm">Temple Maintenance</div><div class="ds">Upkeep of the shrines and campus.</div><span class="tag rel">Religious</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:44%;"></div></div><div class="amt-row"><span>$88,000</span><span>Goal $200,000</span></div><div class="chip-amounts"><button class="chip-amt">$51</button><button class="chip-amt">$108</button><button class="chip-amt on">$251</button><button class="chip-amt">$501</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="payment">Donate now</button></div>
+          <div class="cause-card"><div class="nm">Sponsor Bhojanshala</div><div class="ds">Fund the community kitchen.</div><span class="tag cul">Cultural</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:81%;"></div></div><div class="amt-row"><span>$40,500</span><span>Goal $50,000</span></div><div class="chip-amounts"><button class="chip-amt on">$1,251</button><button class="chip-amt">$351</button><button class="chip-amt">$501</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="donate" data-subnav-target="bhoj">Sponsor a date</button></div>
+          <div class="cause-card"><div class="nm">Pathshala — Scholarship</div><div class="ds">Term-fee assistance for families in need.</div><span class="tag edu">Educational</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:54%;"></div></div><div class="amt-row"><span>$10,800</span><span>Goal $20,000</span></div><div class="chip-amounts"><button class="chip-amt">$51</button><button class="chip-amt on">$108</button><button class="chip-amt">$251</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="payment">Donate now</button></div>
+          <div class="cause-card"><div class="nm">Matching Gifts Program</div><div class="ds">Your employer may double this gift.</div><span class="tag edu">Educational</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:22%;"></div></div><div class="amt-row"><span>$11,000</span><span>Goal $50,000</span></div><div class="chip-amounts"><button class="chip-amt">$51</button><button class="chip-amt on">$108</button><button class="chip-amt">$251</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="payment">Donate now</button></div>
+          <div class="cause-card" style="border-color:var(--good);"><div class="nm">Jeev Daya <span class="pill good" style="margin-left:6px;">Always active</span></div><div class="ds">Animal welfare — permanent cause, partner organizations.</div><span class="tag edu">Educational</span><div class="bar" style="margin-top:12px;"><div class="f" style="width:100%;background:linear-gradient(90deg,var(--good),var(--good));"></div></div><div class="amt-row"><span>Ongoing</span><span>No goal cap</span></div><div class="chip-amounts"><button class="chip-amt">$51</button><button class="chip-amt on">$108</button><button class="chip-amt">$251</button><button class="chip-amt">Custom</button></div><button class="btn btn-primary btn-block" style="margin-top:14px;" data-jump="payment">Donate now</button></div>
+        </div>
+      </div>
+
+      <div class="hide" data-subnav-panel="donate" data-subnav-val="bhoj">
+        <div class="sub" style="margin-bottom:16px;">Annadan · Sacred Givings — 2,140 meals served this month</div>
+        <div class="grid g4" style="margin-bottom:18px;">
+        <div class="cause-card"><div class="nm">Full Lunch</div><div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$1,251</div><div class="ds">Feeds the full Sunday congregation.</div></div>
+        <div class="cause-card"><div class="nm">Snack Seva</div><div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$501</div><div class="ds">Afternoon snacks after aarti.</div></div>
+        <div class="cause-card"><div class="nm">Sweet Box</div><div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$351</div><div class="ds">Prasad boxes for the sangha.</div></div>
+        <div class="cause-card"><div class="nm">Festival Feast</div><div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$2,501</div><div class="ds">Full festival-day catering.</div></div>
+      </div>
+      <div class="panel"><div class="panel-h"><h3>Available Sundays</h3></div><div class="panel-b">
+        <div class="chip-amounts">
+          <button class="chip-amt">May 3</button><button class="chip-amt on">May 10</button><button class="chip-amt">May 17</button><button class="chip-amt" disabled style="opacity:0.4;">May 24 — booked</button><button class="chip-amt">May 31</button>
+        </div>
+        <div class="field-row" style="margin-top:16px;">
+          <div class="field"><label><input type="checkbox" class="ckbox" style="margin-right:6px;">Donate anonymously</label></div>
+          <div class="field"><input placeholder="In memory of / in honor of (optional)"></div>
+        </div>
+        <button class="btn btn-primary" data-jump="payment">Continue to Payment · $1,251</button>
+      </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="donate" data-subnav-val="tithi">
+        <div class="sub" style="margin-bottom:16px;">Choose a date, honor an occasion</div>
+        <div class="panel"><div class="panel-b">
+        <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;">
+          <button class="chip-amt">Apr 15</button><button class="chip-amt">Apr 16</button><button class="chip-amt on">Apr 17</button><button class="chip-amt" disabled style="opacity:0.4;">Apr 18</button><button class="chip-amt">Apr 19</button><button class="chip-amt" disabled style="opacity:0.4;">Apr 20</button><button class="chip-amt">Apr 21</button>
+        </div>
+        <div class="chip-amounts" style="margin-top:16px;"><button class="chip-amt">$251</button><button class="chip-amt on">$501</button><button class="chip-amt">$1,008</button></div>
+        <div class="field-row" style="margin-top:16px;">
+          <div class="field"><label><input type="checkbox" class="ckbox" style="margin-right:6px;">Donate anonymously</label></div>
+          <div class="field"><input placeholder="In memory of / in honor of (optional)"></div>
+        </div>
+        <button class="btn btn-primary" data-jump="payment">Continue to Payment · $501</button>
+      </div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="donate" data-subnav-val="sponsors">
+        <div class="sub" style="margin-bottom:16px;">47 Sponsors · $52,840 raised this month</div>
+        <div class="panel">
+          <table class="tbl">
+            <tbody>
+              <tr><td class="tbl who" style="cursor:pointer;" data-jump="public-card"><div class="av">ND</div><div><div class="nm">Nimesh &amp; Roma Doshi</div><div class="mt">Bhojanshala — Full Lunch, Apr 19</div></div></td><td class="num">$1,251.00</td><td class="mt">Apr 19</td></tr>
+              <tr><td class="tbl who"><div class="av s">KS</div><div><div class="nm">Kirti &amp; Smita Sanghvi</div><div class="mt">Sponsor a Tithi, Apr 21</div></div></td><td class="num">$501.00</td><td class="mt">Apr 21</td></tr>
+              <tr><td class="tbl who"><div class="av b">Anon</div><div><div class="nm">Anonymous</div><div class="mt">In memory of Kantilal Jhaveri</div></div></td><td class="num">$2,508.00</td><td class="mt">Apr 13</td></tr>
+              <tr><td class="tbl who"><div class="av">HJ</div><div><div class="nm">Harshad Jhaveri</div><div class="mt">Bhojanshala — MJK Full Lunch</div></div></td><td class="num">$1,251.00</td><td class="mt">Apr 26</td></tr>
+              <tr><td class="tbl who"><div class="av s">DP</div><div><div class="nm">Dilip &amp; Pratima Patel</div><div class="mt">General Fund — Recurring</div></div></td><td class="num">$751.00</td><td class="mt">Apr 12</td></tr>
+            </tbody>
+          </table>
+          <div class="panel-b" style="text-align:center;"><a class="link" href="#" style="color:var(--indigo);font-weight:600;">+ 39 more sponsors this month</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= PAYMENT -->
+    <section class="view hide" id="v-payment">
+      <div class="view-head"><div><h1>Payment</h1><div class="sub">Sponsor Bhojanshala · Full Lunch, May 10</div></div></div>
+      <div class="grid g-2-1">
+        <div class="panel"><div class="panel-b">
+          <h3 style="font-family:var(--font-main);font-size:16px;margin-bottom:14px;">Donation summary</h3>
+          <div class="amt-row"><span>Cause</span><span>Sponsor Bhojanshala — Full Lunch</span></div>
+          <div class="amt-row"><span>Date</span><span>May 10, 2026</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:10px;"><span>Total</span><span>$1,251.00</span></div>
+
+          <h3 style="font-family:var(--font-main);font-size:16px;margin:22px 0 12px;">Payment method</h3>
+          <div class="grid g2">
+            <button class="chip-amt on" style="padding:12px;display:flex;align-items:center;justify-content:center;gap:6px;"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="none"><path d="M16.365 1.43c0 1.14-.463 2.101-1.187 2.816-.716.716-1.859 1.257-2.87 1.174-.134-1.096.42-2.244 1.11-2.96.741-.778 1.995-1.353 2.947-1.03zM20.7 17.44c-.45 1.037-.663 1.5-1.238 2.42-.802 1.283-1.933 2.882-3.335 2.895-1.245.013-1.567-.81-3.258-.8-1.69.01-2.045.815-3.29.802-1.4-.014-2.472-1.454-3.274-2.737-2.245-3.588-2.482-7.798-1.096-10.037.984-1.588 2.537-2.517 3.997-2.517 1.487 0 2.422.82 3.653.82 1.194 0 1.92-.82 3.638-.82 1.303 0 2.685.71 3.669 1.935-3.226 1.767-2.702 6.369.534 7.639z"/></svg>Apple Pay</button>
+            <button class="chip-amt" style="padding:12px;">G Pay</button>
+            <button class="chip-amt" style="padding:12px;">Card</button>
+            <button class="chip-amt" style="padding:12px;">PayPal</button>
+            <button class="chip-amt" style="padding:12px;">Bank / ACH</button>
+            <button class="chip-amt" style="padding:12px;">Zelle (off-platform)</button>
+          </div>
+          <div class="field" style="margin-top:16px;"><label>Receipt email</label><input value="manan.shah@example.com"></div>
+          <div class="field"><label><input type="checkbox" class="ckbox" checked style="margin-right:6px;">Save this card for future donations</label></div>
+        </div></div>
+        <div class="panel"><div class="panel-b">
+          <div class="dual" style="background:var(--info-bg);border-color:rgba(46,58,89,0.25);color:var(--indigo);">
+            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <div><strong>Anumodana.</strong> Every gift is a moment of shared joy in another's virtue. Your donation is tax-deductible under our 501(c)(3) status — Tax ID 13-3135532.</div>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px;" data-jump="thankyou">Confirm Donation · $1,251.00</button>
+          <div class="mt" style="text-align:center;margin-top:10px;">🔒 256-bit SSL · secured by Stripe</div>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= THANK YOU -->
+    <section class="view hide" id="v-thankyou">
+      <div style="max-width:520px;margin:0 auto;text-align:center;padding:40px 0;">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--good-bg);color:var(--good);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg viewBox="0 0 24 24" style="width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h1 style="font-family:var(--font-main);font-size:26px;margin-bottom:6px;">Thank you, Manan.</h1>
+        <div class="mt" style="font-style:italic;font-family:var(--font-quote);font-size:15px;margin-bottom:24px;">Dānam Paramo Dharma</div>
+        <div class="panel" style="text-align:left;margin-bottom:20px;"><div class="panel-b">
+          <div class="amt-row"><span>Cause</span><span>Sponsor Bhojanshala</span></div>
+          <div class="amt-row"><span>Date</span><span>May 10, 2026</span></div>
+          <div class="amt-row"><span>Method</span><span>Apple Pay</span></div>
+          <div class="amt-row"><span>Transaction ID</span><span>JCA-2026-048291</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:6px;"><span>Total</span><span>$1,251.00</span></div>
+        </div></div>
+        <div class="mt" style="margin-bottom:20px;">This gift is tax-deductible under IRS 501(c)(3). No goods or services were provided in exchange.</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-ghost">Download Receipt (PDF)</button>
+          <button class="btn btn-ghost">Share</button>
+          <button class="btn btn-primary" data-jump="recurring">Make monthly</button>
+        </div>
+        <a href="#" class="link" style="display:block;margin-top:18px;color:var(--indigo);font-weight:600;" data-jump="home">Back to Home</a>
+      </div>
+    </section>
+
+    <!-- ========================================================= MY DONATION HISTORY -->
+    <section class="view hide" id="v-history">
+      <div class="view-head"><div><h1>My Donation History</h1><div class="sub">$8,754.00 YTD · 14 donations · 6 causes</div></div>
+        <div class="view-actions"><button class="btn btn-ghost">↓ Year-end Statement</button></div>
+      </div>
+      <div class="seg" style="margin-bottom:18px;"><button class="on">2026</button><button>2025</button><button>All Years</button></div>
+      <div class="panel">
+        <div class="panel-h"><h3>April 2026</h3></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td class="nm">Sponsor Bhojanshala — Full Lunch</td><td class="mt">Apr 14</td><td class="mt">Apple Pay</td><td class="num">$1,251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+            <tr><td class="nm">General Fund — Recurring</td><td class="mt">Apr 1</td><td class="mt">Card •••• 8891</td><td class="num">$251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+          </tbody>
+        </table>
+        <div class="panel-h" style="border-top:1px solid var(--line-soft);"><h3>March 2026</h3></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td class="nm">Pathshala — Scholarship — Recurring</td><td class="mt">Mar 1</td><td class="mt">Card •••• 8891</td><td class="num">$751.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+            <tr><td class="nm">General Fund — Recurring</td><td class="mt">Mar 1</td><td class="mt">Card •••• 8891</td><td class="num">$251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ========================================================= RECURRING SEVA -->
+    <section class="view hide" id="v-recurring">
+      <div class="view-head"><div><h1>Recurring Seva</h1><div class="sub">Givings on autopilot</div></div></div>
+      <div class="seg" data-seg-group="rec-tab" style="margin-bottom:18px;">
+        <button data-seg="mine" class="on">My Subscriptions</button>
+        <button data-seg="new">Set Up New</button>
+      </div>
+      <div data-seg-panel="rec-tab" data-seg-val="mine" class="grid g2">
+        <div class="panel"><div class="panel-b">
+          <div style="display:flex;justify-content:space-between;"><div class="nm">General Fund</div><span class="pill good"><span class="d"></span>Active</span></div>
+          <div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$251<span style="font-size:13px;color:var(--muted);">/mo</span></div>
+          <div class="mt">Next charge May 1 · Lifetime $4,518</div>
+          <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-ghost">Edit Amount</button><button class="btn btn-sm btn-ghost">Pause</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-b">
+          <div style="display:flex;justify-content:space-between;"><div class="nm">Pathshala Scholarship</div><span class="pill good"><span class="d"></span>Active</span></div>
+          <div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$751<span style="font-size:13px;color:var(--muted);">/mo</span></div>
+          <div class="mt">Next charge May 1 · Lifetime $9,012</div>
+          <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-ghost">Edit Amount</button><button class="btn btn-sm btn-ghost">Pause</button></div>
+        </div></div>
+      </div>
+      <div class="hide" data-seg-panel="rec-tab" data-seg-val="new">
+        <div class="mkt-section-h" style="margin-bottom:14px;"><h2 style="font-size:16px;">Popular Plans</h2></div>
+        <div class="grid g3">
+          <div class="cause-card"><div class="nm">Daily Aarti Dāna</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$11<span style="font-size:12px;color:var(--muted);">/day</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+          <div class="cause-card"><div class="nm">Bhojanshala Family Plan</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$108<span style="font-size:12px;color:var(--muted);">/mo</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+          <div class="cause-card"><div class="nm">Paryushan Dāna</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$2,508<span style="font-size:12px;color:var(--muted);">/yr</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= COMMUNITY FEED -->
+    <section class="view hide" id="v-announcements">
+      <div class="view-head"><div><h1>Community Feed</h1><div class="sub">Announcements, news, and newsletters from JCA</div></div></div>
+      <div class="seg" data-seg-group="ann-tab" style="margin-bottom:14px;">
+        <button data-seg="all" class="on">All</button><button data-seg="announcements">Announcements</button><button data-seg="news">News &amp; Newsletters</button>
+      </div>
+      <div class="panel" data-seg-panel="ann-tab" data-seg-val="announcements">
+        <div class="post" style="padding:18px;"><div class="post-head"><div class="tbl av">JCA</div><div><div class="nm">JCA Official <span class="pill info" style="margin-left:6px;">Pinned</span> <span class="pill good" style="margin-left:4px;">Announcement</span></div><div class="mt">2h ago</div></div></div><div class="post-body">Mahavir Janma Kalyanak — full schedule released. Abhishek begins 8:00 AM across all shrines. See you there! 🙏</div><div class="post-meta">
+          <button class="reax on" data-react>🙏 <b>214</b></button><button class="reax" data-react>💛 <b>62</b></button><button class="reax" data-react>🙌 <b>18</b></button>
+        </div></div>
+      </div>
+      <div data-seg-panel="ann-tab" data-seg-val="news">
+      <div class="mkt-section-h" style="margin:22px 0 12px;"><h2 style="font-size:15px;">News &amp; Newsletters</h2></div>
+      <div class="panel" style="margin-bottom:18px;overflow:hidden;">
+        <div style="height:140px;background:linear-gradient(135deg,var(--sand-warm),var(--sand));"></div>
+        <div class="panel-b"><div class="mt" style="margin-bottom:4px;">Apr 12, 2026</div><div class="nm" style="font-family:var(--font-main);font-size:18px;">Mahavir Janma Kalyanak — Full Schedule Released</div></div>
+      </div>
+      <div class="panel">
+        <table class="tbl"><tbody>
+          <tr><td class="nm">Spring Newsletter — Paryushan Preparations Begin</td><td class="mt">Apr 1</td></tr>
+          <tr><td class="nm">General Body Meeting — Annual Report Available</td><td class="mt">Mar 20</td></tr>
+          <tr><td class="nm">Pathshala Spring Term Registration Now Open</td><td class="mt">Mar 3</td></tr>
+        </tbody></table>
+      </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= VOLUNTEER -->
+    <section class="view hide" id="v-volunteer">
+      <div class="view-head"><div><h1>Volunteer &amp; Seva</h1><div class="sub">142 hours committed across 18 events</div></div></div>
+      <div class="grid g4">
+        <div class="cause-card"><div class="nm">Bhojanshala Helper <span class="pill warn" style="margin-left:6px;">Urgent</span></div><div class="ds">Sun, Apr 19 · 2-hour shift</div><button class="btn btn-primary btn-block" style="margin-top:12px;">Sign up ›</button></div>
+        <div class="cause-card"><div class="nm">Pathshala Teacher's Aide</div><div class="ds">Ongoing, Sundays</div><button class="btn btn-ghost btn-block" style="margin-top:12px;" disabled>Full</button></div>
+        <div class="cause-card"><div class="nm">MJK Setup Crew</div><div class="ds">Sat, Apr 25</div><button class="btn btn-primary btn-block" style="margin-top:12px;">Sign up ›</button></div>
+        <div class="cause-card"><div class="nm">Senior Group Visit</div><div class="ds">Sat, May 2</div><button class="btn btn-primary btn-block" style="margin-top:12px;">Sign up ›</button></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= YOUTH (v1.5) -->
+    <section class="view hide" id="v-youth">
+      <div class="view-head"><div><h1>Youth <span class="phase-badge v15">v1.5</span></h1><div class="sub">Ages 13–25 · programming, mentorship, and social events</div></div></div>
+      <div class="grid g3">
+        <div class="cause-card"><div class="nm">Teen Discussion Circle</div><div class="ds">Sundays, 11 AM · Upashray</div></div>
+        <div class="cause-card"><div class="nm">YJA Regional Retreat</div><div class="ds">Jun 20–22 · external registration</div></div>
+        <div class="cause-card"><div class="nm">Group Seva — MJK Setup</div><div class="ds">Youth-only sign-up block</div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= PATHSHALA -->
+    <section class="view hide" id="v-pathshala">
+      <div class="view-head"><div><h1>Pathshala — Spring Term</h1><div class="sub">2 children enrolled</div></div></div>
+      <div class="subnav" data-subnav-group="pathshala">
+        <button data-subnav="classes" class="on">Classes</button>
+        <button data-subnav="books">Books</button>
+      </div>
+
+      <div data-subnav-panel="pathshala" data-subnav-val="classes">
+        <div class="grid g2">
+          <div class="panel"><div class="panel-b">
+            <div style="display:flex;align-items:center;gap:12px;"><div class="tbl av">AS</div><div><div class="nm">Arya Shah</div><div class="mt">Beginner · Class A</div></div></div>
+            <div class="mt" style="margin:12px 0 4px;">Today's lesson</div>
+            <div class="nm">Lesson 7 of 12 — The Five Mahavratas Explained</div>
+            <div class="bar" style="margin:10px 0;"><div class="f i" style="width:58%;"></div></div>
+            <div class="mt" style="margin-top:12px;">Term fee: <span class="pill good">Paid</span> · Attendance streak: 9 weeks</div>
+          </div></div>
+          <div class="panel"><div class="panel-b">
+            <div style="display:flex;align-items:center;gap:12px;"><div class="tbl av s">KS</div><div><div class="nm">Kabir Shah</div><div class="mt">Beginner · Class A</div></div></div>
+            <div class="mt" style="margin:12px 0 4px;">Today's lesson</div>
+            <div class="nm">Lesson 7 of 12 — The Five Mahavratas Explained</div>
+            <div class="bar" style="margin:10px 0;"><div class="f i" style="width:58%;"></div></div>
+            <div class="mt" style="margin-top:12px;">Term fee: <span class="pill good">Paid</span> · Attendance streak: 9 weeks</div>
+          </div></div>
+        </div>
+        <button class="btn btn-ghost" style="margin-top:16px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Enroll a Family Member</button>
+        <div class="panel" style="margin-top:18px;"><div class="panel-h"><h3>Teacher contact</h3></div><div class="panel-b">Sunita Shah · Beginner Class A · <a class="link" style="color:var(--indigo);">Send feedback</a></div></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="pathshala" data-subnav-val="books">
+        <div class="sub" style="margin-bottom:16px;">Books assigned to your enrolled children</div>
+        <div class="grid g2">
+          <div class="panel"><div class="panel-b">
+            <div style="display:flex;align-items:center;gap:12px;"><div class="tbl av">AS</div><div><div class="nm">Arya Shah</div><div class="mt">Beginner · Class A</div></div></div>
+            <div class="health-row" style="margin-top:12px;"><span class="nm">Beginner Workbook</span><span class="mt">Offline download</span></div>
+          </div></div>
+          <div class="panel"><div class="panel-b">
+            <div style="display:flex;align-items:center;gap:12px;"><div class="tbl av s">KS</div><div><div class="nm">Kabir Shah</div><div class="mt">Beginner · Class A</div></div></div>
+            <div class="health-row" style="margin-top:12px;"><span class="nm">Beginner Workbook</span><span class="mt">Offline download</span></div>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= JINVANI LIBRARY (v1.5) -->
+    <section class="view hide" id="v-jinvani">
+      <div class="view-head"><div><h1>Jinvani · Library <span class="phase-badge v15">v1.5</span></h1><div class="sub">Searchable scripture, commentary, and children's texts</div></div></div>
+      <div class="search" style="width:100%;margin-bottom:16px;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input placeholder="Search across full text of all PDFs…"></div>
+      <div class="seg" style="margin-bottom:18px;"><button class="on">All · 47</button><button>Agam Sutras</button><button>Commentaries</button><button>Children</button><button>Bookmarks</button></div>
+      <div class="panel" style="margin-bottom:18px;"><div class="panel-h"><h3>Continue Reading</h3></div><div class="panel-b"><div class="nm">Tattvārtha Sūtra</div><div class="mt">p.84 / 312</div><div class="bar" style="margin-top:8px;"><div class="f i" style="width:27%;"></div></div></div></div>
+      <div class="grid g4">
+        <div class="cause-card"><div class="nm" style="font-size:13px;">Tattvārtha Sūtra</div><div class="mt">Beginner · English, Hindi</div></div>
+        <div class="cause-card"><div class="nm" style="font-size:13px;">Ācārāṅga Sūtra</div><div class="mt">Intermediate · English</div></div>
+        <div class="cause-card"><div class="nm" style="font-size:13px;">Daśavaikālika Sūtra</div><div class="mt">Advanced · English, Gujarati</div></div>
+        <div class="cause-card"><div class="nm" style="font-size:13px;">Navkar Mantra — Children's Edition</div><div class="mt">Children · Audio + text</div></div>
+      </div>
+    </section>
+
+    <!-- ========================================================= JAIN PHILOSOPHY (v2.0, subnav: Lessons · Pravachan & Lectures) -->
+    <section class="view hide" id="v-philosophy">
+      <div class="view-head"><div><h1>Jain Philosophy <span class="phase-badge v2">v2.0</span></h1><div class="sub">Structured lesson tracks with progress tracking</div></div></div>
+      <div class="subnav" data-subnav-group="philosophy">
+        <button data-subnav="lessons" class="on">Lessons</button>
+        <button data-subnav="lectures">Pravachan &amp; Lectures</button>
+      </div>
+
+      <div data-subnav-panel="philosophy" data-subnav-val="lessons">
+        <div class="grid g2">
+          <div class="panel"><div class="panel-b"><div class="nm">Anekantvad — Many-Sidedness of Truth</div><div class="bar" style="margin:10px 0;"><div class="f i" style="width:40%;"></div></div><div class="mt">4 of 10 lessons complete</div></div></div>
+          <div class="panel"><div class="panel-b"><div class="nm">The Nine Tattvas</div><div class="bar" style="margin:10px 0;"><div class="f i" style="width:0%;"></div></div><div class="mt">Not started</div></div></div>
+          <div class="panel"><div class="panel-b"><div class="nm">The Five Mahavratas</div><div class="bar" style="margin:10px 0;"><div class="f i" style="width:100%;"></div></div><div class="mt">Complete</div></div></div>
+          <div class="panel"><div class="panel-b"><div class="nm">Karma Theory</div><div class="bar" style="margin:10px 0;"><div class="f i" style="width:20%;"></div></div><div class="mt">2 of 8 lessons complete</div></div></div>
+        </div>
+      </div>
+
+      <div class="hide" data-subnav-panel="philosophy" data-subnav-val="lectures">
+        <div class="sub" style="margin-bottom:16px;">Video archive by topic, speaker, and date</div>
+        <div class="grid g3">
+          <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:16/9;background:linear-gradient(135deg,var(--sand-warm),var(--sand));display:flex;align-items:center;justify-content:center;color:var(--brass);"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="panel-b"><div class="nm">Anekantvad in Daily Life</div><div class="mt">Acharya Vijay · Mar 12</div></div></div>
+          <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:16/9;background:linear-gradient(135deg,var(--sand-warm),var(--sand));display:flex;align-items:center;justify-content:center;color:var(--brass);"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="panel-b"><div class="nm">The Nine Tattvas Explained</div><div class="mt">Acharya Vijay · Feb 20</div></div></div>
+          <div class="panel" style="overflow:hidden;"><div style="aspect-ratio:16/9;background:linear-gradient(135deg,var(--sand-warm),var(--sand));display:flex;align-items:center;justify-content:center;color:var(--brass);"><svg viewBox="0 0 24 24" style="width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="panel-b"><div class="nm">Understanding Karma Theory</div><div class="mt">Acharya Vijay · Jan 18</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= JAIN CENTERS USA (v1.5, subnav: Centers · Restaurants · Business Directory) -->
+    <section class="view hide" id="v-centers">
+      <div class="view-head"><div><h1>Jain Centers · USA <span class="phase-badge v15">v1.5</span></h1><div class="sub">Centers · 89 &nbsp;|&nbsp; Restaurants · 612 &nbsp;|&nbsp; Directory · 84</div></div></div>
+      <div class="subnav" data-subnav-group="centers">
+        <button data-subnav="centers" class="on">Centers</button>
+        <button data-subnav="restaurants">Restaurants</button>
+        <button data-subnav="directory">Business Directory</button>
+      </div>
+
+      <div data-subnav-panel="centers" data-subnav-val="centers">
+        <div class="panel"><table class="tbl"><tbody>
+          <tr><td class="nm">Jain Society of Metropolitan Chicago</td><td class="mt">Bartlett, IL</td><td class="mt">742 mi</td></tr>
+          <tr><td class="nm">Jain Society of Houston</td><td class="mt">Houston, TX</td><td class="mt">1,628 mi</td></tr>
+          <tr><td class="nm">Jain Center of Northern California</td><td class="mt">Milpitas, CA</td><td class="mt">2,915 mi</td></tr>
+          <tr><td class="nm">Jain Center of Greater Boston</td><td class="mt">Norwood, MA</td><td class="mt">215 mi</td></tr>
+        </tbody></table></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="centers" data-subnav-val="restaurants">
+        <div class="panel"><div class="panel-h"><h3>Nearby pure-veg restaurants</h3></div><table class="tbl"><tbody>
+          <tr><td class="nm">Vegan Garden Café</td><td><span class="pill good">Pure Veg</span></td><td><span class="pill info">Jain Menu</span></td></tr>
+          <tr><td class="nm">Saravanaa Bhavan</td><td><span class="pill good">Pure Veg</span></td><td><span class="pill info">Jain Menu</span></td></tr>
+        </tbody></table></div>
+      </div>
+
+      <div class="hide" data-subnav-panel="centers" data-subnav-val="directory">
+        <div class="view-actions" style="margin-bottom:14px;"><button class="btn btn-ghost">+ List Your Business</button></div>
+        <div class="chip-row"><span class="chip on">All · 84</span><span class="chip">Hospitality</span><span class="chip">Jewelry</span><span class="chip">Legal</span><span class="chip">Medical</span><span class="chip">Finance</span><span class="chip">Food</span></div>
+        <div class="panel">
+          <table class="tbl"><tbody>
+            <tr><td class="tbl who"><div class="av">SJ</div><div><div class="nm">Shah &amp; Jain CPAs</div><div class="mt">Finance · Flushing, NY</div></div></td><td class="mt">★ 4.9</td><td><span class="pill good">Sangha discount</span></td></tr>
+            <tr><td class="tbl who"><div class="av s">PM</div><div><div class="nm">Patel &amp; Mehta Law</div><div class="mt">Legal · Jackson Heights, NY</div></div></td><td class="mt">★ 4.8</td><td><span class="pill good">Sangha discount</span></td></tr>
+            <tr><td class="tbl who"><div class="av b">JD</div><div><div class="nm">Dr. Jayesh Doshi, MD</div><div class="mt">Medical · Elmhurst, NY</div></div></td><td class="mt">★ 5.0</td><td class="mt">—</td></tr>
+            <tr><td class="tbl who"><div class="av">DG</div><div><div class="nm">Dharma Gems &amp; Jewelry</div><div class="mt">Jewelry · Jackson Heights, NY</div></div></td><td class="mt">★ 4.7</td><td><span class="pill good">Sangha discount</span></td></tr>
+            <tr><td class="tbl who"><div class="av s">KA</div><div><div class="nm">Kothari Asset Management</div><div class="mt">Finance · Manhattan, NY</div></div></td><td class="mt">★ 4.9</td><td class="mt">—</td></tr>
+            <tr><td class="tbl who"><div class="av b">MQ</div><div><div class="nm">Maharaja Quality Sweets</div><div class="mt">Food · Jackson Heights, NY</div></div></td><td class="mt">★ 4.8</td><td><span class="pill good">Sangha discount</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================= FACILITY BOOKING (v1.5) -->
+    <section class="view hide" id="v-facility">
+      <div class="view-head"><div><h1>Facility Booking <span class="phase-badge v15">v1.5</span></h1><div class="sub">Sat, June 13, 2026 · Change</div></div></div>
+      <div class="grid g3">
+        <div class="cause-card"><div class="nm">Main Hall</div><div class="ds">Capacity 450 · Stage + AV + kitchen access</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:8px 0;">$2,508<span style="font-size:12px;color:var(--muted);">/day</span></div><button class="btn btn-primary btn-block">Book</button></div>
+        <div class="cause-card"><div class="nm">Upashray Lecture Hall</div><div class="ds">Capacity 120 · Best for swadhyay, prarthana sabha</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:8px 0;">$751<span style="font-size:12px;color:var(--muted);">/day</span></div><button class="btn btn-primary btn-block">Book</button></div>
+        <div class="cause-card"><div class="nm">Marble Lobby &amp; Foyer</div><div class="ds">80 standing · reception space, tea/snacks</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:8px 0;">$351<span style="font-size:12px;color:var(--muted);">/4hrs</span></div><button class="btn btn-primary btn-block">Book</button></div>
+      </div>
+      <div class="dual" style="margin-top:18px;background:var(--info-bg);border-color:rgba(46,58,89,0.25);color:var(--indigo);"><svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg><div>Members receive a 60% discount off list rate. A refundable $500 deposit is required. All catering must be pure-veg.</div></div>
+    </section>
+
+    <!-- ========================================================= MEETING MINUTES (v1.5) -->
+    <section class="view hide" id="v-minutes">
+      <div class="view-head"><div><h1>Meeting Minutes <span class="phase-badge v15">v1.5</span></h1><div class="sub">Membership-gated archive — Board, Executive Committee, General Body</div></div></div>
+      <div class="panel"><table class="tbl"><tbody>
+        <tr><td class="nm">Board Meeting Minutes — March 2026</td><td class="mt">Apr 2</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ PDF</a></td></tr>
+        <tr><td class="nm">Executive Committee Minutes — March 2026</td><td class="mt">Mar 28</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ PDF</a></td></tr>
+        <tr><td class="nm">General Body Annual Report 2025</td><td class="mt">Jan 15</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ PDF</a></td></tr>
+      </tbody></table></div>
+    </section>
+
+    <!-- ========================================================= SERVICE AWARD — NOMINATE (v1.5) -->
+    <!-- Winners are public info now (index.html #recognition); this internal page is nomination-only. -->
+    <section class="view hide" id="v-awards">
+      <div class="view-head"><div><h1>Service Award — Nominate <span class="phase-badge v15">v1.5</span></h1><div class="sub">Recognize someone whose seva has shaped the sangha</div></div></div>
+      <div class="panel" style="max-width:520px;"><div class="panel-b">
+        <div class="field"><label>Nominee name</label><input placeholder="e.g. Priya Shah"></div>
+        <div class="field"><label>Relationship to nominee</label><input placeholder="e.g. Fellow Bhojanshala volunteer"></div>
+        <div class="field"><label>Why does this person deserve recognition?</label><textarea rows="4" placeholder="Tell us about their seva…"></textarea></div>
+        <button class="btn btn-primary btn-block">Submit nomination</button>
+      </div></div>
+    </section>
+
+    <!-- ========================================================= PROFILE -->
+    <section class="view hide" id="v-profile">
+      <div class="view-head"><div><h1>Profile · Account</h1><div class="sub">Manan Shah · JCA Patron Member · ID 04812</div></div></div>
+      <div class="grid g3" style="margin-bottom:18px;">
+        <div class="stat"><div class="lbl">Donated YTD</div><div class="val">$8,754</div></div>
+        <div class="stat"><div class="lbl">Seva Hours</div><div class="val">142</div></div>
+        <div class="stat"><div class="lbl">Family Members</div><div class="val">5</div></div>
+      </div>
+      <div class="grid g2">
+        <div class="panel"><div class="panel-h"><h3>Membership</h3></div><div class="panel-b">
+          <div class="amt-row"><span>Tier</span><span>Patron</span></div>
+          <div class="amt-row"><span>Since</span><span>Oct 2018</span></div>
+          <div class="amt-row"><span>Renewal</span><span>Jan 1, 2027</span></div>
+          <button class="btn btn-ghost btn-block" style="margin-top:10px;">Manage</button>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Account</h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm" data-jump="family" style="cursor:pointer;">Family Profile</span><span class="mt">5 members</span></div>
+          <div class="health-row"><span class="nm" data-jump="history" style="cursor:pointer;">Donation Receipts</span><span class="mt">14</span></div>
+          <div class="health-row"><span class="nm">Payment Methods</span><span class="mt">3</span></div>
+          <div class="health-row"><span class="nm" data-jump="recurring" style="cursor:pointer;">Recurring Subscriptions</span><span class="mt">2</span></div>
+        </div></div>
+      </div>
+      <div class="panel" style="margin-top:18px;"><div class="panel-h"><h3>Notifications</h3></div><div class="panel-b">
+        <table class="tbl"><thead><tr><th>Category</th><th>Push</th><th>Email</th></tr></thead><tbody>
+          <tr><td class="nm">Events</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Donations</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Community</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox"><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Pathshala</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Birthday &amp; anniversary</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+        </tbody></table>
+      </div></div>
+      <div class="panel" style="margin-top:18px;"><div class="panel-b" style="display:flex;gap:10px;">
+        <a class="btn btn-ghost" data-jump="more">Explore More</a>
+        <a class="btn btn-ghost" href="../login.html">Sign Out</a>
+      </div></div>
+    </section>
+
+    <!-- ========================================================= FAMILY & DUES -->
+    <section class="view hide" id="v-family">
+      <div class="view-head"><div><h1>Family · Dues</h1><div class="sub">5 family members</div></div></div>
+      <div class="panel alert-panel" style="margin-bottom:18px;">
+        <div class="panel-b">
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>2026 Annual Dues</span><span>$251.00</span></div>
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>MJK Family Pass</span><span>$108.00</span></div>
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>Pathshala Term Fee</span><span>$120.00</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid rgba(201,169,97,0.35);padding-top:10px;margin-top:6px;"><span>Total Due by May 1</span><span>$479.00</span></div>
+          <button class="btn btn-saffron btn-block" style="margin-top:12px;" data-jump="payment">Pay All Now</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="panel"><div class="panel-b"><div style="display:flex;justify-content:space-between;"><div class="tbl who"><div class="av">MS</div><div><div class="nm">Manan Shah <span class="pill info" style="margin-left:6px;">Primary</span></div><div class="mt">DOB Aug 1985 · Gotra: Kothari</div></div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av s">PS</div><div><div class="nm">Priya Shah</div><div class="mt">Spouse · DOB Mar 1987</div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av b">AS</div><div><div class="nm">Arya Shah <span class="pill good" style="margin-left:6px;">Pathshala</span></div><div class="mt">Daughter · DOB Jun 2016</div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av">KS</div><div><div class="nm">Kabir Shah <span class="pill good" style="margin-left:6px;">Pathshala</span></div><div class="mt">Son · DOB Feb 2014</div></div></div></div></div>
+      </div>
+      <button class="btn btn-ghost" style="margin-top:16px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Family Member</button>
+    </section>
+
+    <!-- ========================================================= MEMBER PUBLIC CARD -->
+    <section class="view hide" id="v-public-card">
+      <div class="view-head"><div><h1>Member Card</h1><div class="sub">Public, read-only view</div></div></div>
+      <div class="panel" style="max-width:400px;"><div class="panel-b" style="text-align:center;">
+        <div class="tbl av" style="width:64px;height:64px;font-size:20px;margin:0 auto 12px;">MS</div>
+        <div class="nm" style="font-family:var(--font-main);font-size:18px;">Manan Shah</div>
+        <div class="mt">Shvetambara Murtipujak · JCA Elmhurst</div>
+        <div style="margin-top:12px;"><span class="pill info">Patron</span> <span class="pill good">Active volunteer</span></div>
+      </div></div>
+    </section>
+
+    <!-- ========================================================= SETTINGS (member) -->
+    <section class="view hide" id="v-settings">
+      <div class="view-head"><div><h1>Settings</h1><div class="sub">Security, locale, and account</div></div></div>
+      <div class="panel"><div class="panel-b">
+        <div class="health-row"><span class="nm">Multi-factor authentication</span><span class="mt">Not enrolled (optional)</span></div>
+        <div class="health-row"><span class="nm">Language</span><span class="mt">English</span></div>
+        <div class="health-row"><span class="nm">Text size</span><span class="mt">System default</span></div>
+        <div class="health-row"><span class="nm" style="color:var(--danger);">Delete account</span><span class="mt">Request deletion</span></div>
+      </div></div>
+    </section>
+
+    <!-- ========================================================= MORE / UTILITY DRAWER -->
+    <section class="view hide" id="v-more">
+      <div class="view-head"><div><h1>Explore More</h1><div class="sub">Everything else, one tap away</div></div></div>
+      <div class="mkt-section-h" style="margin-bottom:12px;"><h2 style="font-size:15px;">Sacred &amp; Learning</h2></div>
+      <div class="more-grid" style="margin-bottom:24px;">
+        <a class="more-tile" data-jump="jinvani"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/></svg></div><div class="nm">Jinvani Library</div></a>
+        <a class="more-tile" data-jump="philosophy" data-subnav-target="lectures"><div class="ic"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><div class="nm">Pravachan</div></a>
+      </div>
+      <div class="mkt-section-h" style="margin-bottom:12px;"><h2 style="font-size:15px;">Community &amp; Givings</h2></div>
+      <div class="more-grid" style="margin-bottom:24px;">
+        <a class="more-tile" data-jump="volunteer"><div class="ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div class="nm">Volunteer &amp; Seva</div></a>
+        <a class="more-tile" data-jump="youth"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/></svg></div><div class="nm">Youth</div></a>
+        <a class="more-tile" data-jump="recurring"><div class="ic"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div><div class="nm">Recurring Seva</div></a>
+      </div>
+      <div class="mkt-section-h" style="margin-bottom:12px;"><h2 style="font-size:15px;">Institution &amp; Support</h2></div>
+      <div class="more-grid">
+        <a class="more-tile" data-jump="minutes"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></div><div class="nm">Meeting Minutes</div></a>
+        <a class="more-tile" data-jump="awards"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.2 13 7 22l5-3 5 3-1.2-9"/></svg></div><div class="nm">Nominate for an Award</div></a>
+        <a class="more-tile" href="../story.html"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="nm">About JCA</div></a>
+        <a class="more-tile" href="../story.html#contact"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg></div><div class="nm">Help</div></a>
+        <a class="more-tile" data-jump="notif-demo"><div class="ic"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div><div class="nm">Notification Demo</div></a>
+      </div>
+    </section>
+
+    <!-- ========================================================= NOTIFICATION PLAYGROUND -->
+    <section class="view hide" id="v-notif-demo">
+      <div class="view-head"><div><h1>Notification Playground</h1><div class="sub">Design / QA reference — not user-facing in production</div></div></div>
+      <div class="mkt-section-h" style="margin-bottom:12px;"><h2 style="font-size:15px;">✦ Wishes &amp; Reminders</h2></div>
+      <div class="grid g4" style="margin-bottom:24px;">
+        <div class="cause-card"><div class="nm">🎂 Birthday</div><div class="ds">"Jai Jinendra! Wishing you a blessed birthday."</div></div>
+        <div class="cause-card"><div class="nm">📅 Event Reminder</div><div class="ds">"MJK begins tomorrow at 8:00 AM."</div></div>
+        <div class="cause-card"><div class="nm">🕉 Parva Day</div><div class="ds">"Today is Ayambil Oli — 4th day."</div></div>
+        <div class="cause-card"><div class="nm">🪔 Aarti Reminder</div><div class="ds">"Sandhya Aarti begins in 15 minutes."</div></div>
+      </div>
+      <div class="mkt-section-h" style="margin-bottom:12px;"><h2 style="font-size:15px;">✦ Community &amp; Seva</h2></div>
+      <div class="grid g4">
+        <div class="cause-card"><div class="nm">💳 Donation Received</div><div class="ds">"Thank you for your $1,251 gift."</div></div>
+        <div class="cause-card"><div class="nm">🙏 Volunteer Opportunity</div><div class="ds">"Bhojanshala needs helpers Sunday."</div></div>
+        <div class="cause-card"><div class="nm">📚 Pathshala Class</div><div class="ds">"Class starts in 30 minutes."</div></div>
+        <div class="cause-card"><div class="nm">📷 New Photos</div><div class="ds">"48 new photos from MJK 2026."</div></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ⌘K command palette -->
+<div class="cmdk-overlay hide" id="cmdk-overlay">
+  <div class="cmdk">
+    <div class="cmdk-input-row">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="cmdk-input" placeholder="Search events, causes, or jump anywhere…" autocomplete="off">
+      <span class="kbd">Esc</span>
+    </div>
+    <div class="cmdk-list">
+      <div class="cmdk-group">Quick actions</div>
+      <div class="cmdk-item" data-jump="donate"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>Donate now</div>
+      <div class="cmdk-item" data-jump="darshan"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Watch Live Darshan</div>
+      <div class="cmdk-group">Navigate</div>
+      <div class="cmdk-item" data-jump="calendar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Events</div>
+      <div class="cmdk-item" data-jump="family"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Family &amp; Dues</div>
+      <div class="cmdk-item" data-jump="announcements"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Community Feed</div>
+      <div class="cmdk-item" data-jump="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Profile</div>
+      <div class="cmdk-item" data-href="../admin.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/></svg>Admin Utility</div>
+    </div>
+  </div>
+</div>
+
+<script>
+window.VIEW_TITLES = {
+  home:'Home', darshan:'Live Darshan', calendar:'Events',
+  'past-events':'Past Events', donate:'Donate', payment:'Payment', thankyou:'Thank You',
+  history:'My Donation History', recurring:'Recurring Seva', announcements:'Community Feed',
+  volunteer:'Volunteer & Seva', youth:'Youth',
+  pathshala:'Pathshala', jinvani:'Jinvani Library', philosophy:'Jain Philosophy',
+  centers:'Jain Centers USA', facility:'Facility Booking', minutes:'Meeting Minutes',
+  awards:'Service Award — Nominate', profile:'Profile', family:'Family & Dues',
+  'public-card':'Member Card', settings:'Settings', more:'Explore More',
+  'notif-demo':'Notification Playground'
+};
+</script>
+<script src="../assets/app.js"></script>
+<script src="../assets/hero6.js?v=5"></script>
+</body>
+</html>

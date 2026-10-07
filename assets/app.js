@@ -24,6 +24,8 @@
       if (fb) fb.classList.remove('hide');
     }
     items.forEach(function (i) { i.classList.toggle('active', i.dataset.view === view); });
+    document.body.classList.toggle('on-hero', view === 'home' && !!document.getElementById('h6'));
+    if (window.__topbarSync) window.__topbarSync();
     if (crumb) crumb.textContent = titles[view] || titles[fallback] || view;
     var main = document.querySelector('.main');
     if (main) main.scrollTo(0, 0);
@@ -560,4 +562,35 @@
       .trim().replace(/\s+/g, ' ').slice(0, 44);
     showToast('✓ ' + (label || 'Action noted'));
   });
+  /* ---------- collapsible sidebar (state remembered per browser) ---------- */
+  (function () {
+    var btn = document.getElementById('sb-toggle'), app = document.querySelector('.app'); if (!btn || !app) return;
+    function set(c, save) {
+      app.classList.toggle('sb-collapsed', c);
+      btn.setAttribute('aria-expanded', String(!c));
+      var t = c ? 'Expand menu' : 'Collapse menu'; btn.setAttribute('aria-label', t); btn.title = t;
+      if (save) { try { localStorage.setItem('jca-sb', c ? '1' : '0'); } catch (e) {} }
+    }
+    var saved = null; try { saved = localStorage.getItem('jca-sb'); } catch (e) {}
+    if (saved === '1') set(true, false);
+    var animT = 0;
+    btn.addEventListener('click', function () {
+      app.classList.add('sb-anim'); clearTimeout(animT);
+      animT = setTimeout(function () { app.classList.remove('sb-anim'); if (window.__h6) window.__h6.measure(); }, 300);   // one hero re-measure after the slide
+      set(!app.classList.contains('sb-collapsed'), true);
+    });
+  })();
+  /* ---------- top bar: transparent over the Home hero, solid once it scrolls away ---------- */
+  (function () {
+    var bar = document.querySelector('.topbar'), hero = document.getElementById('h6'), tick = false; if (!bar) return;
+    function sync() {
+      tick = false;
+      var onHero = document.body.classList.contains('on-hero') && hero;
+      bar.classList.toggle('solid', !onHero || hero.getBoundingClientRect().bottom < 90);
+    }
+    function req() { if (!tick) { tick = true; requestAnimationFrame(sync); } }
+    window.__topbarSync = sync;
+    window.addEventListener('scroll', req, { passive: true }); window.addEventListener('resize', req);
+    sync();
+  })();
 })();

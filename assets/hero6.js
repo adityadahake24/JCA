@@ -143,10 +143,12 @@
   function schedule() { clearInterval(timer); if (visible && !document.hidden) timer = setInterval(function () { if (mode === 'now') apply(pOf(nowMin())); }, 30000); }
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; schedule(); }).observe(root);
   document.addEventListener('visibilitychange', schedule);
-  if ('ResizeObserver' in window) { var ro = new ResizeObserver(function () { measure(); }); ro.observe(root); ro.observe(rail); } else window.addEventListener('resize', measure);
+  var mRaf = 0;   // coalesce resize bursts; while the app sidebar is animating, wait — the app calls measure() once at the end
+  function remeasure() { if (document.querySelector('.app.sb-anim')) return; cancelAnimationFrame(mRaf); mRaf = requestAnimationFrame(measure); }
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(remeasure); ro.observe(root); ro.observe(rail); } else window.addEventListener('resize', remeasure);
 
   measure();
   // intro: the sun glides from sunrise to where it really is
   apply(VMIN * 0.6, true); goNow(true); schedule();
-  window.__h6 = { apply: function (p) { preview(p); }, state: function () { return { p: P, T: T, mode: mode, sunrise: fmt(T.sr), sunset: fmt(T.ss), G: G }; }, now: goNow };
+  window.__h6 = { measure: measure, apply: function (p) { preview(p); }, state: function () { return { p: P, T: T, mode: mode, sunrise: fmt(T.sr), sunset: fmt(T.ss), G: G }; }, now: goNow };
 })();
