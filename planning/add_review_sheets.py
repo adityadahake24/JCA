@@ -2,7 +2,7 @@
 """Adds Feature Inventory, Site Coverage and Mock Questionnaire sheets to JCA_UserStories_v2.xlsx.
 
 - Feature Inventory: one list of independent features, Yes/No for Guest and Signed-in.
-  Derived from the Guest / Member lists in add_feature_sheets.py (duplicates merged).
+  Rows live in inventory_data.py, read from the iteration pages (not from the old Guest / Member lists).
 - Site Coverage: nyjaincenter.org site map (scraped 2026-10-07) vs. the mockup pages in the repo root.
 - Mock Questionnaire: open questions for the team with a Response column to fill in.
 
@@ -15,7 +15,8 @@ from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
 from openpyxl.worksheet.datavalidation import DataValidation
 
-from add_feature_sheets import GUEST, MEMBER, CENTER, INPUT_FILL, green_red_rules
+from add_feature_sheets import CENTER, INPUT_FILL, green_red_rules
+from inventory_data import INVENTORY
 from build_workbook_v2 import (
     MODULE_FILL, MODULE_FONT, THIN_BORDER, autosize, style_header_row, write_title,
 )
@@ -25,44 +26,26 @@ NAMES = ["Feature Inventory", "Site Coverage", "Mock Questionnaire"]
 TOP = Alignment(wrap_text=True, vertical="top")
 TOTAL_BORDER = Border(top=Side(style="medium", color="7A1620"))
 
-# Member feature -> Guest feature it duplicates (merged into one row)
-MERGE = {
-    "Parva days": "Sacred calendar",
-    "News & newsletters": "News & events feed",
-    "Donate to a cause": "Guest one-time donation",
-    "Jain philosophy module": "Jain philosophy intro",
-    "Live Darshan": "Public live stream & aarti schedule",
-}
-# Guest features that stop making sense once signed in
-GUEST_ONLY = {"Sign in", "Create account / register"}
-RENAME = {"Guest one-time donation": "One-time donation", "Public live stream & aarti schedule": "Live darshan & aarti schedule"}
-
-
 def inventory_rows():
-    rows = {}  # feature -> [section, feature, desc, guest, signed_in]
-    for sec, feat, desc, *_ in GUEST:
-        rows[feat] = [sec, RENAME.get(feat, feat), desc, "Yes", "No" if feat in GUEST_ONLY else "Yes"]
-    for sec, feat, desc, *_ in MEMBER:
-        if feat in MERGE:
-            continue
-        rows[feat] = [sec, feat, desc, "No", "Yes"]
-    return list(rows.values())
+    for sec, feat, desc, where, who in INVENTORY:
+        yield sec, feat, desc, where, "Yes" if "G" in who else "No", "Yes" if "S" in who else "No"
 
 
 def build_inventory(wb, idx):
     ws = wb.create_sheet(NAMES[0], idx)
-    ncols = 7
+    ncols = 8
     r = write_title(ws, ncols, "Feature Inventory — Guest vs Signed-in",
-                    "Every independent feature once. Mark Guest / Signed-in = Yes or No with the dropdowns; "
-                    "'Access' updates itself (Both / Guest only / Signed-in only). Web vs App lives on the Guest / Member sheets.")
-    for c, v in enumerate(["#", "Section", "Feature", "Description", "Guest", "Signed-in", "Access"], 1):
+                    "Every feature once, named as in iteration 1 (guest site) and iteration 2 (signed-in app). Admin Utility excluded. "
+                    "Guest / Signed-in default to what each iteration shows; change with the dropdowns. "
+                    "'Access' updates itself (Both / Guest only / Signed-in only).")
+    for c, v in enumerate(["#", "Section", "Feature", "Description", "Where in mockup", "Guest", "Signed-in", "Access"], 1):
         ws.cell(r, c, v)
     style_header_row(ws, r, ncols)
     dv = DataValidation(type="list", formula1='"Yes,No"', allow_blank=False)
     ws.add_data_validation(dv)
     r += 1
     first, n, cur = r, 0, None
-    for sec, feat, desc, g, s in inventory_rows():
+    for sec, feat, desc, where, g, s in inventory_rows():
         if sec != cur:
             cur = sec
             ws.cell(r, 1, sec)
@@ -74,29 +57,30 @@ def build_inventory(wb, idx):
         ws.cell(r, 2, sec)
         ws.cell(r, 3, feat)
         ws.cell(r, 4, desc).alignment = Alignment(wrap_text=True, vertical="center")
-        for c, v in ((5, g), (6, s)):
+        ws.cell(r, 5, where).alignment = Alignment(wrap_text=True, vertical="center")
+        for c, v in ((6, g), (7, s)):
             ws.cell(r, c, v).alignment = CENTER
             dv.add(ws.cell(r, c))
-        ws.cell(r, 7, f'=IF(AND(E{r}="Yes",F{r}="Yes"),"Both",IF(E{r}="Yes","Guest only",IF(F{r}="Yes","Signed-in only","—")))').alignment = CENTER
+        ws.cell(r, 8, f'=IF(AND(F{r}="Yes",G{r}="Yes"),"Both",IF(F{r}="Yes","Guest only",IF(G{r}="Yes","Signed-in only","—")))').alignment = CENTER
         for c in range(1, ncols + 1):
             ws.cell(r, c).border = THIN_BORDER
         r += 1
     last = r - 1
-    for col in "EF":
+    for col in "FG":
         green_red_rules(ws, f"{col}{first}:{col}{last}", "Yes", "No")
     ws.cell(r, 3, "Features marked Yes").font = Font(bold=True)
-    for col in "EF":
+    for col in "FG":
         c = ws[f"{col}{r}"]
         c.value = f'=COUNTIF({col}{first}:{col}{last},"Yes")'
         c.font, c.alignment = Font(bold=True), CENTER
     ws.cell(r + 1, 3, "Both / Guest only / Signed-in only").font = Font(bold=True)
-    for col, k in zip("EFG", ("Both", "Guest only", "Signed-in only")):
+    for col, k in zip("FGH", ("Both", "Guest only", "Signed-in only")):
         c = ws[f"{col}{r + 1}"]
-        c.value = f'=COUNTIF($G{first}:$G{last},"{k}")'
+        c.value = f'=COUNTIF($H{first}:$H{last},"{k}")'
         c.font, c.alignment = Font(bold=True), CENTER
     for c in range(1, ncols + 1):
         ws.cell(r, c).border = TOTAL_BORDER
-    autosize(ws, [6, 24, 40, 52, 11, 11, 16])
+    autosize(ws, [6, 22, 36, 60, 34, 11, 11, 16])
     ws.freeze_panes = ws.cell(first, 1)
 
 
@@ -295,13 +279,10 @@ def build_questionnaire(wb, idx):
 
 def main():
     wb = load_workbook(XLSX)
-    for name in NAMES:
-        if name in wb.sheetnames:
-            del wb[name]
-    idx = wb.sheetnames.index("Gantt") + 1
+    # Only the inventory is rebuilt; Site Coverage / Mock Questionnaire keep their hand edits.
+    idx = wb.sheetnames.index(NAMES[0])
+    del wb[NAMES[0]]
     build_inventory(wb, idx)
-    build_coverage(wb, idx + 1)
-    build_questionnaire(wb, idx + 2)
     wb.save(XLSX)
     print(wb.sheetnames)
 

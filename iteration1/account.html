@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#a8202c">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Jain Center of America</title>
+<meta name="description" content="Static walkthrough mockup — not a live application.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/styles.css?v=10">
+</head>
+<body data-fallback-view="profile">
+<div class="app no-sb">
+  <div class="main">
+    <header class="topbar">
+      <a class="back-site" href="index.html">&larr; Back to site</a>
+      <div class="crumb">My Account · <b id="crumb">Profile</b></div>
+      <span style="flex:1"></span>
+      <div class="me" data-jump="profile" style="cursor:pointer;"><div class="av">MS</div><div><div class="mn">Manan Shah</div><div class="mr">Patron · ID 04812</div></div></div>
+    </header>
+    <div class="acct-tabs"><div class="seg"><button data-jump="profile" data-acct-tab="profile">Profile</button><button data-jump="family" data-acct-tab="family">Family &amp; Dues</button><button data-jump="settings" data-acct-tab="settings">Settings</button><button data-jump="history" data-acct-tab="history">Donation History</button><button data-jump="recurring" data-acct-tab="recurring">Recurring Seva</button></div></div>
+
+        <section class="view hide" id="v-profile">
+      <div class="view-head"><div><h1>Profile · Account</h1><div class="sub">Manan Shah · JCA Patron Member · ID 04812</div></div></div>
+      <div class="grid g3" style="margin-bottom:18px;">
+        <div class="stat"><div class="lbl">Donated YTD</div><div class="val">$8,754</div></div>
+        <div class="stat"><div class="lbl">Seva Hours</div><div class="val">142</div></div>
+        <div class="stat"><div class="lbl">Family Members</div><div class="val">5</div></div>
+      </div>
+      <div class="grid g2">
+        <div class="panel"><div class="panel-h"><h3>Membership</h3></div><div class="panel-b">
+          <div class="amt-row"><span>Tier</span><span>Patron</span></div>
+          <div class="amt-row"><span>Since</span><span>Oct 2018</span></div>
+          <div class="amt-row"><span>Renewal</span><span>Jan 1, 2027</span></div>
+          <button class="btn btn-ghost btn-block" style="margin-top:10px;">Manage</button>
+        </div></div>
+        <div class="panel"><div class="panel-h"><h3>Account</h3></div><div class="panel-b">
+          <div class="health-row"><span class="nm" data-jump="family" style="cursor:pointer;">Family Profile</span><span class="mt">5 members</span></div>
+          <div class="health-row"><span class="nm" data-jump="history" style="cursor:pointer;">Donation Receipts</span><span class="mt">14</span></div>
+          <div class="health-row"><span class="nm">Payment Methods</span><span class="mt">3</span></div>
+          <div class="health-row"><span class="nm" data-jump="recurring" style="cursor:pointer;">Recurring Subscriptions</span><span class="mt">2</span></div>
+        </div></div>
+      </div>
+      <div class="panel" style="margin-top:18px;"><div class="panel-h"><h3>Notifications</h3></div><div class="panel-b">
+        <table class="tbl"><thead><tr><th>Category</th><th>Push</th><th>Email</th></tr></thead><tbody>
+          <tr><td class="nm">Events</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Donations</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Community</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox"><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Pathshala</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+          <tr><td class="nm">Birthday &amp; anniversary</td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td><td><label class="toggle"><input type="checkbox" checked><span class="track"></span></label></td></tr>
+        </tbody></table>
+      </div></div>
+      <div class="panel" style="margin-top:18px;"><div class="panel-b" style="display:flex;gap:10px;">
+        <a class="btn btn-ghost" href="../login.html?next=iteration1/">Sign Out</a>
+      </div></div>
+    </section>
+
+        <section class="view hide" id="v-family">
+      <div class="view-head"><div><h1>Family · Dues</h1><div class="sub">5 family members</div></div></div>
+      <div class="panel alert-panel" style="margin-bottom:18px;">
+        <div class="panel-b">
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>2026 Annual Dues</span><span>$251.00</span></div>
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>MJK Family Pass</span><span>$108.00</span></div>
+          <div class="amt-row" style="color:var(--saffron-deep);"><span>Pathshala Term Fee</span><span>$120.00</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid rgba(201,169,97,0.35);padding-top:10px;margin-top:6px;"><span>Total Due by May 1</span><span>$479.00</span></div>
+          <button class="btn btn-saffron btn-block" style="margin-top:12px;" data-jump="payment">Pay All Now</button>
+        </div>
+      </div>
+      <div class="grid g2">
+        <div class="panel"><div class="panel-b"><div style="display:flex;justify-content:space-between;"><div class="tbl who"><div class="av">MS</div><div><div class="nm">Manan Shah <span class="pill info" style="margin-left:6px;">Primary</span></div><div class="mt">DOB Aug 1985 · Gotra: Kothari</div></div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av s">PS</div><div><div class="nm">Priya Shah</div><div class="mt">Spouse · DOB Mar 1987</div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av b">AS</div><div><div class="nm">Arya Shah <span class="pill good" style="margin-left:6px;">Pathshala</span></div><div class="mt">Daughter · DOB Jun 2016</div></div></div></div></div>
+        <div class="panel"><div class="panel-b"><div class="tbl who"><div class="av">KS</div><div><div class="nm">Kabir Shah <span class="pill good" style="margin-left:6px;">Pathshala</span></div><div class="mt">Son · DOB Feb 2014</div></div></div></div></div>
+      </div>
+      <button class="btn btn-ghost" style="margin-top:16px;"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Family Member</button>
+    </section>
+
+        <section class="view hide" id="v-settings">
+      <div class="view-head"><div><h1>Settings</h1><div class="sub">Security, locale, and account</div></div></div>
+      <div class="panel"><div class="panel-b">
+        <div class="health-row"><span class="nm">Multi-factor authentication</span><span class="mt">Not enrolled (optional)</span></div>
+        <div class="health-row"><span class="nm">Language</span><span class="mt">English</span></div>
+        <div class="health-row"><span class="nm">Text size</span><span class="mt">System default</span></div>
+        <div class="health-row"><span class="nm" style="color:var(--danger);">Delete account</span><span class="mt">Request deletion</span></div>
+      </div></div>
+    </section>
+
+        <section class="view hide" id="v-history">
+      <div class="view-head"><div><h1>My Donation History</h1><div class="sub">$8,754.00 YTD · 14 donations · 6 causes</div></div>
+        <div class="view-actions"><button class="btn btn-ghost">↓ Year-end Statement</button></div>
+      </div>
+      <div class="seg" style="margin-bottom:18px;"><button class="on">2026</button><button>2025</button><button>All Years</button></div>
+      <div class="panel">
+        <div class="panel-h"><h3>April 2026</h3></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td class="nm">Sponsor Bhojanshala — Full Lunch</td><td class="mt">Apr 14</td><td class="mt">Apple Pay</td><td class="num">$1,251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+            <tr><td class="nm">General Fund — Recurring</td><td class="mt">Apr 1</td><td class="mt">Card •••• 8891</td><td class="num">$251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+          </tbody>
+        </table>
+        <div class="panel-h" style="border-top:1px solid var(--line-soft);"><h3>March 2026</h3></div>
+        <table class="tbl">
+          <tbody>
+            <tr><td class="nm">Pathshala — Scholarship — Recurring</td><td class="mt">Mar 1</td><td class="mt">Card •••• 8891</td><td class="num">$751.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+            <tr><td class="nm">General Fund — Recurring</td><td class="mt">Mar 1</td><td class="mt">Card •••• 8891</td><td class="num">$251.00</td><td><a class="link" style="color:var(--indigo);font-weight:600;">↓ Receipt</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+        <section class="view hide" id="v-recurring">
+      <div class="view-head"><div><h1>Recurring Seva</h1><div class="sub">Givings on autopilot</div></div></div>
+      <div class="seg" data-seg-group="rec-tab" style="margin-bottom:18px;">
+        <button data-seg="mine" class="on">My Subscriptions</button>
+        <button data-seg="new">Set Up New</button>
+      </div>
+      <div data-seg-panel="rec-tab" data-seg-val="mine" class="grid g2">
+        <div class="panel"><div class="panel-b">
+          <div style="display:flex;justify-content:space-between;"><div class="nm">General Fund</div><span class="pill good"><span class="d"></span>Active</span></div>
+          <div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$251<span style="font-size:13px;color:var(--muted);">/mo</span></div>
+          <div class="mt">Next charge May 1 · Lifetime $4,518</div>
+          <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-ghost">Edit Amount</button><button class="btn btn-sm btn-ghost">Pause</button></div>
+        </div></div>
+        <div class="panel"><div class="panel-b">
+          <div style="display:flex;justify-content:space-between;"><div class="nm">Pathshala Scholarship</div><span class="pill good"><span class="d"></span>Active</span></div>
+          <div class="val" style="font-family:var(--font-main);font-size:22px;margin:6px 0;">$751<span style="font-size:13px;color:var(--muted);">/mo</span></div>
+          <div class="mt">Next charge May 1 · Lifetime $9,012</div>
+          <div style="display:flex;gap:8px;margin-top:12px;"><button class="btn btn-sm btn-ghost">Edit Amount</button><button class="btn btn-sm btn-ghost">Pause</button></div>
+        </div></div>
+      </div>
+      <div class="hide" data-seg-panel="rec-tab" data-seg-val="new">
+        <div class="mkt-section-h" style="margin-bottom:14px;"><h2 style="font-size:16px;">Popular Plans</h2></div>
+        <div class="grid g3">
+          <div class="cause-card"><div class="nm">Daily Aarti Dāna</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$11<span style="font-size:12px;color:var(--muted);">/day</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+          <div class="cause-card"><div class="nm">Bhojanshala Family Plan</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$108<span style="font-size:12px;color:var(--muted);">/mo</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+          <div class="cause-card"><div class="nm">Paryushan Dāna</div><div class="val" style="font-family:var(--font-main);font-size:20px;margin:6px 0;">$2,508<span style="font-size:12px;color:var(--muted);">/yr</span></div><button class="btn btn-primary btn-block" data-jump="payment">Set up</button></div>
+        </div>
+      </div>
+    </section>
+
+        <section class="view hide" id="v-payment">
+      <div class="view-head"><div><h1>Payment</h1><div class="sub">Sponsor Bhojanshala · Full Lunch, May 10</div></div></div>
+      <div class="grid g-2-1">
+        <div class="panel"><div class="panel-b">
+          <h3 style="font-family:var(--font-main);font-size:16px;margin-bottom:14px;">Donation summary</h3>
+          <div class="amt-row"><span>Cause</span><span>Sponsor Bhojanshala — Full Lunch</span></div>
+          <div class="amt-row"><span>Date</span><span>May 10, 2026</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:10px;"><span>Total</span><span>$1,251.00</span></div>
+
+          <h3 style="font-family:var(--font-main);font-size:16px;margin:22px 0 12px;">Payment method</h3>
+          <div class="grid g2">
+            <button class="chip-amt on" style="padding:12px;display:flex;align-items:center;justify-content:center;gap:6px;"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" stroke="none"><path d="M16.365 1.43c0 1.14-.463 2.101-1.187 2.816-.716.716-1.859 1.257-2.87 1.174-.134-1.096.42-2.244 1.11-2.96.741-.778 1.995-1.353 2.947-1.03zM20.7 17.44c-.45 1.037-.663 1.5-1.238 2.42-.802 1.283-1.933 2.882-3.335 2.895-1.245.013-1.567-.81-3.258-.8-1.69.01-2.045.815-3.29.802-1.4-.014-2.472-1.454-3.274-2.737-2.245-3.588-2.482-7.798-1.096-10.037.984-1.588 2.537-2.517 3.997-2.517 1.487 0 2.422.82 3.653.82 1.194 0 1.92-.82 3.638-.82 1.303 0 2.685.71 3.669 1.935-3.226 1.767-2.702 6.369.534 7.639z"/></svg>Apple Pay</button>
+            <button class="chip-amt" style="padding:12px;">G Pay</button>
+            <button class="chip-amt" style="padding:12px;">Card</button>
+            <button class="chip-amt" style="padding:12px;">PayPal</button>
+            <button class="chip-amt" style="padding:12px;">Bank / ACH</button>
+            <button class="chip-amt" style="padding:12px;">Zelle (off-platform)</button>
+          </div>
+          <div class="field" style="margin-top:16px;"><label>Receipt email</label><input value="manan.shah@example.com"></div>
+          <div class="field"><label><input type="checkbox" class="ckbox" checked style="margin-right:6px;">Save this card for future donations</label></div>
+        </div></div>
+        <div class="panel"><div class="panel-b">
+          <div class="dual" style="background:var(--info-bg);border-color:rgba(46,58,89,0.25);color:var(--indigo);">
+            <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            <div><strong>Anumodana.</strong> Every gift is a moment of shared joy in another's virtue. Your donation is tax-deductible under our 501(c)(3) status — Tax ID 13-3135532.</div>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" style="margin-top:18px;" data-jump="thankyou">Confirm Donation · $1,251.00</button>
+          <div class="mt" style="text-align:center;margin-top:10px;">🔒 256-bit SSL · secured by Stripe</div>
+        </div></div>
+      </div>
+    </section>
+
+        <section class="view hide" id="v-thankyou">
+      <div style="max-width:520px;margin:0 auto;text-align:center;padding:40px 0;">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--good-bg);color:var(--good);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;"><svg viewBox="0 0 24 24" style="width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:2;"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h1 style="font-family:var(--font-main);font-size:26px;margin-bottom:6px;">Thank you, Manan.</h1>
+        <div class="mt" style="font-style:italic;font-family:var(--font-quote);font-size:15px;margin-bottom:24px;">Dānam Paramo Dharma</div>
+        <div class="panel" style="text-align:left;margin-bottom:20px;"><div class="panel-b">
+          <div class="amt-row"><span>Cause</span><span>Sponsor Bhojanshala</span></div>
+          <div class="amt-row"><span>Date</span><span>May 10, 2026</span></div>
+          <div class="amt-row"><span>Method</span><span>Apple Pay</span></div>
+          <div class="amt-row"><span>Transaction ID</span><span>JCA-2026-048291</span></div>
+          <div class="amt-row" style="font-weight:700;font-size:15px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:6px;"><span>Total</span><span>$1,251.00</span></div>
+        </div></div>
+        <div class="mt" style="margin-bottom:20px;">This gift is tax-deductible under IRS 501(c)(3). No goods or services were provided in exchange.</div>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+          <button class="btn btn-ghost">Download Receipt (PDF)</button>
+          <button class="btn btn-ghost">Share</button>
+          <button class="btn btn-primary" data-jump="recurring">Make monthly</button>
+        </div>
+        <a href="index.html" class="link" style="display:block;margin-top:18px;color:var(--indigo);font-weight:600;">Back to the site</a>
+      </div>
+    </section>
+
+  </div>
+</div>
+<script>
+window.VIEW_TITLES = {profile:'Profile',family:'Family & Dues',settings:'Settings',history:'My Donation History',recurring:'Recurring Seva',payment:'Payment',thankyou:'Thank You'};
+</script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

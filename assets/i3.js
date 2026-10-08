@@ -1,4 +1,4 @@
-/* JCA · Iteration 1 — behaviour. Plain JS, no dependencies. Every block is gated on element presence. */
+/* JCA · Iteration 3 — behaviour. Plain JS, no dependencies. Every block is gated on element presence. */
 (function () {
   'use strict';
   var d = document, root = d.documentElement;
@@ -22,15 +22,23 @@
 
   /* ---------- mock sign-in state: login link keeps you on this page; signed in -> profile menu ---------- */
   (function () {
-    var sc = $$('script[src*="assets/i1.js"]')[0]; if (!sc) return;
-    var root = new URL('../', new URL(sc.getAttribute('src'), location.href).href.split('?')[0]).href;   // site root (…/assets/i1.js -> …/)
-    var rel = location.pathname.slice(new URL(root).pathname.length) || 'iteration1/';
+    var sc = $$('script[src*="assets/i3.js"]')[0]; if (!sc) return;
+    var root = new URL('../', new URL(sc.getAttribute('src'), location.href).href.split('?')[0]).href;   // site root (…/assets/i3.js -> …/)
+    var rel = location.pathname.slice(new URL(root).pathname.length) || 'iteration3/';
     var authed = store('jca-auth') === '1';
-    var loginHref = root + 'login.html?next=' + encodeURIComponent(rel);
+    var loginHref = root + 'iteration3/login.html?next=' + encodeURIComponent(rel);
     $$('a[href$="login.html"]').forEach(function (a) { a.setAttribute('href', loginHref); });
+    // gated member links: signed out -> sign-in wall that returns here; signed in -> straight to the page
+    if (authed) d.documentElement.classList.add('authed');
+    var rootPath = new URL(root).pathname;
+    $$('a[data-gate]').forEach(function (a) {
+      if (authed) return;
+      var u = new URL(a.getAttribute('href'), location.href), p = u.pathname.slice(rootPath.length);
+      a.setAttribute('href', root + 'iteration3/login.html?next=' + encodeURIComponent(p));
+    });
     if (!authed) return;
     var tools = $('.hdr-tools'), signin = $('.hdr-signin'); if (!tools) return;
-    var app = root + 'iteration1/account.html';
+    var app = root + 'iteration3/account.html';
     var LINKS = [['Profile', 'Your details and household', '#profile'], ['Family & Dues', 'Members, passes and what is due', '#family'], ['Settings', 'Notifications and preferences', '#settings'], ['Donation History', 'Receipts and tax statements', '#history'], ['Recurring Seva', 'Your monthly offerings', '#recurring']];
     var prof = d.createElement('div'); prof.className = 'nav-item prof';
     prof.innerHTML = '<button type="button" class="prof-btn nav-link" aria-expanded="false" aria-controls="prof-menu" aria-label="Account menu"><span class="prof-av">MS</span><svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><use href="#chev"/></svg></button>' +
@@ -145,16 +153,26 @@
     rootEl.addEventListener('focusin', function () { clearInterval(t); }); auto();
   })();
 
-  /* ---------- scroll-spy for sticky sub-navigation ---------- */
+  /* ---------- left rail: responsive disclosure + scroll-spy ---------- */
   (function () {
-    var links = $$('.subnav a[href^="#"]'); if (!links.length || !('IntersectionObserver' in window)) return;
-    var map = {}; links.forEach(function (a) { var s = $(a.getAttribute('href')); if (s) map[s.id] = a; });
+    var rail = $('.sec-rail'); if (!rail) return;
+    var box = $('details', rail), cur = $('.rail-cur', rail), mq = window.matchMedia('(min-width: 1100px)');
+    function sync() { if (mq.matches) box.open = true; else if (!box.dataset.touched) box.open = false; }
+    sync(); (mq.addEventListener ? mq.addEventListener('change', sync) : mq.addListener(sync));
+    $('summary', rail).addEventListener('click', function () { box.dataset.touched = '1'; });
+    rail.addEventListener('click', function (e) { if (e.target.closest('a') && !mq.matches) { box.open = false; } });
+    d.addEventListener('click', function (e) { if (!mq.matches && box.open && !e.target.closest('.sec-rail')) box.open = false; });
+    var links = $$('a[href^="#"]', rail), map = {};
+    var on = $('a.on', rail); if (on && cur) cur.textContent = on.textContent;
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    links.forEach(function (a) { var s = $(a.getAttribute('href')); if (s) map[s.id] = a; });
     var ids = Object.keys(map); if (!ids.length) return;
     var so = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (!e.isIntersecting) return;
-        links.forEach(function (a) { a.classList.remove('on'); }); var a = map[e.target.id]; a.classList.add('on');
-        var bar = a.parentNode; if (bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: a.offsetLeft - 24, behavior: reduce ? 'auto' : 'smooth' });
+        $$('a', rail).forEach(function (a) { a.classList.remove('on'); }); var a = map[e.target.id]; a.classList.add('on');
+        if (cur) cur.textContent = a.textContent;
+        if (mq.matches && rail.scrollHeight > rail.clientHeight) { var r = a.getBoundingClientRect(), rr = rail.getBoundingClientRect(); if (r.top < rr.top + 40 || r.bottom > rr.bottom - 40) rail.scrollTop += r.top - rr.top - rr.height / 2; }
       });
     }, { rootMargin: '-35% 0px -60% 0px' });
     ids.forEach(function (id) { so.observe(d.getElementById(id)); });
@@ -223,9 +241,10 @@
     function sel(name) {
       tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-tab') === name); });
       $$('.tabpanel').forEach(function (p) { p.classList.toggle('hide', p.getAttribute('data-panel') !== name); });
+      $$('.sec-rail a[href^="#"]').forEach(function (a) { var on = a.getAttribute('href') === '#' + name; a.classList.toggle('on', on); if (on) { var c = $('.rail-cur'); if (c) c.textContent = a.textContent; } });
     }
     tabs.forEach(function (t) { t.addEventListener('click', function () { sel(t.getAttribute('data-tab')); }); });
-    var h = location.hash.replace('#', ''); if (h && $('[data-tab="' + h + '"]')) sel(h);
+    var h = location.hash.replace('#', ''); if (h && $('[data-tab="' + h + '"]')) sel(h); else sel(tabs[0].getAttribute('data-tab'));
     window.addEventListener('hashchange', function () { var n = location.hash.replace('#', ''); if ($('[data-tab="' + n + '"]')) sel(n); });
   })();
 
@@ -297,4 +316,34 @@
     if (!ok) o.classList.add('wrong');
     var r = $('.quiz-res', box); if (r) r.textContent = ok ? 'Correct — Ahimsa is non-violence. Jai Jinendra!' : 'Not quite — Ahimsa is non-violence, the first great vow.';
   });
+
+  /* ---------- member pages: jumps, steps, tabs, calendar detail ---------- */
+  (function () {
+    var JUMP = { darshan: 'live-darshan.html', calendar: 'event-schedule.html', family: 'account.html#family', history: 'account.html#history', recurring: 'account.html#recurring', profile: 'account.html#profile', settings: 'account.html#settings', volunteer: 'volunteer.html', youth: 'youth.html', senior: 'seniors.html', pathshala: 'pathshala-enroll.html' };
+    $$('a[data-jump]:not([href])').forEach(function (a) { var t = a.getAttribute('data-jump'); a.setAttribute('href', JUMP[t] || ('#' + t)); });
+    function tab(group, val) {
+      $$('[data-subnav-group="' + group + '"] [data-subnav]').forEach(function (b) { b.classList.toggle('on', b.dataset.subnav === val); });
+      $$('[data-subnav-panel="' + group + '"]').forEach(function (p) { p.classList.toggle('hide', p.dataset.subnavVal !== val); });
+    }
+    function step(name) {
+      var steps = $$('[data-step]'); if (!steps.length) return false;
+      steps.forEach(function (s) { s.classList.toggle('hide', s.dataset.step !== name); });
+      var top = $('#content'); if (top) window.scrollTo({ top: top.getBoundingClientRect().top + window.scrollY - 140, behavior: reduce ? 'auto' : 'smooth' });
+      return true;
+    }
+    d.addEventListener('click', function (e) {
+      var b = e.target.closest('.mtabs [data-subnav]');
+      if (b) { tab(b.closest('[data-subnav-group]').dataset.subnavGroup, b.dataset.subnav); return; }
+      var j = e.target.closest('[data-jump]'); if (j) {
+        var t = j.getAttribute('data-jump'), sub = j.getAttribute('data-subnav-target');
+        if ($('[data-step="' + t + '"]')) { e.preventDefault(); if (sub) { var g = $('[data-subnav-group]'); if (g) tab(g.dataset.subnavGroup, sub); } step(t); return; }
+        if (j.tagName !== 'A' && JUMP[t]) { location.href = JUMP[t]; }
+        return;
+      }
+      var r = e.target.closest('[data-cal-reveal]'); if (r) { var el = d.getElementById(r.getAttribute('data-cal-reveal')); if (el) { el.classList.remove('hide'); el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' }); } return; }
+      var h = e.target.closest('[data-cal-hide]'); if (h) { var el2 = d.getElementById(h.getAttribute('data-cal-hide')); if (el2) el2.classList.add('hide'); return; }
+      var c = e.target.closest('.chip-row .chip'); if (c) { $$('.chip', c.parentNode).forEach(function (o) { o.classList.toggle('on', o === c); }); }
+    });
+    var hh = location.hash.replace('#', ''), hb = hh && $('.mtabs [data-subnav="' + hh + '"]'); if (hb) tab(hb.closest('[data-subnav-group]').dataset.subnavGroup, hh);
+  })();
 })();
